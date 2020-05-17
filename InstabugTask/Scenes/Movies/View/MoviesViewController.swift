@@ -13,13 +13,14 @@ class MoviesViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     // MARK: - Variables
-//    private var presenter: MoviesPresenter!
+    private var presenter: MoviesPresenter!
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCollectionView()
+        presenter = MoviesPresenter(delegate: self)
         setUpView()
+        setUpCollectionView()
     }
     
     // MARK: - Setting Up UI
@@ -30,6 +31,7 @@ class MoviesViewController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         self.navigationItem.title = "Movies"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }
     // MARK: - Setting Up Collection view
     private func setUpCollectionView(){
@@ -45,19 +47,88 @@ class MoviesViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width/2)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
+        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 16)
         collectionView!.collectionViewLayout = layout
+    }
+    // MARK: - Add New Movie pressed
+    @objc private func addMoviePressed(){
+        presenter.addNewMovie()
     }
 }
 
 extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
     
+    // MARK: - Number of Sections
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    // MARK: - Section headers
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! SectionHeader
+        setUpHeaderView(view: &view)
+        if indexPath.section == 0{
+            view.setSectionName(name: "My Movies")
+        }else{
+            view.setSectionName(name: "All Movies")
+        }
+        return view
+    }
+    // MARK: - Setting section header view
+    func setUpHeaderView(view: inout SectionHeader){
+        let width = 100
+        let height = 30
+        view.backgroundColor = .systemTeal
+        view.layer.cornerRadius = CGFloat(height / 2)
+        view.layer.borderColor = UIColor.black.cgColor
+        view.frame = CGRect(x:Int(UIScreen.main.bounds.width/2) - width/2, y: 0, width:width, height:height)
+    }
+    // MARK: - Detecting when reached last cell
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == presenter.getMoviesCount()-1) {
+           //Load more data & reload collection view
+            presenter.fetchNewPageMovies()
+         }
+    }
+    // MARK: - Number of movies in each section
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            // my movies section
+            return presenter.getMyMoviesCount()
+        }else{
+            // all movies section
+            return presenter.getMoviesCount()
+        }
+    }
+    // MARK: - Setting cell data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCell", for: indexPath) as! MoviesCollectionViewCell
+        presenter.setCellData(cell: cell, index: indexPath.row)
         return cell
     }
-    
-    
+}
+
+extension MoviesViewController: MoviesDelegate{
+    // MARK: - Show Loading Indicator
+    func showLoadingIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    // MARK: - Hide Loading Indicator
+    func hideLoadingIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    // MARK: - Show Error
+    func showError(error: String) {
+        showAlert(error: error)
+    }
+    // MARK: - Reload collection view
+    func updateData() {
+        collectionView.reloadData()
+    }
+    // MARK: - Navigate to Adding Movie controller
+    func navigateToAddMovieController() {
+        let vc = storyboard?.instantiateViewController(identifier: "AddMovieViewController") as! AddMovieViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
