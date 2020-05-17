@@ -28,9 +28,10 @@ class MoviesPresenter{
     // MARK: - Variables
     private weak var moviesDelegate: MoviesDelegate?
     private let interactor =  MoviesInteractor()
-    private var movies: [Movie] = []
-    private var myMovies: [Movie] = []
-    private var posters: [UIImage?] = []
+    private var allMovies: [Movie] = []     // all fetched movies
+    private var movies: [Movie] = []        // movies fetched for each new page
+    private var myMovies: [Movie] = []      // newly added movies
+    private var posters: [UIImage?] = [] // all fetched movies' posters
     private var currentPage = 1
     // MARK: - Dependency Injection
     init(delegate: MoviesDelegate?) {
@@ -53,11 +54,12 @@ class MoviesPresenter{
                 return
             }
             // append new movies
-            self.movies += response!
+            self.movies = response!
+            self.allMovies += self.movies
             //after finishing update table
             self.getPosterImages()
             self.moviesDelegate?.hideLoadingIndicator()
-            self.moviesDelegate?.updateData() // reload table view to update number of cells
+            self.moviesDelegate?.updateData() // reload table view to update number of cells with movie data
         })
     }
     // MARK: - Get poster images for movies
@@ -71,7 +73,8 @@ class MoviesPresenter{
                     return
                 }
                 //fetched image successfully
-                self.posters.append(UIImage(data: imageData!))
+                let img = UIImage(data: imageData!)!
+                self.posters.append(img)
                 self.moviesDelegate?.updateData() // reload table view to update poster
             })
         }
@@ -81,9 +84,9 @@ class MoviesPresenter{
         currentPage += 1 // update current page
         getMovies(pageNum: currentPage)
     }
-    // MARK: - Get number of movies available
+    // MARK: - Get number of all movies available
     func getMoviesCount()->Int{
-        return movies.count
+        return allMovies.count
     }
     func getMyMoviesCount()->Int{
         return myMovies.count
@@ -95,7 +98,7 @@ class MoviesPresenter{
     // MARK: - Setting movie cell data
     func setCellData(cell: MoviesCellDelegate?, index: Int){
         //need to check if image is nill put placeholder image else update image
-        let movie = movies[index]
+        let movie = allMovies[index]
         var img = UIImage(named: "placeholder")
         if posters.count > index {
             img = posters[index]
