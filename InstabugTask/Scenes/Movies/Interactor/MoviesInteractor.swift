@@ -11,7 +11,7 @@ import UIKit
 
 class MoviesInteractor{
     // custom error for nill responses
-    private let nilResponseError = NSError(domain:"", code:401, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
+    private let nilResponseError = NSError(domain:"", code:999, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
     
     // MARK: - Get list of movies
     func getMoviesList(pageNum: Int, completionHandler: @escaping ([Movie]?, Error?)->Void){

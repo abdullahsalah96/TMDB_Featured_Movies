@@ -55,7 +55,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
         let color = UIColor(red: 0.0235, green: 0.1215, blue: 0.3568, alpha: 0.91)
         view.backgroundColor = color
         view.layer.masksToBounds = true
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 15
         return view
     }()
     

@@ -23,6 +23,8 @@
 		55FB85572471637C003EE5BD /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB85562471637C003EE5BD /* SectionHeader.swift */; };
 		55FB855924717580003EE5BD /* AddMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB855824717580003EE5BD /* AddMovieViewController.swift */; };
 		55FB855B24717C35003EE5BD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB855A24717C35003EE5BD /* Movie.swift */; };
+		55FB855E2471A7A1003EE5BD /* AddMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB855D2471A7A1003EE5BD /* AddMoviePresenter.swift */; };
+		55FB85602471A7AD003EE5BD /* AddMovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB855F2471A7AD003EE5BD /* AddMovieInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		55FB85562471637C003EE5BD /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		55FB855824717580003EE5BD /* AddMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewController.swift; sourceTree = "<group>"; };
 		55FB855A24717C35003EE5BD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		55FB855D2471A7A1003EE5BD /* AddMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviePresenter.swift; sourceTree = "<group>"; };
+		55FB855F2471A7AD003EE5BD /* AddMovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 		55FB853C24714A44003EE5BD /* Add Movie */ = {
 			isa = PBXGroup;
 			children = (
+				55FB85622471A7BB003EE5BD /* Interactor */,
+				55FB85612471A7B1003EE5BD /* Presenter */,
 				55FB855C24719272003EE5BD /* View */,
 			);
 			path = "Add Movie";
@@ -183,6 +189,22 @@
 				55FB855824717580003EE5BD /* AddMovieViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		55FB85612471A7B1003EE5BD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				55FB855D2471A7A1003EE5BD /* AddMoviePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		55FB85622471A7BB003EE5BD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				55FB855F2471A7AD003EE5BD /* AddMovieInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +289,8 @@
 				55FB854E24715693003EE5BD /* MovieResponse.swift in Sources */,
 				55FB85572471637C003EE5BD /* SectionHeader.swift in Sources */,
 				55FB853E24714A90003EE5BD /* MoviesCollectionViewCell.swift in Sources */,
+				55FB85602471A7AD003EE5BD /* AddMovieInteractor.swift in Sources */,
+				55FB855E2471A7A1003EE5BD /* AddMoviePresenter.swift in Sources */,
 				55FB854424714AF2003EE5BD /* MoviesPresenter.swift in Sources */,
 				55FB8551247156B3003EE5BD /* Client.swift in Sources */,
 			);

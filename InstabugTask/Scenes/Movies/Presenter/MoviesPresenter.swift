@@ -12,7 +12,7 @@ import UIKit
 protocol MoviesDelegate: class {
     func showLoadingIndicator()
     func hideLoadingIndicator()
-    func showError(error: String)
+    func displayMessage(title: String, message: String) 
     func updateData()
     func navigateToAddMovieController()
 }
@@ -31,6 +31,7 @@ class MoviesPresenter{
     private var allMovies: [Movie] = []     // all fetched movies
     private var movies: [Movie] = []        // movies fetched for each new page
     private var myMovies: [Movie] = []      // newly added movies
+    private var myMoviesPosters: [UIImage?] = [] // posters of newly added movies
     private var posters: [UIImage?] = [] // all fetched movies' posters
     private var currentPage = 1
     // MARK: - Dependency Injection
@@ -45,12 +46,12 @@ class MoviesPresenter{
         interactor.getMoviesList(pageNum: pageNum, completionHandler: {(response, error) in
             guard error == nil else{
                 self.moviesDelegate?.hideLoadingIndicator()
-                self.moviesDelegate?.showError(error: error!.localizedDescription)
+                self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
             //No error in fetching data, start updating view
             guard response != nil else{
-                self.moviesDelegate?.showError(error: error!.localizedDescription)
+                self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
             // append new movies
@@ -69,7 +70,7 @@ class MoviesPresenter{
             interactor.getPosterImage(posterPath: movie.posterPath ?? "", completionHandler: {
                 (imageData, error) in
                 guard error == nil else{
-                    self.moviesDelegate?.showError(error: error!.localizedDescription)
+                    self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                     return
                 }
                 //fetched image successfully

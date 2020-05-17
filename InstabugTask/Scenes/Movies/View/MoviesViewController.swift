@@ -119,8 +119,8 @@ extension MoviesViewController: MoviesDelegate{
         activityIndicator.isHidden = true
     }
     // MARK: - Show Error
-    func showError(error: String) {
-        showAlert(error: error)
+    func displayMessage(title: String, message: String) {
+        showAlert(title: title, message: message)
     }
     // MARK: - Reload collection view
     func updateData() {

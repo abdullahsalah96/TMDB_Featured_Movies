@@ -19,8 +19,11 @@ class AddMovieViewController:UIViewController {
     // MARK: - Variables
     private var imagePicker = UIImagePickerController()
     private var Movie: Movie!
+    private var presenter: AddMoviePresenter!
+    private var moviePoster = UIImage(named: "placeholder")
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = AddMoviePresenter(delegate: self)
         setUpView()
     }
     // MARK: - Set Up views
@@ -43,7 +46,7 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Add movie button pressed
     @IBAction func addMoviePressed(_ sender: Any) {
-        //check that text fields are not empty
+        presenter.addNewMovie(title: titleTextField.text!, overview: overviewTextView.text!, date: datePicker.date, image: moviePoster!)
     }
     // MARK: - Image view is tapped, select image from gallery
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
@@ -65,4 +68,10 @@ extension AddMovieViewController: UIImagePickerControllerDelegate, UINavigationC
         self.dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension AddMovieViewController: AddMovieDelegate{
+    func displayMessage(title: String, message: String) {
+        self.showAlert(title: title, message: message)
+    }
 }
