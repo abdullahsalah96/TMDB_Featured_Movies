@@ -19,29 +19,42 @@ class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = MoviesPresenter(delegate: self)
         setUpView()
-        setUpTableView()
     }
     // MARK: - View will appear
     // we need to instantiate presenter here to update my movies list after adding new movie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter = MoviesPresenter(delegate: self)
+        presenter.updateMyMovies()
     }
     // MARK: - Setting Up UI
     private func setUpView(){
+        view.backgroundColor = Constants.Colors.primaryDark
+        setUpActivityIndicator()
+        setUpTableView()
+        setUpNavigationBar()
+    }
+    // MARK: - Setting up activity indicator
+    private func setUpActivityIndicator(){
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        self.navigationItem.title = "Movies"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }
     // MARK: - Setting Up Collection view
     private func setUpTableView(){
+        tableView.backgroundColor = Constants.Colors.primaryDark
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    // MARK: - Setting Up navigation bar
+    fileprivate func setUpNavigationBar() {
+        self.navigationItem.title = "Movies"
+        self.navigationController?.navigationBar.backgroundColor = Constants.Colors.primaryDark
+        self.navigationController?.navigationBar.barTintColor = Constants.Colors.primaryDark
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }
     // MARK: - Add New Movie pressed
     @objc private func addMoviePressed(){

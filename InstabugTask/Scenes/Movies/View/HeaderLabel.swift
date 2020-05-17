@@ -30,7 +30,7 @@ class HeaderLabel: UILabel{
     private func setUpLabel() {
         self.layer.cornerRadius = (originalContentSize.height+16)
         self.layer.masksToBounds = true
-        self.backgroundColor = .systemTeal
+        self.backgroundColor = Constants.Colors.primaryBlue
         self.textColor = .white
         self.textAlignment = .center
         self.translatesAutoresizingMaskIntoConstraints = true

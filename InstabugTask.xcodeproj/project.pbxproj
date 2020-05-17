@@ -28,6 +28,7 @@
 		55FB85672471C60D003EE5BD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB85662471C60D003EE5BD /* Movie.swift */; };
 		55FB85692471D807003EE5BD /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB85682471D807003EE5BD /* TextFieldDelegate.swift */; };
 		55FB856C2471E5D3003EE5BD /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB856B2471E5D3003EE5BD /* HeaderLabel.swift */; };
+		55FB856F2471F0E2003EE5BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB856E2471F0E2003EE5BD /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		55FB85662471C60D003EE5BD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		55FB85682471D807003EE5BD /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		55FB856B2471E5D3003EE5BD /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
+		55FB856E2471F0E2003EE5BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				55FB8526247149F4003EE5BD /* AppDelegate.swift */,
+				55FB856D2471F0D0003EE5BD /* Constants */,
 				55FB854024714AC2003EE5BD /* Model */,
 				55FB853A24714A30003EE5BD /* Scenes */,
 				55FB85632471B257003EE5BD /* Extensions */,
@@ -232,6 +235,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		55FB856D2471F0D0003EE5BD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				55FB856E2471F0E2003EE5BD /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,6 +326,7 @@
 				55FB8529247149F4003EE5BD /* SceneDelegate.swift in Sources */,
 				55FB854E24715693003EE5BD /* MoviesListResponse.swift in Sources */,
 				55FB853E24714A90003EE5BD /* MoviesTableViewCell.swift in Sources */,
+				55FB856F2471F0E2003EE5BD /* Constants.swift in Sources */,
 				55FB85602471A7AD003EE5BD /* AddMovieInteractor.swift in Sources */,
 				55FB85652471B435003EE5BD /* MovieModel.swift in Sources */,
 				55FB855E2471A7A1003EE5BD /* AddMoviePresenter.swift in Sources */,

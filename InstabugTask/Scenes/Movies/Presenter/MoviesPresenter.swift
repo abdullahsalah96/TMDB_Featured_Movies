@@ -35,11 +35,11 @@ class MoviesPresenter{
     // MARK: - Dependency Injection
     init(delegate: MoviesDelegate?) {
         self.moviesDelegate = delegate
-        self.getMyMovies()
         self.getMovies(pageNum: currentPage) // At initialization get movies in page 1
     }
+    
     // MARK: - Get my movies list
-    private func getMyMovies(){
+    func updateMyMovies(){
         myMovies = MovieModel.getMovies()
     }
     // MARK: - Get movies in specified page

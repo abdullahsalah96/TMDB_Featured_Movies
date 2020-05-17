@@ -16,7 +16,7 @@ class MoviesTableViewCell: UITableViewCell {
         label.text = "Movie"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 22)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     // overview label
@@ -25,7 +25,7 @@ class MoviesTableViewCell: UITableViewCell {
         label.text = "overview"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 0 //multi lines
         return label
     }()
@@ -35,7 +35,7 @@ class MoviesTableViewCell: UITableViewCell {
         label.text = "date"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .italicSystemFont(ofSize: 14)
-        label.textColor = .systemTeal
+        label.textColor = Constants.Colors.primaryBlue
         return label
     }()
     // poster image
@@ -54,7 +54,7 @@ class MoviesTableViewCell: UITableViewCell {
     }
     // MARK: - Setting up cell view
     private func setUpCellView() {
-//        addSubview(bubbleBackground)
+        backgroundColor = Constants.Colors.primaryDark
         addSubview(poster)
         addSubview(title)
         addSubview(date)

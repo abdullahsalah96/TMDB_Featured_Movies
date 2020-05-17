@@ -29,6 +29,7 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Set Up views
     func setUpView(){
+        view.backgroundColor = Constants.Colors.primaryDark
         initializeDate()
         setUpTextDelegate()
         setUpAddMovieButton()
@@ -52,7 +53,7 @@ class AddMovieViewController:UIViewController {
     // MARK: - Add Movie button stylin
     func setUpAddMovieButton(){
         addMovieButton.layer.cornerRadius = 15
-        addMovieButton.backgroundColor = .systemTeal
+        addMovieButton.backgroundColor = Constants.Colors.primaryBlue
         addMovieButton.setTitleColor(.white, for: .normal)
     }
     //MARK: - Image View styling
