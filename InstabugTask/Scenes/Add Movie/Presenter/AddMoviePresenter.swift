@@ -28,7 +28,7 @@ class AddMoviePresenter{
             addMoviesDelegate?.displayMessage(title: "Error", message: error)
         }else{
             // add movie
-            let movie = MyMovie(title: title, date: date, overview: overview, poster: image)
+            let movie = Movie(title: title, date: date.description, overview: overview, poster: image, posterPath: nil)
             MovieModel.addMovie(movie: movie)
             addMoviesDelegate?.displayMessage(title: "Success", message: "Movie Added Successfully")
         }

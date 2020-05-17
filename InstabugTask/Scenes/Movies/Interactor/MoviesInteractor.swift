@@ -14,9 +14,9 @@ class MoviesInteractor{
     private let nilResponseError = NSError(domain:"", code:999, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
     
     // MARK: - Get list of movies
-    func getMoviesList(pageNum: Int, completionHandler: @escaping ([Movie]?, Error?)->Void){
+    func getMoviesList(pageNum: Int, completionHandler: @escaping ([MovieResponse]?, Error?)->Void){
         //fetch data
-        Client.taskForGETRequest(url: Endpoints.getMoviesList(pageNum).url, responseType: MovieResponse.self, completionHandler: {
+        Client.taskForGETRequest(url: Endpoints.getMoviesList(pageNum).url, responseType: MoviesListResponse.self, completionHandler: {
             (response, error) in
             guard error == nil else{
                 // error fetching data

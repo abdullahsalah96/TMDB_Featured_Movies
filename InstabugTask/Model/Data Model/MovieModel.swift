@@ -10,22 +10,15 @@ import Foundation
 import UIKit
 
 class MovieModel{
-    private var myMovies: [MyMovie]
+    private var myMovies: [Movie]
     static let shared = MovieModel() //singleton instance
     private init(){
         myMovies = []
     }
-    class func addMovie(movie: MyMovie){
+    static func addMovie(movie: Movie){
         shared.myMovies.append(movie)
     }
-    class func getMovies()->[MyMovie]{
+    static func getMovies()->[Movie]{
         return shared.myMovies
     }
-}
-
-struct MyMovie{
-    let title: String
-    let date: Date
-    let overview:String
-    let poster: UIImage
 }

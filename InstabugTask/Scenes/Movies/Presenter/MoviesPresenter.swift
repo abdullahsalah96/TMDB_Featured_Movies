@@ -28,12 +28,10 @@ class MoviesPresenter{
     // MARK: - Variables
     private weak var moviesDelegate: MoviesDelegate?
     private let interactor =  MoviesInteractor()
-    private var allMovies: [Movie] = []     // all fetched movies
-    private var movies: [Movie] = []        // movies fetched for each new page
-    private var myMovies: [MyMovie] = []      // newly added movies
-    private var myMoviesPosters: [UIImage?] = [] // posters of newly added movies
-    private var posters: [UIImage?] = [] // all fetched movies' posters
-    private var currentPage = 1
+    private var allMovies: [Movie] = []         // all fetched movies
+    private var myMovies: [Movie] = []          // newly added movies
+    private var currentPage = 1                 // start at page 1
+    
     // MARK: - Dependency Injection
     init(delegate: MoviesDelegate?) {
         self.moviesDelegate = delegate
@@ -46,6 +44,7 @@ class MoviesPresenter{
     }
     // MARK: - Get movies in specified page
     private func getMovies(pageNum: Int){
+        // emptying new movies array so that it contains movies of new page only
         //loading data
         self.moviesDelegate?.showLoadingIndicator()
         interactor.getMoviesList(pageNum: pageNum, completionHandler: {(response, error) in
@@ -59,30 +58,45 @@ class MoviesPresenter{
                 self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
-            // append new movies
-            self.movies = response!
-            self.allMovies += self.movies
-            //after finishing update table
-            self.getPosterImages()
-            self.moviesDelegate?.hideLoadingIndicator()
-            self.moviesDelegate?.updateData() // reload table view to update number of cells with movie data
+            // loop through responses and append new movies in background to avoid blocking ui
+            let queue = DispatchQueue.global()
+            queue.async {
+                for result in response!{
+                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: UIImage(named: "placeholder"), posterPath: result.posterPath)
+                    self.allMovies.append(movie)
+                }
+                //after finishing get posters of each movie
+                self.getPosterImages(numberOfNewImages: response!.count)
+                //update ui in main queue
+                DispatchQueue.main.async {
+                    self.moviesDelegate?.hideLoadingIndicator()
+                    self.moviesDelegate?.updateData() // reload collection view to update number of cells with movie data
+                }
+            }
         })
     }
     // MARK: - Get poster images for movies
-    private func getPosterImages(){
-        //itterate through movies and populate posters array
-        for movie in self.movies{
-            interactor.getPosterImage(posterPath: movie.posterPath ?? "", completionHandler: {
-                (imageData, error) in
-                guard error == nil else{
-                    self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
-                    return
-                }
-                //fetched image successfully
-                let img = UIImage(data: imageData!)!
-                self.posters.append(img)
-                self.moviesDelegate?.updateData() // reload table view to update poster
-            })
+    private func getPosterImages(numberOfNewImages: Int){
+        // itterate through new movies and populate posters array in another queue to avoid blocking ui
+        let startIndex = abs(numberOfNewImages - self.allMovies.count) //start index of new fetched image
+        print(startIndex)
+        let q = DispatchQueue.global()
+        q.async {
+            for index in startIndex...self.allMovies.count - 1{
+                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath ?? "", completionHandler: {
+                    (imageData, error) in
+                    guard error == nil else{
+                        self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
+                        return
+                    }
+                    //fetched image successfully
+                    let img = UIImage(data: imageData!) ?? UIImage(named: "placeholder")!
+                    self.allMovies[index].poster = img //update movie poster
+                    DispatchQueue.main.async {
+                        self.moviesDelegate?.updateData() // reload collection view to update poster
+                    }
+                })
+            }
         }
     }
     // MARK: - Fetch New Page Movies
@@ -110,19 +124,14 @@ class MoviesPresenter{
             let date = myMovies[indexPath.row].date.description
             let overview = myMovies[indexPath.row].overview
             let poster = myMovies[indexPath.row].poster
-            updateCell(cell: cell, title: title, date: date, overview: overview, image: poster)
+            updateCell(cell: cell, title: title, date: date, overview: overview, image: poster!)
         }else{
             // fetched movies
             let movie = allMovies[indexPath.row]
-            var img = UIImage(named: "placeholder")
-            //need to check if image is nill put placeholder image else update image
-            if posters.count > indexPath.row {
-                img = posters[indexPath.row]
-            }
-            updateCell(cell: cell, title: movie.title, date: movie.releaseDate, overview: movie.overview, image: img!)
+            updateCell(cell: cell, title: movie.title, date: movie.date, overview: movie.overview, image: movie.poster!)
         }
     }
-    
+    // MARK: - Update collection view cell with given data
     private func updateCell(cell: MoviesCellDelegate?, title: String, date: String, overview: String, image: UIImage){
         cell?.displayTitle(title: title)
         cell?.displayDate(date: date)

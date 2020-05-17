@@ -18,7 +18,6 @@ class AddMovieViewController:UIViewController {
     @IBOutlet weak var addMovieButton: UIButton!
     // MARK: - Variables
     private var imagePicker = UIImagePickerController()
-    private var Movie: Movie!
     private var presenter: AddMoviePresenter!
     private var moviePoster = UIImage(named: "placeholder")
     override func viewDidLoad() {
@@ -64,6 +63,7 @@ extension AddMovieViewController: UIImagePickerControllerDelegate, UINavigationC
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             posterImageView.image = image
             posterImageView.contentMode = .scaleAspectFill
+            self.moviePoster = image
         }
         self.dismiss(animated: true, completion: nil)
     }
