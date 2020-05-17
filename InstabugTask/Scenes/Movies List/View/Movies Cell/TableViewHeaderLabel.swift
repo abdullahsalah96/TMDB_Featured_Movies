@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class HeaderLabel: UILabel{
+class TableViewHeaderLabel: UILabel{
     // MARK: - Original Content size
     private var originalContentSize: CGSize{
         return super.intrinsicContentSize
     }
     // MARK: - Adding padding to label
     override var intrinsicContentSize: CGSize{
-        return CGSize(width: originalContentSize.width + 32, height: originalContentSize.height + 16)
+        return CGSize(width: originalContentSize.width + Config.Padding.doublePadding, height: originalContentSize.height + Config.Padding.defaultPadding)
     }
     // MARK: - init
     override init(frame: CGRect) {
@@ -28,9 +28,9 @@ class HeaderLabel: UILabel{
     }
     // MARK: - Setting label style
     private func setUpLabel() {
-        self.layer.cornerRadius = (originalContentSize.height+16)
+        self.layer.cornerRadius = (originalContentSize.height + Config.Padding.defaultPadding)
         self.layer.masksToBounds = true
-        self.backgroundColor = Constants.Colors.primaryBlue
+        self.backgroundColor = Config.Colors.primaryBlue
         self.textColor = .white
         self.textAlignment = .center
         self.translatesAutoresizingMaskIntoConstraints = true

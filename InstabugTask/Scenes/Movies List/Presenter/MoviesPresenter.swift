@@ -41,11 +41,13 @@ class MoviesPresenter{
     // MARK: - Get my movies list
     func updateMyMovies(){
         myMovies = MovieModel.getMovies()
+        moviesDelegate?.updateData()
     }
+    
     // MARK: - Get movies in specified page
     private func getMovies(pageNum: Int){
         // emptying new movies array so that it contains movies of new page only
-        //loading data
+        // start animating loading indicator
         self.moviesDelegate?.showLoadingIndicator()
         interactor.getMoviesList(pageNum: pageNum, completionHandler: {(response, error) in
             guard error == nil else{
@@ -62,7 +64,7 @@ class MoviesPresenter{
             let queue = DispatchQueue.global()
             queue.async {
                 for result in response!{
-                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: UIImage(named: "placeholder"), posterPath: result.posterPath)
+                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Config.Images.placeholderImage, posterPath: result.posterPath)
                     self.allMovies.append(movie)
                 }
                 //after finishing get posters of each movie
@@ -90,7 +92,7 @@ class MoviesPresenter{
                         return
                     }
                     //fetched image successfully
-                    let img = UIImage(data: imageData!) ?? UIImage(named: "placeholder")!
+                    let img = UIImage(data: imageData!) ?? Config.Images.placeholderImage!
                     self.allMovies[index].poster = img //update movie poster
                     DispatchQueue.main.async {
                         self.moviesDelegate?.updateData() // reload collection view to update poster

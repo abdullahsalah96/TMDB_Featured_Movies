@@ -29,7 +29,7 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Set Up views
     func setUpView(){
-        view.backgroundColor = Constants.Colors.primaryDark
+        view.backgroundColor = Config.Colors.primaryDark
         initializeDate()
         setUpTextDelegate()
         setUpAddMovieButton()
@@ -52,8 +52,8 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Add Movie button stylin
     func setUpAddMovieButton(){
-        addMovieButton.layer.cornerRadius = 15
-        addMovieButton.backgroundColor = Constants.Colors.primaryBlue
+        addMovieButton.layer.cornerRadius = Config.BorderRadii.defaultBorderRadius
+        addMovieButton.backgroundColor = Config.Colors.primaryBlue
         addMovieButton.setTitleColor(.white, for: .normal)
     }
     //MARK: - Image View styling
@@ -61,7 +61,7 @@ class AddMovieViewController:UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         posterImageView.isUserInteractionEnabled = true
         posterImageView.addGestureRecognizer(tapGestureRecognizer)
-        posterImageView.layer.cornerRadius = 15
+        posterImageView.layer.cornerRadius = Config.BorderRadii.defaultBorderRadius
     }
     // MARK: - Add movie button pressed
     @IBAction func addMoviePressed(_ sender: Any) {

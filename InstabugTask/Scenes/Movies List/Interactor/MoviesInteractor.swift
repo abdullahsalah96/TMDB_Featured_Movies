@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 
 class MoviesInteractor{
-    // custom error for nill responses
-    private let nilResponseError = NSError(domain:"", code:999, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
-    
     // MARK: - Get list of movies
     func getMoviesList(pageNum: Int, completionHandler: @escaping ([MovieResponse]?, Error?)->Void){
         //fetch data
@@ -25,13 +22,13 @@ class MoviesInteractor{
             }
             guard response != nil else{
                 // nill response
-                completionHandler(nil, self.nilResponseError)
+                completionHandler(nil, Config.Errors.nilResponseError)
                 return
             }
             //fetched successfully
             guard response != nil else{
                 // nill response
-                completionHandler(nil, self.nilResponseError)
+                completionHandler(nil, Config.Errors.nilResponseError)
                 return
             }
             //fetched successfully
