@@ -27,6 +27,7 @@
 		55FB85602471A7AD003EE5BD /* AddMovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB855F2471A7AD003EE5BD /* AddMovieInteractor.swift */; };
 		55FB85652471B435003EE5BD /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB85642471B435003EE5BD /* MovieModel.swift */; };
 		55FB85672471C60D003EE5BD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB85662471C60D003EE5BD /* Movie.swift */; };
+		55FB85692471D807003EE5BD /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB85682471D807003EE5BD /* TextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		55FB855F2471A7AD003EE5BD /* AddMovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieInteractor.swift; sourceTree = "<group>"; };
 		55FB85642471B435003EE5BD /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		55FB85662471C60D003EE5BD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		55FB85682471D807003EE5BD /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				55FB855824717580003EE5BD /* AddMovieViewController.swift */,
+				55FB85682471D807003EE5BD /* TextFieldDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			files = (
 				55FB855B24717C35003EE5BD /* MovieResponse.swift in Sources */,
 				55FB8555247158CF003EE5BD /* UIViewController+Extension.swift in Sources */,
+				55FB85692471D807003EE5BD /* TextFieldDelegate.swift in Sources */,
 				55FB852B247149F4003EE5BD /* MoviesViewController.swift in Sources */,
 				55FB854624714AFC003EE5BD /* MoviesInteractor.swift in Sources */,
 				55FB8527247149F4003EE5BD /* AppDelegate.swift in Sources */,

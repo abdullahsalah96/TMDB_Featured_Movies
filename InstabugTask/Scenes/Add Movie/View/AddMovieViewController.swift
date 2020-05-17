@@ -20,6 +20,7 @@ class AddMovieViewController:UIViewController {
     private var imagePicker = UIImagePickerController()
     private var presenter: AddMoviePresenter!
     private var moviePoster = UIImage(named: "placeholder")
+    private let textDelegate = TextFieldDelegate()
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = AddMoviePresenter(delegate: self)
@@ -27,6 +28,8 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Set Up views
     func setUpView(){
+        titleTextField.delegate = textDelegate
+        overviewTextView.delegate = textDelegate
         setUpAddMovieButton()
         setUpImageView()
     }
