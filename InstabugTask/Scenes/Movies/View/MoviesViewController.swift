@@ -9,9 +9,10 @@
 import UIKit
 
 class MoviesViewController: UIViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    
     // MARK: - Outlets
-    @IBOutlet weak var collectionView: UICollectionView!
+    
     // MARK: - Variables
     private var presenter: MoviesPresenter!
     let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -19,7 +20,7 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        setUpCollectionView()
+        setUpTableView()
     }
     // MARK: - View will appear
     // we need to instantiate presenter here to update my movies list after adding new movie
@@ -27,7 +28,6 @@ class MoviesViewController: UIViewController {
         super.viewWillAppear(animated)
         presenter = MoviesPresenter(delegate: self)
     }
-    
     // MARK: - Setting Up UI
     private func setUpView(){
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -39,21 +39,9 @@ class MoviesViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }
     // MARK: - Setting Up Collection view
-    private func setUpCollectionView(){
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        setUpCollectionViewSpacing()
-    }
-    //MARK: - Collection view spacing
-    func setUpCollectionViewSpacing(){
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: width, height: width/2)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 16)
-        collectionView!.collectionViewLayout = layout
+    private func setUpTableView(){
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     // MARK: - Add New Movie pressed
     @objc private func addMoviePressed(){
@@ -61,41 +49,44 @@ class MoviesViewController: UIViewController {
     }
 }
 
-extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension MoviesViewController: UITableViewDelegate, UITableViewDataSource{
     
     // MARK: - Number of Sections
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     // MARK: - Section headers
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! SectionHeader
-        setUpHeaderView(view: &view)
-        if indexPath.section == 0{
-            view.setSectionName(name: "My Movies")
-        }else{
-            view.setSectionName(name: "All Movies")
-        }
-        return view
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return getHeaderView(section: section)
     }
     // MARK: - Setting section header view
-    func setUpHeaderView(view: inout SectionHeader){
-        let width = 100
-        let height = 30
-        view.backgroundColor = .systemTeal
-        view.layer.cornerRadius = CGFloat(height / 2)
-        view.layer.borderColor = UIColor.black.cgColor
-        view.frame = CGRect(x:Int(UIScreen.main.bounds.width/2) - width/2, y: 0, width:width, height:height)
+    func getHeaderView(section: Int)->UIView{
+        let label = HeaderLabel()
+        if section == 0{
+            label.text = "My Movies"
+        }else{
+            label.text = "All Movies"
+        }
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let containerView = UIView()
+        containerView.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        return containerView
+    }
+    // MARK: - Height for section header
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     // MARK: - Detecting when reached last cell
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (indexPath.row == presenter.getMoviesCount()-1) {
            //Load more data & reload collection view
             presenter.fetchNewPageMovies()
          }
     }
     // MARK: - Number of movies in each section
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             // my movies section
             return presenter.getMyMoviesCount()
@@ -104,9 +95,14 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return presenter.getMoviesCount()
         }
     }
+    // MARK: - Height for each table view cell
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    // MARK: - View for each section
     // MARK: - Setting cell data
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCell", for: indexPath) as! MoviesCollectionViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesCell") as! MoviesTableViewCell
         presenter.setCellData(cell: cell, indexPath: indexPath)
         return cell
     }
@@ -129,7 +125,7 @@ extension MoviesViewController: MoviesDelegate{
     }
     // MARK: - Reload collection view
     func updateData() {
-        collectionView.reloadData()
+        tableView.reloadData()
     }
     // MARK: - Navigate to Adding Movie controller
     func navigateToAddMovieController() {

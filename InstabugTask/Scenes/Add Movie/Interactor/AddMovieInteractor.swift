@@ -11,12 +11,12 @@ import UIKit
 
 class AddMovieInteractor{
     // MARK: - Validate Movie Data
-    func validateMovieData(title: String, overview: String, date: Date)->String?{
+    func validateMovieData(title: String, overview: String, date: String)->String?{
         if title.count < 1{
             return "Please enter a valid movie title"
         }else if overview.count < 1{
             return "Please enter a valid movie overview"
-        }else if date.description.count < 1{
+        }else if date.count < 1{
             return "Please enter a valid movie date"
         }else{
             return nil

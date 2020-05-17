@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,43 +15,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tKA-5j-TSq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-st-2qM">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sek-s5-Aav">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MoviesCell" id="xYm-E3-rze" customClass="MoviesCollectionViewCell" customModule="InstabugTask" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="A3O-5D-LFe">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoviesCell" id="MoT-ZR-Pc6" customClass="MoviesTableViewCell" customModule="InstabugTask" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MoT-ZR-Pc6" id="net-ar-dgD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="Sg6-Mz-7IQ" customClass="SectionHeader" customModule="InstabugTask" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
-                            </collectionView>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tKA-5j-TSq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9tA-CR-viR"/>
-                            <constraint firstItem="tKA-5j-TSq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SAw-ra-vDg"/>
-                            <constraint firstItem="tKA-5j-TSq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bHV-Ke-d2o"/>
-                            <constraint firstItem="tKA-5j-TSq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ssZ-nj-Rlq"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="C2e-A2-ait"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OO2-fx-G4W"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="aqY-Na-F3h"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fw4-ib-Jds"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="gBW-zM-LFm"/>
                     <connections>
-                        <outlet property="collectionView" destination="tKA-5j-TSq" id="QdQ-Or-6EX"/>
+                        <outlet property="tableView" destination="Qez-st-2qM" id="p1T-7o-pKK"/>
                         <segue destination="gnl-zG-NxT" kind="show" identifier="AddMovieSegue" id="00p-da-M60"/>
                     </connections>
                 </viewController>
@@ -69,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aGC-qV-xhw">
-                                <rect key="frame" x="72" y="170" width="270" height="674"/>
+                                <rect key="frame" x="72" y="118" width="270" height="726"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7I-vU-8ZT">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="25.5"/>
@@ -77,7 +66,7 @@
                                         <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-Ff-lIf" userLabel="titleTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-Ff-lIf" userLabel="titleTextField">
                                         <rect key="frame" x="0.0" y="35.5" width="270" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -125,7 +114,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-dk-jbt">
-                                        <rect key="frame" x="0.0" y="644" width="270" height="30"/>
+                                        <rect key="frame" x="0.0" y="644" width="270" height="82"/>
                                         <state key="normal" title="Add Movie"/>
                                         <connections>
                                             <action selector="addMoviePressed:" destination="gnl-zG-NxT" eventType="touchUpInside" id="9VR-Np-fny"/>
@@ -160,8 +149,8 @@
         <scene sceneID="fhF-c7-gbS">
             <objects>
                 <navigationController id="zxH-Ve-qoG" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ew2-PK-ADr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ew2-PK-ADr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

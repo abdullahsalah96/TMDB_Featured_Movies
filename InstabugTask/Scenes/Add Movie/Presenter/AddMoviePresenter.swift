@@ -23,12 +23,16 @@ class AddMoviePresenter{
     }
     //MARK: - Add new movie
     func addNewMovie(title: String, overview: String, date: Date, image: UIImage){
+        // format date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
         // validate entries
-        if let error = interactor.validateMovieData(title: title, overview: overview, date: date){
+        if let error = interactor.validateMovieData(title: title, overview: overview, date: dateString){
             addMoviesDelegate?.displayMessage(title: "Error", message: error)
         }else{
             // add movie
-            let movie = Movie(title: title, date: date.description, overview: overview, poster: image, posterPath: nil)
+            let movie = Movie(title: title, date: dateString, overview: overview, poster: image, posterPath: nil)
             MovieModel.addMovie(movie: movie)
             addMoviesDelegate?.displayMessage(title: "Success", message: "Movie Added Successfully")
         }

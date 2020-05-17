@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoviesCollectionViewCell: UICollectionViewCell {
+class MoviesTableViewCell: UITableViewCell {
     // MARK: - Labels and Background view
     // title label
     let title: UILabel = {
@@ -16,7 +16,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
         label.text = "Movie"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 22)
-        label.textColor = .white
+        label.textColor = .black
         return label
     }()
     // overview label
@@ -25,7 +25,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
         label.text = "overview"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
+        label.textColor = .black
         label.numberOfLines = 0 //multi lines
         return label
     }()
@@ -48,82 +48,50 @@ class MoviesCollectionViewCell: UICollectionViewCell {
         image.image = UIImage(named: "placeholder")
         return image
     }()
-    // Background view
-    let bubbleBackground: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let color = UIColor(red: 0.0235, green: 0.1215, blue: 0.3568, alpha: 0.91)
-        view.backgroundColor = color
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = 15
-        return view
-    }()
-    
     // cell setup
     override func awakeFromNib() {
         setUpCellView()
     }
     // MARK: - Setting up cell view
     private func setUpCellView() {
-        addSubview(bubbleBackground)
+//        addSubview(bubbleBackground)
         addSubview(poster)
         addSubview(title)
         addSubview(date)
         addSubview(overview)
-        setBackgroundShadow()
         setUpConstraints()
     }
     // MARK: - Setting constraints
     private func setUpConstraints(){
-        // setting background constraints
-        setBackgroundViewConstraints()
         // setting poster image constraints
         setPosterImageConstraints()
         // setting labels constraints
         setLabelsConstraints()
     }
-    // MARK: - Background view constraints
-    private func setBackgroundViewConstraints(){
-        bubbleBackground.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        bubbleBackground.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
-        bubbleBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        bubbleBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-    }
     // MARK: - Image View Constraints
     private func setPosterImageConstraints(){
-        poster.topAnchor.constraint(equalTo: bubbleBackground.topAnchor, constant: 16).isActive = true
-        poster.leadingAnchor.constraint(equalTo: bubbleBackground.leadingAnchor, constant: 16).isActive = true
-        poster.bottomAnchor.constraint(equalTo: bubbleBackground.bottomAnchor, constant: -16).isActive = true
+        poster.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        poster.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         poster.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        poster.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
     // MARK: - Labels constraints
     private func setLabelsConstraints() {
         // title
         title.topAnchor.constraint(equalTo: poster.topAnchor).isActive = true
         title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 16).isActive = true
-        title.trailingAnchor.constraint(equalTo: bubbleBackground.trailingAnchor, constant: -16).isActive = true
-        // date
         date.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
         date.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true
         date.trailingAnchor.constraint(equalTo: title.trailingAnchor).isActive = true
         // overview
         overview.topAnchor.constraint(equalTo: date.bottomAnchor).isActive = true
         overview.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true
-        overview.trailingAnchor.constraint(equalTo: title.trailingAnchor).isActive = true
-        overview.bottomAnchor.constraint(equalTo: bubbleBackground.bottomAnchor, constant: -16).isActive = true
-    }
-    // MARK: - Setting up shadow for background view
-    func setBackgroundShadow() {
-        bubbleBackground.layer.shadowColor = UIColor.black.cgColor
-        bubbleBackground.layer.shadowOffset = CGSize(width: 0, height: 1)
-        bubbleBackground.layer.shadowOpacity = 0.4
-        bubbleBackground.layer.shadowRadius = 1.0
-        bubbleBackground.layer.masksToBounds = false
-        bubbleBackground.clipsToBounds = false
+        overview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        overview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
 }
 
-extension MoviesCollectionViewCell: MoviesCellDelegate{
+extension MoviesTableViewCell: MoviesCellDelegate{
     // MARK: - Displaying Title
     func displayTitle(title: String) {
         self.title.text = title

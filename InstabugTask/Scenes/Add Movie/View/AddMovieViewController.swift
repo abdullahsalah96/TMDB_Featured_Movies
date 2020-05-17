@@ -20,6 +20,7 @@ class AddMovieViewController:UIViewController {
     private var imagePicker = UIImagePickerController()
     private var presenter: AddMoviePresenter!
     private var moviePoster = UIImage(named: "placeholder")
+    private var movieDate: Date!
     private let textDelegate = TextFieldDelegate()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,29 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Set Up views
     func setUpView(){
-        titleTextField.delegate = textDelegate
-        overviewTextView.delegate = textDelegate
+        initializeDate()
+        setUpTextDelegate()
         setUpAddMovieButton()
         setUpImageView()
     }
+    // MARK: - Initialize date to current date picker date
+    func initializeDate(){
+        // initializing time zone to Egypt
+        let seconds = 2*60*60 //GMT+2
+        datePicker.timeZone = TimeZone(secondsFromGMT: seconds)
+        // whenever date picker value is changed update movie date
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(picker:)), for: .valueChanged)
+        // init movie date to current selected date picker date
+        movieDate = datePicker.date
+    }
+    // MARK: - Set up text delegates
+    func setUpTextDelegate(){
+        titleTextField.delegate = textDelegate
+        overviewTextView.delegate = textDelegate
+    }
     // MARK: - Add Movie button stylin
     func setUpAddMovieButton(){
-        addMovieButton.layer.cornerRadius = 5
+        addMovieButton.layer.cornerRadius = 15
         addMovieButton.backgroundColor = .systemTeal
         addMovieButton.setTitleColor(.white, for: .normal)
     }
@@ -48,7 +64,11 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Add movie button pressed
     @IBAction func addMoviePressed(_ sender: Any) {
-        presenter.addNewMovie(title: titleTextField.text!, overview: overviewTextView.text!, date: datePicker.date, image: moviePoster!)
+        presenter.addNewMovie(title: titleTextField.text!, overview: overviewTextView.text!, date: movieDate, image: moviePoster!)
+    }
+    // MARK: - Date Picker Value Changed
+    @objc func datePickerValueChanged(picker: UIDatePicker) {
+        movieDate = picker.date
     }
     // MARK: - Image view is tapped, select image from gallery
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
