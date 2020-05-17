@@ -110,7 +110,7 @@
 		55FB853C24714A44003EE5BD /* Add Movie */ = {
 			isa = PBXGroup;
 			children = (
-				55FB855824717580003EE5BD /* AddMovieViewController.swift */,
+				55FB855C24719272003EE5BD /* View */,
 			);
 			path = "Add Movie";
 			sourceTree = "<group>";
@@ -175,6 +175,14 @@
 				55FB8552247156D5003EE5BD /* Endpoints.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		55FB855C24719272003EE5BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55FB855824717580003EE5BD /* AddMovieViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
