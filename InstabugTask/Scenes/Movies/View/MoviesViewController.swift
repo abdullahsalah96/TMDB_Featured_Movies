@@ -18,9 +18,14 @@ class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MoviesPresenter(delegate: self)
         setUpView()
         setUpCollectionView()
+    }
+    // MARK: - View will appear
+    // we need to instantiate presenter here to update my movies list after adding new movie
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter = MoviesPresenter(delegate: self)
     }
     
     // MARK: - Setting Up UI
@@ -102,7 +107,7 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: - Setting cell data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCell", for: indexPath) as! MoviesCollectionViewCell
-        presenter.setCellData(cell: cell, index: indexPath.row)
+        presenter.setCellData(cell: cell, indexPath: indexPath)
         return cell
     }
 }

@@ -30,14 +30,19 @@ class MoviesPresenter{
     private let interactor =  MoviesInteractor()
     private var allMovies: [Movie] = []     // all fetched movies
     private var movies: [Movie] = []        // movies fetched for each new page
-    private var myMovies: [Movie] = []      // newly added movies
+    private var myMovies: [MyMovie] = []      // newly added movies
     private var myMoviesPosters: [UIImage?] = [] // posters of newly added movies
     private var posters: [UIImage?] = [] // all fetched movies' posters
     private var currentPage = 1
     // MARK: - Dependency Injection
     init(delegate: MoviesDelegate?) {
         self.moviesDelegate = delegate
+        self.getMyMovies()
         self.getMovies(pageNum: currentPage) // At initialization get movies in page 1
+    }
+    // MARK: - Get my movies list
+    private func getMyMovies(){
+        myMovies = MovieModel.getMovies()
     }
     // MARK: - Get movies in specified page
     private func getMovies(pageNum: Int){
@@ -97,16 +102,31 @@ class MoviesPresenter{
         moviesDelegate?.navigateToAddMovieController()
     }
     // MARK: - Setting movie cell data
-    func setCellData(cell: MoviesCellDelegate?, index: Int){
-        //need to check if image is nill put placeholder image else update image
-        let movie = allMovies[index]
-        var img = UIImage(named: "placeholder")
-        if posters.count > index {
-            img = posters[index]
+    func setCellData(cell: MoviesCellDelegate?, indexPath: IndexPath){
+        // check whether it's my movie section or fetched movies
+        if indexPath.section == 0{
+            // my movies
+            let title = myMovies[indexPath.row].title
+            let date = myMovies[indexPath.row].date.description
+            let overview = myMovies[indexPath.row].overview
+            let poster = myMovies[indexPath.row].poster
+            updateCell(cell: cell, title: title, date: date, overview: overview, image: poster)
+        }else{
+            // fetched movies
+            let movie = allMovies[indexPath.row]
+            var img = UIImage(named: "placeholder")
+            //need to check if image is nill put placeholder image else update image
+            if posters.count > indexPath.row {
+                img = posters[indexPath.row]
+            }
+            updateCell(cell: cell, title: movie.title, date: movie.releaseDate, overview: movie.overview, image: img!)
         }
-        cell?.displayTitle(title: movie.title)
-        cell?.displayDate(date: movie.releaseDate)
-        cell?.displayOverview(overview: movie.overview)
-        cell?.displayImage(image: img!)
+    }
+    
+    private func updateCell(cell: MoviesCellDelegate?, title: String, date: String, overview: String, image: UIImage){
+        cell?.displayTitle(title: title)
+        cell?.displayDate(date: date)
+        cell?.displayOverview(overview: overview)
+        cell?.displayImage(image: image)
     }
 }

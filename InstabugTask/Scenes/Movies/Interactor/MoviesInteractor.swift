@@ -16,7 +16,7 @@ class MoviesInteractor{
     // MARK: - Get list of movies
     func getMoviesList(pageNum: Int, completionHandler: @escaping ([Movie]?, Error?)->Void){
         //fetch data
-        Client.GETRequest(url: Endpoints.getMoviesList(pageNum).url, responseType: MovieResponse.self, completionHandler: {
+        Client.taskForGETRequest(url: Endpoints.getMoviesList(pageNum).url, responseType: MovieResponse.self, completionHandler: {
             (response, error) in
             guard error == nil else{
                 // error fetching data

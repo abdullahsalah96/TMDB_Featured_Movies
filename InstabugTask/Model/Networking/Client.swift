@@ -10,7 +10,7 @@ import Foundation
 
 class Client{
     // MARK: GET Request Task
-    class func GETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?)->Void){
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?)->Void){
         let task = URLSession.shared.dataTask(with: url, completionHandler: {
             (data, response, error) in
             //make sure data is not nil
