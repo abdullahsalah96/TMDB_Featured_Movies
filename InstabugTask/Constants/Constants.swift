@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Config {
+struct Constants {
     // MARK: - Storyboard identifiers
     struct Identifiers {
         static let movieCell = "MoviesCell"
@@ -25,15 +25,18 @@ struct Config {
         static let primaryRegular: UIFont = .systemFont(ofSize: 14)
         static let primaryItalic: UIFont = .italicSystemFont(ofSize: 14)
     }
-    // MARK: - padding
+    // MARK: - paddings
     struct Padding {
+        static let smallPadding = CGFloat(integerLiteral: 6)
         static let defaultPadding = CGFloat(integerLiteral: 16)
         static let doublePadding = CGFloat(integerLiteral: 32)
     }
     // MARK: - custom errors
     struct Errors {
         // custom error for nill responses
-        static let nilResponseError = NSError(domain:"", code:999, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
+        static let nilResponseError = NSError(domain:"", code:990, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
+        // invalid URL error
+        static let invalidURLError = NSError(domain:"", code:991, userInfo:[ NSLocalizedDescriptionKey: "Invalid URL"])
     }
     // MARK: - Images
     struct Images {

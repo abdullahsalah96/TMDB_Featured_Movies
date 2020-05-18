@@ -57,68 +57,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="l25-rK-cek">
+                                <rect key="frame" x="47" y="153" width="320" height="623"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZf-9C-lvb">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-Ff-lIf" userLabel="titleTextField">
+                                        <rect key="frame" x="0.0" y="33" width="320" height="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZR-x9-xTn">
+                                        <rect key="frame" x="0.0" y="82" width="320" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Movie Overview" translatesAutoresizingMaskIntoConstraints="NO" id="TtL-9W-aRd" userLabel="overviewTextField">
+                                        <rect key="frame" x="0.0" y="115" width="320" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="yPk-BV-g5P"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qff-la-m6b">
+                                        <rect key="frame" x="0.0" y="230" width="320" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="M5d-xC-EXa">
+                                        <rect key="frame" x="0.0" y="263" width="320" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="ZAI-mT-2N7"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="highlightsToday" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </datePicker>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pressImage" translatesAutoresizingMaskIntoConstraints="NO" id="LpS-7i-vxm" userLabel="posterImageView">
+                                        <rect key="frame" x="0.0" y="428" width="320" height="195"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="195" id="19t-vK-5Bm"/>
+                                            <constraint firstAttribute="width" constant="320" id="2VI-jY-1Vh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-dk-jbt">
-                                <rect key="frame" x="150" y="815" width="114" height="30"/>
+                                <rect key="frame" x="140" y="811" width="134" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Add Movie"/>
                                 <connections>
                                     <action selector="addMoviePressed:" destination="gnl-zG-NxT" eventType="touchUpInside" id="9VR-Np-fny"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7I-vU-8ZT">
-                                <rect key="frame" x="33" y="118" width="32" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZR-x9-xTn">
-                                <rect key="frame" x="173" y="191" width="67" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qff-la-m6b">
-                                <rect key="frame" x="33" y="381" width="33.5" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="M5d-xC-EXa">
-                                <rect key="frame" x="135" y="327" width="259" height="149"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </datePicker>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pressImage" translatesAutoresizingMaskIntoConstraints="NO" id="LpS-7i-vxm" userLabel="posterImageView">
-                                <rect key="frame" x="20" y="511" width="374" height="195"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="195" id="19t-vK-5Bm"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-Ff-lIf" userLabel="titleTextField">
-                                <rect key="frame" x="135" y="111" width="259" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Movie Overview" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TtL-9W-aRd" userLabel="overviewTextField">
-                                <rect key="frame" x="33" y="241" width="361" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="yPA-dk-jbt" firstAttribute="leading" secondItem="PJg-CG-uhb" secondAttribute="leading" constant="150" id="5HA-Pi-kch"/>
-                            <constraint firstItem="LpS-7i-vxm" firstAttribute="leading" secondItem="PJg-CG-uhb" secondAttribute="leading" constant="20" id="5Qs-Re-32Z"/>
-                            <constraint firstItem="yPA-dk-jbt" firstAttribute="top" secondItem="LpS-7i-vxm" secondAttribute="bottom" constant="109" id="cak-LJ-BPp"/>
-                            <constraint firstItem="PJg-CG-uhb" firstAttribute="bottom" secondItem="yPA-dk-jbt" secondAttribute="bottom" constant="17" id="mjM-LK-lIS"/>
-                            <constraint firstItem="PJg-CG-uhb" firstAttribute="trailing" secondItem="yPA-dk-jbt" secondAttribute="trailing" constant="150" id="rrY-hc-4NO"/>
-                            <constraint firstItem="PJg-CG-uhb" firstAttribute="trailing" secondItem="LpS-7i-vxm" secondAttribute="trailing" constant="20" id="sdX-bv-6cz"/>
+                            <constraint firstItem="yPA-dk-jbt" firstAttribute="leading" secondItem="PJg-CG-uhb" secondAttribute="leading" constant="140" id="12H-Rm-jW1"/>
+                            <constraint firstItem="l25-rK-cek" firstAttribute="leading" secondItem="PJg-CG-uhb" secondAttribute="leading" constant="47" id="3va-e4-Apy"/>
+                            <constraint firstItem="l25-rK-cek" firstAttribute="top" secondItem="PJg-CG-uhb" secondAttribute="top" constant="65" id="8bf-zm-E4l"/>
+                            <constraint firstItem="PJg-CG-uhb" firstAttribute="trailing" secondItem="l25-rK-cek" secondAttribute="trailing" constant="47" id="ZKs-B8-ql3"/>
+                            <constraint firstItem="PJg-CG-uhb" firstAttribute="trailing" secondItem="yPA-dk-jbt" secondAttribute="trailing" constant="140" id="gAH-f0-o5d"/>
+                            <constraint firstItem="PJg-CG-uhb" firstAttribute="bottom" secondItem="yPA-dk-jbt" secondAttribute="bottom" constant="21" id="l4u-Od-cVV"/>
+                            <constraint firstItem="yPA-dk-jbt" firstAttribute="top" secondItem="l25-rK-cek" secondAttribute="bottom" constant="35" id="wef-80-W2m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PJg-CG-uhb"/>
                     </view>

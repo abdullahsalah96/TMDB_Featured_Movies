@@ -13,7 +13,7 @@ class MoviesInteractor{
     // MARK: - Get list of movies
     func getMoviesList(pageNum: Int, completionHandler: @escaping ([MovieResponse]?, Error?)->Void){
         //fetch data
-        Client.getMoviesList(url: Endpoints.getMoviesList(pageNum).url, completionHandler: {
+        APIClient.getMoviesList(url: Endpoints.getMoviesList(pageNum).url, completionHandler: {
             (response, error) in
             guard error == nil else{
                 // error fetching data
@@ -27,7 +27,7 @@ class MoviesInteractor{
     // MARK: - Get poster images
     func getPosterImage(posterPath: String, completionHandler: @escaping (UIImage?, Error?)->Void){
         let url = Endpoints.getMoviePoster(posterPath).url
-        Client.taskForGetRequest(url: url, completionHandler: {
+        APIClient.taskForGetRequest(url: url, completionHandler: {
             (data, error) in
             // make sure error is nil
             guard error == nil else{

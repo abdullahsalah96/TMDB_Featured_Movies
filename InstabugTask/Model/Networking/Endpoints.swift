@@ -18,7 +18,6 @@ enum Endpoints{
     // cases
     case getMoviesList(Int)
     case getMoviePoster(String)
-    case addMovie
     //get url string
     var stringValue:String{
         switch self{
@@ -26,8 +25,6 @@ enum Endpoints{
                 return Endpoints.baseURL + "/discover/movie" + Endpoints.apiKeyParam + "&page=\(pageNum)"
             case .getMoviePoster(let posterPath):
                 return "https://image.tmdb.org/t/p/w500//\(posterPath)"
-            case .addMovie:
-                return ""
         }
     }
     //get url

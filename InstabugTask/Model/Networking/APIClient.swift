@@ -8,10 +8,15 @@
 
 import Foundation
 
-class Client{
+class APIClient{
     // MARK: - GET Request
-    class func taskForGetRequest(url: URL, completionHandler: @escaping (Data?, Error?)->Void){
-        let task = URLSession.shared.dataTask(with: url, completionHandler: {
+    class func taskForGetRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
+        //make sure url is not nil
+        guard url != nil else{
+            completionHandler(nil, Constants.Errors.invalidURLError)
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) in
             // make sure error is nil
             guard error == nil else{
@@ -23,7 +28,7 @@ class Client{
             // no data fetched
             guard data != nil else{
                 DispatchQueue.main.async {
-                    completionHandler(nil, Config.Errors.nilResponseError)
+                    completionHandler(nil, Constants.Errors.nilResponseError)
                 }
                 return
             }
@@ -35,7 +40,7 @@ class Client{
         task.resume()
     }
     // MARK: - Get Movies List
-    class func getMoviesList(url: URL, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
+    class func getMoviesList(url: URL?, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
         taskForGetRequest(url: url, completionHandler: {
             (data, error) in
             // make sure erorr is nil

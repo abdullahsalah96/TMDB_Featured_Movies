@@ -28,7 +28,7 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Setting Up UI
     private func setUpView(){
-        view.backgroundColor = Config.Colors.primaryDark
+        view.backgroundColor = Constants.Colors.primaryDark
         setUpActivityIndicator()
         setUpTableView()
         setUpNavigationBar()
@@ -37,23 +37,23 @@ class MoviesViewController: UIViewController {
     private func setUpActivityIndicator(){
         activityIndicator.style = .large
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.color = Config.Colors.primaryBlue
+        activityIndicator.color = Constants.Colors.primaryBlue
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     // MARK: - Setting Up Collection view
     private func setUpTableView(){
-        tableView.backgroundColor = Config.Colors.primaryDark
+        tableView.backgroundColor = Constants.Colors.primaryDark
         tableView.dataSource = self
         tableView.delegate = self
     }
     // MARK: - Setting Up navigation bar
     private func setUpNavigationBar(){
         self.navigationItem.title = "Movies"
-        self.navigationController?.navigationBar.backgroundColor = Config.Colors.primaryDark
-        self.navigationController?.navigationBar.barTintColor = Config.Colors.primaryDark
-        self.navigationController?.navigationBar.tintColor = Config.Colors.primaryBlue
+        self.navigationController?.navigationBar.backgroundColor = Constants.Colors.primaryDark
+        self.navigationController?.navigationBar.barTintColor = Constants.Colors.primaryDark
+        self.navigationController?.navigationBar.tintColor = Constants.Colors.primaryBlue
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }

@@ -40,17 +40,12 @@ class MoviesPresenter{
                 self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
-            //No error in fetching data, start updating view
-            guard response != nil else{
-                self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
-                return
-            }
-            // loop through responses and append new movies in background to avoid blocking ui
+            // loop through responses and append new movies then get poster images in another queue to avoid blocking ui
             let queue = DispatchQueue.global()
             queue.async {
                 // do in another queue
                 for result in response!{
-                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Config.Images.placeholderImage, posterPath: result.posterPath)
+                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Constants.Images.placeholderImage, posterPath: result.posterPath)
                     self.allMovies.append(movie)
                 }
                 //after finishing get posters of each movie
@@ -67,24 +62,20 @@ class MoviesPresenter{
     private func getPosterImages(numberOfNewImages: Int){
         // itterate through new movies and populate posters array in another queue to avoid blocking ui
         let startIndex = abs(numberOfNewImages - self.allMovies.count) //start index of new fetched image
-        let queue = DispatchQueue.global()
-        queue.async {
-            // do in another queue
-            for index in startIndex...self.allMovies.count - 1{
-                // get poster for each movie
-                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath ?? "", completionHandler: {
-                    (image, error) in
-                    guard error == nil else{
-                        self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
-                        return
-                    }
-                    //fetched image successfully
-                    self.allMovies[index].poster = image //update movie poster
-                    DispatchQueue.main.async {
-                        self.moviesDelegate?.updateData() // reload collection view to update poster
-                    }
-                })
-            }
+        for index in startIndex...self.allMovies.count - 1{
+            // get poster for each movie
+            self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath ?? "", completionHandler: {
+                (image, error) in
+                guard error == nil else{
+                    self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
+                    return
+                }
+                //fetched image successfully
+                self.allMovies[index].poster = image //update movie poster
+                DispatchQueue.main.async {
+                    self.moviesDelegate?.updateData() // reload collection view to update poster
+                }
+            })
         }
     }
     // MARK: - Fetch New Page Movies
