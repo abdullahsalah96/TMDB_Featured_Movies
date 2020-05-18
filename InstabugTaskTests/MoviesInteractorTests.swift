@@ -10,11 +10,11 @@ import XCTest
 @testable import InstabugTask
 
 class MoviesInteractorTests: XCTestCase {
+    private let interactor = MoviesInteractor()
     // MARK: - Testing getting movies for a valid page number
     func testvalidMoviesList(){
         // error should be nil and movies list should not be nil
         let succesExcpectation = expectation(description: "Success")
-        let interactor = MoviesInteractor()
         interactor.getMoviesList(pageNum: 1, completionHandler: {
             (movies, error) in
             XCTAssertNil(error)
@@ -27,7 +27,6 @@ class MoviesInteractorTests: XCTestCase {
     func testInvalidMoviesList(){
         // error should be nil and movies list should not be nil
         let errorExcpectation = expectation(description: "error")
-        let interactor = MoviesInteractor()
         interactor.getMoviesList(pageNum: 999, completionHandler: {
             (movies, error) in
             XCTAssertNotNil(error)
@@ -41,7 +40,6 @@ class MoviesInteractorTests: XCTestCase {
     func testInvalidPosterPath(){
         // Image should not be nil as it must have a value either fetched poster or placeholder image
         let successExcpectation = expectation(description: "Success")
-        let interactor = MoviesInteractor()
         interactor.getPosterImage(posterPath: "sss", completionHandler: {
             (image) in
             XCTAssertNotNil(image)
@@ -55,7 +53,6 @@ class MoviesInteractorTests: XCTestCase {
     func testValidPosterPath(){
         // Image should not be nil as it must have a value which is not equal to placeholder image
         let successExcpectation = expectation(description: "Success")
-        let interactor = MoviesInteractor()
         // this movie poster path is obtained by testing api an availabel poster path
         interactor.getPosterImage(posterPath: "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg", completionHandler: {
             (image) in

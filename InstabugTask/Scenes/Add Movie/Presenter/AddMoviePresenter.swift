@@ -29,11 +29,11 @@ class AddMoviePresenter{
         let dateString = formatter.string(from: date)
         // validate entries
         if let error = interactor.validateMovieData(title: title, overview: overview, date: dateString){
-            addMoviesDelegate?.displayMessage(title: "Error", message: error)
+            addMoviesDelegate?.displayMessage(title: "Error", message: error.localizedDescription)
         }else{
             // add movie
             let movie = Movie(title: title, date: dateString, overview: overview, poster: image, posterPath: nil)
-            MovieModel.addMovie(movie: movie)
+            MovieModel.shared.addMovie(movie: movie)
             addMoviesDelegate?.displayMessage(title: "Success", message: "Movie Added Successfully")
         }
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552399B924730CDC0089D848 /* AddMovieInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552399B824730CDC0089D848 /* AddMovieInteractorTests.swift */; };
+		55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */; };
 		55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210912472BEE000C97584 /* Presenter+Delegates.swift */; };
 		55E2109A2472C06200C97584 /* InstabugTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210992472C06200C97584 /* InstabugTaskTests.swift */; };
 		55E210A22472C70500C97584 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A12472C70400C97584 /* APIClientTests.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		552399B824730CDC0089D848 /* AddMovieInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieInteractorTests.swift; sourceTree = "<group>"; };
+		55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviePresenterTests.swift; sourceTree = "<group>"; };
 		55E210912472BEE000C97584 /* Presenter+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presenter+Delegates.swift"; sourceTree = "<group>"; };
 		55E210972472C06100C97584 /* InstabugTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E210992472C06200C97584 /* InstabugTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstabugTaskTests.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				55E2109B2472C06200C97584 /* Info.plist */,
 				55E210A12472C70400C97584 /* APIClientTests.swift */,
 				55E210A32472D3F300C97584 /* MoviesInteractorTests.swift */,
+				552399B824730CDC0089D848 /* AddMovieInteractorTests.swift */,
+				55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */,
 				55E210AD24730A5D00C97584 /* Extensions */,
 			);
 			path = InstabugTaskTests;
@@ -148,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				55FB8526247149F4003EE5BD /* AppDelegate.swift */,
-				55FB856D2471F0D0003EE5BD /* Constants */,
+				55FB856D2471F0D0003EE5BD /* Utils */,
 				55FB854024714AC2003EE5BD /* Model */,
 				55FB853A24714A30003EE5BD /* Scenes */,
 				55FB85632471B257003EE5BD /* Extensions */,
@@ -295,12 +301,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		55FB856D2471F0D0003EE5BD /* Constants */ = {
+		55FB856D2471F0D0003EE5BD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				55FB856E2471F0E2003EE5BD /* Constants.swift */,
 			);
-			path = Constants;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		55FB85762471FA02003EE5BD /* View Controller */ = {
@@ -425,8 +431,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E210A42472D3F300C97584 /* MoviesInteractorTests.swift in Sources */,
+				55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */,
 				55E2109A2472C06200C97584 /* InstabugTaskTests.swift in Sources */,
 				55E210AC24730A3A00C97584 /* UIImage+Extension.swift in Sources */,
+				552399B924730CDC0089D848 /* AddMovieInteractorTests.swift in Sources */,
 				55E210A22472C70500C97584 /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

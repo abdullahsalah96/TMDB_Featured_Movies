@@ -31,7 +31,7 @@ class MoviesPresenter{
     }
     // MARK: - Get my movies list
     func updateMyMovies(){
-        myMovies = MovieModel.getMovies()
+        myMovies = MovieModel.shared.getMovies()
         reloadData()
     }
     // MARK: - Reload data

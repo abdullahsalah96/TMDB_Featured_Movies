@@ -15,10 +15,10 @@ class MovieModel{
     private init(){
         myMovies = []
     }
-    static func addMovie(movie: Movie){
-        shared.myMovies.append(movie)
+    func addMovie(movie: Movie){
+        self.myMovies.append(movie)
     }
-    static func getMovies()->[Movie]{
-        return shared.myMovies
+    func getMovies()->[Movie]{
+        return self.myMovies
     }
 }

@@ -39,6 +39,12 @@ struct Constants {
         static let invalidURLError = NSError(domain:"", code:991, userInfo:[ NSLocalizedDescriptionKey: "Invalid URL"])
         // invalid page error
         static let invalidPageError = NSError(domain:"", code:992, userInfo:[ NSLocalizedDescriptionKey: "Invalid Page number"])
+        // invalid movie title
+        static let invalidMovieTitle = NSError(domain:"", code:992, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Title, Movie Titles should be greater than 3 words"])
+        // invalid movie overview
+        static let invalidMovieOverview = NSError(domain:"", code:992, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Overview, Overview should be of at least 50 words"])
+        // invalid movie date
+        static let invalidMovieDate = NSError(domain:"", code:992, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Date"])
         
     }
     // MARK: - Images
