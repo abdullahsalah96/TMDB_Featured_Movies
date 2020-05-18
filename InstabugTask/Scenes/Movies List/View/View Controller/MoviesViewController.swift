@@ -59,6 +59,6 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Add New Movie pressed
     @objc private func addMoviePressed(){
-        presenter.addNewMovie()
+        presenter.navigateToAddMovieController()
     }
 }

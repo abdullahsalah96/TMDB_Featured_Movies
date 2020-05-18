@@ -11,6 +11,7 @@
 		55E2109A2472C06200C97584 /* InstabugTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210992472C06200C97584 /* InstabugTaskTests.swift */; };
 		55E210A22472C70500C97584 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A12472C70400C97584 /* APIClientTests.swift */; };
 		55E210A42472D3F300C97584 /* MoviesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A32472D3F300C97584 /* MoviesInteractorTests.swift */; };
+		55E210AA2472E11000C97584 /* AddMovieController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A92472E11000C97584 /* AddMovieController+Delegate.swift */; };
 		55FB8527247149F4003EE5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB8526247149F4003EE5BD /* AppDelegate.swift */; };
 		55FB8529247149F4003EE5BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB8528247149F4003EE5BD /* SceneDelegate.swift */; };
 		55FB852B247149F4003EE5BD /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB852A247149F4003EE5BD /* MoviesViewController.swift */; };
@@ -55,6 +56,7 @@
 		55E2109B2472C06200C97584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E210A12472C70400C97584 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		55E210A32472D3F300C97584 /* MoviesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesInteractorTests.swift; sourceTree = "<group>"; };
+		55E210A92472E11000C97584 /* AddMovieController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddMovieController+Delegate.swift"; sourceTree = "<group>"; };
 		55FB8523247149F4003EE5BD /* InstabugTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstabugTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FB8526247149F4003EE5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55FB8528247149F4003EE5BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				55FB855824717580003EE5BD /* AddMovieViewController.swift */,
+				55E210A92472E11000C97584 /* AddMovieController+Delegate.swift */,
 				55FB85682471D807003EE5BD /* TextFieldDelegate.swift */,
 			);
 			path = View;
@@ -425,6 +428,7 @@
 				55FB85692471D807003EE5BD /* TextFieldDelegate.swift in Sources */,
 				55FB852B247149F4003EE5BD /* MoviesViewController.swift in Sources */,
 				55FB854624714AFC003EE5BD /* MoviesInteractor.swift in Sources */,
+				55E210AA2472E11000C97584 /* AddMovieController+Delegate.swift in Sources */,
 				55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */,
 				55FB8527247149F4003EE5BD /* AppDelegate.swift in Sources */,
 				55FB855924717580003EE5BD /* AddMovieViewController.swift in Sources */,

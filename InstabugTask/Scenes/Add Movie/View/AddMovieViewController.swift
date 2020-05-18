@@ -17,9 +17,9 @@ class AddMovieViewController:UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var addMovieButton: UIButton!
     // MARK: - Variables
+    private var moviePoster = Constants.Images.placeholderImage
     private var imagePicker = UIImagePickerController()
     private var presenter: AddMoviePresenter!
-    private var moviePoster = Constants.Images.placeholderImage
     private var movieDate: Date!
     private let textDelegate = TextFieldDelegate()
     override func viewDidLoad() {
@@ -101,12 +101,5 @@ extension AddMovieViewController: UIImagePickerControllerDelegate, UINavigationC
             self.moviePoster = image
         }
         self.dismiss(animated: true, completion: nil)
-    }
-
-}
-
-extension AddMovieViewController: AddMovieDelegate{
-    func displayMessage(title: String, message: String) {
-        self.showAlert(title: title, message: message)
     }
 }

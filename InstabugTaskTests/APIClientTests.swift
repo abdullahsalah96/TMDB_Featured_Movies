@@ -56,7 +56,7 @@ class APIClientTests: XCTestCase{
         let errorExpectation = expectation(description: "Error Expectation")
         let posterString = "ffff"
         let url = URL(string: posterString)
-        APIClient.taskForGetRequest(url: url, completionHandler: {
+        APIClient.taskForAPIRequest(url: url, completionHandler: {
             (response, error) in
             XCTAssertNotNil(error)
             XCTAssertNil(response)
@@ -71,7 +71,7 @@ class APIClientTests: XCTestCase{
         // checking when url is not containing any images is in the interactor unit tests
         let successExpectation = expectation(description: "Success Expectation")
         let url = Endpoints.getMoviePoster("fff").url
-        APIClient.taskForGetRequest(url: url, completionHandler: {
+        APIClient.taskForAPIRequest(url: url, completionHandler: {
             (response, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(response)

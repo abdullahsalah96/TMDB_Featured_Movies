@@ -13,69 +13,68 @@ class MoviesPresenter{
     // MARK: - Variables
     private weak var moviesDelegate: MoviesDelegate?
     private let interactor =  MoviesInteractor()
-    private var allMovies: [Movie] = []         // all fetched movies
+    private var allMovies: [Movie]{
+        // whenever movies array is updated reload table view, this should be done in main queue as it is updating UIKit element
+        didSet{
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
+        }
+    }
     private var myMovies: [Movie] = []          // newly added movies
     private var currentPage = 1                 // start at page 1
-    
     // MARK: - Dependency Injection
     init(delegate: MoviesDelegate?) {
         self.moviesDelegate = delegate
+        allMovies = []
         self.getMovies(pageNum: currentPage) // At initialization get movies in page 1
     }
-    
     // MARK: - Get my movies list
     func updateMyMovies(){
         myMovies = MovieModel.getMovies()
+        reloadData()
+    }
+    // MARK: - Reload data
+    func reloadData(){
         moviesDelegate?.updateData()
     }
-    
     // MARK: - Get movies in specified page
     private func getMovies(pageNum: Int){
         // emptying new movies array so that it contains movies of new page only
         // start animating loading indicator
         self.moviesDelegate?.showLoadingIndicator()
-        interactor.getMoviesList(pageNum: pageNum, completionHandler: {(response, error) in
+        interactor.getMoviesList(pageNum: pageNum, completionHandler: {(movies, error) in
             guard error == nil else{
                 self.moviesDelegate?.hideLoadingIndicator()
                 self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
-            // loop through responses and append new movies then get poster images in another queue to avoid blocking ui
-            let queue = DispatchQueue.global()
-            queue.async {
-                // do in another queue
-                for result in response!{
-                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Constants.Images.placeholderImage, posterPath: result.posterPath)
-                    self.allMovies.append(movie)
-                }
-                //after finishing get posters of each movie
-                self.getPosterImages(numberOfNewImages: response!.count)
-                //update ui in main queue
-                DispatchQueue.main.async {
-                    self.moviesDelegate?.hideLoadingIndicator()
-                    self.moviesDelegate?.updateData() // reload collection view to update number of cells with movie data
-                }
+            guard let movies = movies else{
+                self.moviesDelegate?.hideLoadingIndicator()
+                self.moviesDelegate?.displayMessage(title: "Error", message:Constants.Errors.nilResponseError.localizedDescription)
+                return
             }
+            // fetched movies successfully
+            self.allMovies += movies //append newly fetched movies
+            self.moviesDelegate?.hideLoadingIndicator() // hide loading indicator
+            self.reloadData() // reload collection view to update number of cells with movie data
+            //after finishing get posters of each movie
+            self.getMoviesPosters(numberOfNewMovies: movies.count)
         })
     }
     // MARK: - Get poster images for movies
-    private func getPosterImages(numberOfNewImages: Int){
-        // itterate through new movies and populate posters array in another queue to avoid blocking ui
-        let startIndex = abs(numberOfNewImages - self.allMovies.count) //start index of new fetched image
-        for index in startIndex...self.allMovies.count - 1{
-            // get poster for each movie
-            self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath ?? "", completionHandler: {
-                (image, error) in
-                guard error == nil else{
-                    self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
-                    return
-                }
-                //fetched image successfully
-                self.allMovies[index].poster = image //update movie poster
-                DispatchQueue.main.async {
-                    self.moviesDelegate?.updateData() // reload collection view to update poster
-                }
-            })
+    private func getMoviesPosters(numberOfNewMovies: Int){
+        let newMoviesStartIndex = abs(numberOfNewMovies - allMovies.count) //start index of new fetched image
+        // loop through these new movies to update their poster image in another queue to avoid blocking ui
+        let queue = DispatchQueue.global()
+        queue.async {
+            for index in newMoviesStartIndex...self.allMovies.count - 1{
+                // get poster for each movie
+                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath!, completionHandler: {
+                    (image) in
+                    self.allMovies[index].poster = image //update movie poster
+                })
+            }
         }
     }
     // MARK: - Fetch New Page Movies
@@ -91,7 +90,7 @@ class MoviesPresenter{
         return myMovies.count
     }
     // MARK: - Navigate to add movies view controller
-    func addNewMovie(){
+    func navigateToAddMovieController(){
         moviesDelegate?.navigateToAddMovieController()
     }
     // MARK: - Setting movie cell data

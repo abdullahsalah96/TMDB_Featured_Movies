@@ -10,7 +10,7 @@ import Foundation
 
 class APIClient{
     // MARK: - GET Request
-    class func taskForGetRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
+    class func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
         //make sure url is not nil
         guard url != nil else{
             completionHandler(nil, Constants.Errors.invalidURLError)
@@ -41,7 +41,7 @@ class APIClient{
     }
     // MARK: - Get Movies List
     class func getMoviesList(url: URL?, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
-        taskForGetRequest(url: url, completionHandler: {
+        taskForAPIRequest(url: url, completionHandler: {
             (data, error) in
             // make sure erorr is nil
             guard error == nil else{
