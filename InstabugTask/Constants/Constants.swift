@@ -37,6 +37,9 @@ struct Constants {
         static let nilResponseError = NSError(domain:"", code:990, userInfo:[ NSLocalizedDescriptionKey: "No new movies found"])
         // invalid URL error
         static let invalidURLError = NSError(domain:"", code:991, userInfo:[ NSLocalizedDescriptionKey: "Invalid URL"])
+        // invalid page error
+        static let invalidPageError = NSError(domain:"", code:992, userInfo:[ NSLocalizedDescriptionKey: "Invalid Page number"])
+        
     }
     // MARK: - Images
     struct Images {

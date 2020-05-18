@@ -43,13 +43,13 @@ class MoviesInteractor{
         APIClient.taskForAPIRequest(url: url, completionHandler: {
             (data, error) in
             // make sure error is nil, if not set image to be placeholder image
-            if error != nil{
+            guard error == nil else{
                 completionHandler(Constants.Images.placeholderImage!)
-            }else{
-                // fetched successfully
-                let image = UIImage(data: data!)!
-                completionHandler(image)
+                return
             }
+            // make sure data can be converted to image otherwise, image should be nil
+            let img = UIImage(data: data!) ?? Constants.Images.placeholderImage
+            completionHandler(img!)
         })
     }
 }
