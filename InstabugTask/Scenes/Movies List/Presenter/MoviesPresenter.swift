@@ -81,7 +81,6 @@ class MoviesPresenter{
     private func getPosterImages(numberOfNewImages: Int){
         // itterate through new movies and populate posters array in another queue to avoid blocking ui
         let startIndex = abs(numberOfNewImages - self.allMovies.count) //start index of new fetched image
-        print(startIndex)
         let q = DispatchQueue.global()
         q.async {
             for index in startIndex...self.allMovies.count - 1{

@@ -35,6 +35,7 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Setting up activity indicator
     private func setUpActivityIndicator(){
+        activityIndicator.style = .large
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.color = Config.Colors.primaryBlue
         view.addSubview(activityIndicator)
@@ -48,10 +49,11 @@ class MoviesViewController: UIViewController {
         tableView.delegate = self
     }
     // MARK: - Setting Up navigation bar
-    fileprivate func setUpNavigationBar() {
+    private func setUpNavigationBar(){
         self.navigationItem.title = "Movies"
         self.navigationController?.navigationBar.backgroundColor = Config.Colors.primaryDark
         self.navigationController?.navigationBar.barTintColor = Config.Colors.primaryDark
+        self.navigationController?.navigationBar.tintColor = Config.Colors.primaryBlue
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }

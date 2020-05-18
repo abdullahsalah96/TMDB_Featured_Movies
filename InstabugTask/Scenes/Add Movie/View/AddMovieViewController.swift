@@ -19,7 +19,7 @@ class AddMovieViewController:UIViewController {
     // MARK: - Variables
     private var imagePicker = UIImagePickerController()
     private var presenter: AddMoviePresenter!
-    private var moviePoster = UIImage(named: "placeholder")
+    private var moviePoster = Config.Images.placeholderImage
     private var movieDate: Date!
     private let textDelegate = TextFieldDelegate()
     override func viewDidLoad() {
