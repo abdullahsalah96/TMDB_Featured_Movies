@@ -13,22 +13,11 @@ class MoviesInteractor{
     // MARK: - Get list of movies
     func getMoviesList(pageNum: Int, completionHandler: @escaping ([MovieResponse]?, Error?)->Void){
         //fetch data
-        Client.taskForGETRequest(url: Endpoints.getMoviesList(pageNum).url, responseType: MoviesListResponse.self, completionHandler: {
+        Client.getMoviesList(url: Endpoints.getMoviesList(pageNum).url, completionHandler: {
             (response, error) in
             guard error == nil else{
                 // error fetching data
                 completionHandler(nil, error)
-                return
-            }
-            guard response != nil else{
-                // nill response
-                completionHandler(nil, Config.Errors.nilResponseError)
-                return
-            }
-            //fetched successfully
-            guard response != nil else{
-                // nill response
-                completionHandler(nil, Config.Errors.nilResponseError)
                 return
             }
             //fetched successfully
@@ -36,21 +25,18 @@ class MoviesInteractor{
         })
     }
     // MARK: - Get poster images
-    func getPosterImage(posterPath: String, completionHandler: @escaping (Data?, Error?)->Void){
+    func getPosterImage(posterPath: String, completionHandler: @escaping (UIImage?, Error?)->Void){
         let url = Endpoints.getMoviePoster(posterPath).url
-        let task = URLSession.shared.dataTask(with: url, completionHandler: {
-            (data, response, error) in
+        Client.taskForGetRequest(url: url, completionHandler: {
+            (data, error) in
+            // make sure error is nil
             guard error == nil else{
-                DispatchQueue.main.async {
-                    completionHandler(nil, error)
-                }
+                completionHandler(nil, error)
                 return
             }
-            //fetched images successfully
-            DispatchQueue.main.async {
-                completionHandler(data, nil)
-            }
+            // fetched successfully
+            let image = UIImage(data: data!)
+            completionHandler(image, nil)
         })
-        task.resume()
     }
 }

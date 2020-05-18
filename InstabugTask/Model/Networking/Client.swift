@@ -9,31 +9,53 @@
 import Foundation
 
 class Client{
-    // MARK: GET Request Task
-    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?)->Void){
+    // MARK: - GET Request
+    class func taskForGetRequest(url: URL, completionHandler: @escaping (Data?, Error?)->Void){
         let task = URLSession.shared.dataTask(with: url, completionHandler: {
             (data, response, error) in
-            //make sure data is not nil
-            guard let data = data else{
-                DispatchQueue.main.async{
-                    // no data found call completion handler with error
+            // make sure error is nil
+            guard error == nil else{
+                DispatchQueue.main.async {
                     completionHandler(nil, error)
                 }
                 return
             }
+            // no data fetched
+            guard data != nil else{
+                DispatchQueue.main.async {
+                    completionHandler(nil, Config.Errors.nilResponseError)
+                }
+                return
+            }
+            // fetched successfully
+            DispatchQueue.main.async {
+                completionHandler(data, nil)
+            }
+        })
+        task.resume()
+    }
+    // MARK: - Get Movies List
+    class func getMoviesList(url: URL, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
+        taskForGetRequest(url: url, completionHandler: {
+            (data, error) in
+            // make sure erorr is nil
+            guard error == nil else{
+                completionHandler(nil, error)
+                return
+            }
+            // make sure data is not nil before decoding
             do{
-                let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
+                let responseObject = try JSONDecoder().decode(MoviesListResponse.self, from: data!)
                 // decoded response successfully
                 DispatchQueue.main.async {
                     completionHandler(responseObject, nil)
                 }
-            } catch{
-                //error decoding response
+            }catch{
+                // error while decoding
                 DispatchQueue.main.async {
                     completionHandler(nil, error)
                 }
             }
         })
-        task.resume()
     }
 }

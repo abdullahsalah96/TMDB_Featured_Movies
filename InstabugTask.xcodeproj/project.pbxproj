@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210912472BEE000C97584 /* Presenter+Delegates.swift */; };
 		55FB8527247149F4003EE5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB8526247149F4003EE5BD /* AppDelegate.swift */; };
 		55FB8529247149F4003EE5BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB8528247149F4003EE5BD /* SceneDelegate.swift */; };
 		55FB852B247149F4003EE5BD /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB852A247149F4003EE5BD /* MoviesViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55E210912472BEE000C97584 /* Presenter+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presenter+Delegates.swift"; sourceTree = "<group>"; };
 		55FB8523247149F4003EE5BD /* InstabugTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstabugTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FB8526247149F4003EE5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55FB8528247149F4003EE5BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				55FB854324714AF2003EE5BD /* MoviesPresenter.swift */,
+				55E210912472BEE000C97584 /* Presenter+Delegates.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				55FB85692471D807003EE5BD /* TextFieldDelegate.swift in Sources */,
 				55FB852B247149F4003EE5BD /* MoviesViewController.swift in Sources */,
 				55FB854624714AFC003EE5BD /* MoviesInteractor.swift in Sources */,
+				55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */,
 				55FB8527247149F4003EE5BD /* AppDelegate.swift in Sources */,
 				55FB855924717580003EE5BD /* AddMovieViewController.swift in Sources */,
 				55FB8553247156D5003EE5BD /* Endpoints.swift in Sources */,

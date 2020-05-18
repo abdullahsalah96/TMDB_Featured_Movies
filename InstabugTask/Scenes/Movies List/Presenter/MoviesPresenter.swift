@@ -9,21 +9,6 @@
 import Foundation
 import UIKit
 
-protocol MoviesDelegate: class {
-    func showLoadingIndicator()
-    func hideLoadingIndicator()
-    func displayMessage(title: String, message: String) 
-    func updateData()
-    func navigateToAddMovieController()
-}
-
-protocol MoviesCellDelegate: class {
-    func displayTitle(title: String)
-    func displayImage(image: UIImage)
-    func displayDate(date: String)
-    func displayOverview(overview: String)
-}
-
 class MoviesPresenter{
     // MARK: - Variables
     private weak var moviesDelegate: MoviesDelegate?
@@ -63,6 +48,7 @@ class MoviesPresenter{
             // loop through responses and append new movies in background to avoid blocking ui
             let queue = DispatchQueue.global()
             queue.async {
+                // do in another queue
                 for result in response!{
                     let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Config.Images.placeholderImage, posterPath: result.posterPath)
                     self.allMovies.append(movie)
@@ -81,18 +67,19 @@ class MoviesPresenter{
     private func getPosterImages(numberOfNewImages: Int){
         // itterate through new movies and populate posters array in another queue to avoid blocking ui
         let startIndex = abs(numberOfNewImages - self.allMovies.count) //start index of new fetched image
-        let q = DispatchQueue.global()
-        q.async {
+        let queue = DispatchQueue.global()
+        queue.async {
+            // do in another queue
             for index in startIndex...self.allMovies.count - 1{
+                // get poster for each movie
                 self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath ?? "", completionHandler: {
-                    (imageData, error) in
+                    (image, error) in
                     guard error == nil else{
                         self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                         return
                     }
                     //fetched image successfully
-                    let img = UIImage(data: imageData!) ?? Config.Images.placeholderImage!
-                    self.allMovies[index].poster = img //update movie poster
+                    self.allMovies[index].poster = image //update movie poster
                     DispatchQueue.main.async {
                         self.moviesDelegate?.updateData() // reload collection view to update poster
                     }
