@@ -54,7 +54,13 @@ class APIClient: APIProtocol{
         })
     }
 
-    func gerPosterData(posterPath: String, completionHandler: @escaping (Data?, Error?) -> Void) {
+    func gerPosterData(posterPath: String?, completionHandler: @escaping (Data?, Error?) -> Void) {
+        guard let posterPath = posterPath else{
+            DispatchQueue.main.async {
+                completionHandler(nil, Errors.nilResponseError)
+            }
+            return
+        }
         let url = Endpoints.getMoviePoster(posterPath).url
         taskForAPIRequest(url: url, completionHandler: {
             (data, error) in

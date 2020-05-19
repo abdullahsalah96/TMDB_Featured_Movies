@@ -58,9 +58,16 @@ extension MockAPIClient: APIProtocol{
         })
     }
     // MARK: - Get Poster for movie
-    func gerPosterData(posterPath: String, completionHandler: @escaping (Data?, Error?) -> Void) {
+    func gerPosterData(posterPath: String?, completionHandler: @escaping (Data?, Error?) -> Void) {
         // this should always return data as if poster path is API will return invalid path response
         let data = self.mockData
+        // if posterPath is nil return error
+        guard let posterPath = posterPath else{
+            DispatchQueue.main.async {
+                completionHandler(nil, Errors.nilResponseError)
+            }
+            return
+        }
         guard posterPath == self.mockPosterPath else{
             completionHandler(data, nil)
             return

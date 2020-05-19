@@ -13,6 +13,6 @@ import Foundation
 protocol APIProtocol {
     func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void)
     func getMoviesList(pageNum: Int, completionHandler: @escaping (MoviesListResponse?, Error?)->Void)
-    func gerPosterData(posterPath: String, completionHandler: @escaping (Data?, Error?)->Void)
+    func gerPosterData(posterPath: String?, completionHandler: @escaping (Data?, Error?)->Void)
 
 }

@@ -88,7 +88,7 @@ class MoviesPresenter{
         queue.async {
             for index in newMoviesStartIndex...self.allMovies.count - 1{
                 // get poster for each movie
-                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath!, completionHandler: {
+                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath, completionHandler: {
                     (image) in
                     self.allMovies[index].poster = image //update movie poster
                 })

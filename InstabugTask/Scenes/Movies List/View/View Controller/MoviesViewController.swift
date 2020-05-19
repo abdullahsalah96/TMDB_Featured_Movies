@@ -16,8 +16,8 @@ class MoviesViewController: UIViewController {
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MoviesPresenter(delegate: self, mockClient: nil)
         setUpView()
+        presenter = MoviesPresenter(delegate: self, mockClient: nil)
     }
     // MARK: - View will appear
     // we need to instantiate presenter here to update my movies list after adding new movie
@@ -41,7 +41,8 @@ class MoviesViewController: UIViewController {
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Padding.smallPadding).isActive = true
         activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Padding.smallPadding).isActive = true
-//        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
     // MARK: - Setting Up Collection view
     private func setUpTableView(){

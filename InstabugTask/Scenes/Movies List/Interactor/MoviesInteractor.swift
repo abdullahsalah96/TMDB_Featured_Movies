@@ -43,7 +43,7 @@ class MoviesInteractor{
         })
     }
     // MARK: - Get poster images
-    func getPosterImage(posterPath: String, completionHandler: @escaping (UIImage)->Void){
+    func getPosterImage(posterPath: String?, completionHandler: @escaping (UIImage)->Void){
         client.gerPosterData(posterPath: posterPath, completionHandler: {
             (data, error) in
             // make sure error is nil, if not set image to be placeholder image

@@ -18,6 +18,8 @@
 		5557B2B3247387FA00F83E7C /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B2247387FA00F83E7C /* Identifiers.swift */; };
 		5557B2B5247389B900F83E7C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B4247389B900F83E7C /* Fonts.swift */; };
 		5557B2B7247389F000F83E7C /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B6247389F000F83E7C /* Padding.swift */; };
+		5557B2BF2473985E00F83E7C /* InstabugTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2BE2473985E00F83E7C /* InstabugTaskUITests.swift */; };
+		5557B2C72473991500F83E7C /* MoviesListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2C62473991500F83E7C /* MoviesListViewTests.swift */; };
 		55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */; };
 		55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210912472BEE000C97584 /* Presenter+Delegates.swift */; };
 		55E210A22472C70500C97584 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A12472C70400C97584 /* APIClientTests.swift */; };
@@ -52,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5557B2C12473985E00F83E7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55FB851B247149F4003EE5BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55FB8522247149F4003EE5BD;
+			remoteInfo = InstabugTask;
+		};
 		55E2109C2472C06200C97584 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55FB851B247149F4003EE5BD /* Project object */;
@@ -73,6 +82,10 @@
 		5557B2B2247387FA00F83E7C /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		5557B2B4247389B900F83E7C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		5557B2B6247389F000F83E7C /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		5557B2BC2473985E00F83E7C /* InstabugTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5557B2BE2473985E00F83E7C /* InstabugTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstabugTaskUITests.swift; sourceTree = "<group>"; };
+		5557B2C02473985E00F83E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5557B2C62473991500F83E7C /* MoviesListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewTests.swift; sourceTree = "<group>"; };
 		55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviePresenterTests.swift; sourceTree = "<group>"; };
 		55E210912472BEE000C97584 /* Presenter+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presenter+Delegates.swift"; sourceTree = "<group>"; };
 		55E210972472C06100C97584 /* InstabugTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +124,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5557B2B92473985E00F83E7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55E210942472C06100C97584 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +183,16 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		5557B2BD2473985E00F83E7C /* InstabugTaskUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5557B2C62473991500F83E7C /* MoviesListViewTests.swift */,
+				5557B2BE2473985E00F83E7C /* InstabugTaskUITests.swift */,
+				5557B2C02473985E00F83E7C /* Info.plist */,
+			);
+			path = InstabugTaskUITests;
+			sourceTree = "<group>";
+		};
 		55E210982472C06200C97584 /* InstabugTaskTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +219,7 @@
 			children = (
 				55FB8525247149F4003EE5BD /* InstabugTask */,
 				55E210982472C06200C97584 /* InstabugTaskTests */,
+				5557B2BD2473985E00F83E7C /* InstabugTaskUITests */,
 				55FB8524247149F4003EE5BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -198,6 +229,7 @@
 			children = (
 				55FB8523247149F4003EE5BD /* InstabugTask.app */,
 				55E210972472C06100C97584 /* InstabugTaskTests.xctest */,
+				5557B2BC2473985E00F83E7C /* InstabugTaskUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,6 +423,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5557B2BB2473985E00F83E7C /* InstabugTaskUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5557B2C32473985E00F83E7C /* Build configuration list for PBXNativeTarget "InstabugTaskUITests" */;
+			buildPhases = (
+				5557B2B82473985E00F83E7C /* Sources */,
+				5557B2B92473985E00F83E7C /* Frameworks */,
+				5557B2BA2473985E00F83E7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5557B2C22473985E00F83E7C /* PBXTargetDependency */,
+			);
+			name = InstabugTaskUITests;
+			productName = InstabugTaskUITests;
+			productReference = 5557B2BC2473985E00F83E7C /* InstabugTaskUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		55E210962472C06100C97584 /* InstabugTaskTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55E2109E2472C06200C97584 /* Build configuration list for PBXNativeTarget "InstabugTaskTests" */;
@@ -436,6 +486,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Abdalla Elshikh";
 				TargetAttributes = {
+					5557B2BB2473985E00F83E7C = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 55FB8522247149F4003EE5BD;
+					};
 					55E210962472C06100C97584 = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 55FB8522247149F4003EE5BD;
@@ -460,11 +514,19 @@
 			targets = (
 				55FB8522247149F4003EE5BD /* InstabugTask */,
 				55E210962472C06100C97584 /* InstabugTaskTests */,
+				5557B2BB2473985E00F83E7C /* InstabugTaskUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5557B2BA2473985E00F83E7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55E210952472C06100C97584 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -485,6 +547,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5557B2B82473985E00F83E7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5557B2BF2473985E00F83E7C /* InstabugTaskUITests.swift in Sources */,
+				5557B2C72473991500F83E7C /* MoviesListViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55E210932472C06100C97584 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,6 +612,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5557B2C22473985E00F83E7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55FB8522247149F4003EE5BD /* InstabugTask */;
+			targetProxy = 5557B2C12473985E00F83E7C /* PBXContainerItemProxy */;
+		};
 		55E2109D2472C06200C97584 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55FB8522247149F4003EE5BD /* InstabugTask */;
@@ -568,6 +644,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5557B2C42473985E00F83E7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2S25RMM2MZ;
+				INFOPLIST_FILE = InstabugTaskUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdallaelshikh.InstabugTaskUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = InstabugTask;
+			};
+			name = Debug;
+		};
+		5557B2C52473985E00F83E7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2S25RMM2MZ;
+				INFOPLIST_FILE = InstabugTaskUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdallaelshikh.InstabugTaskUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = InstabugTask;
+			};
+			name = Release;
+		};
 		55E2109F2472C06200C97584 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -761,6 +875,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5557B2C32473985E00F83E7C /* Build configuration list for PBXNativeTarget "InstabugTaskUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5557B2C42473985E00F83E7C /* Debug */,
+				5557B2C52473985E00F83E7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55E2109E2472C06200C97584 /* Build configuration list for PBXNativeTarget "InstabugTaskTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
