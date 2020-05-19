@@ -11,32 +11,52 @@ import XCTest
 
 class APIClientTests: XCTestCase{
     // client, when service is up we could set it to API Client and not Mock API Client
-    private let client = MockAPIClient()
+    private let client: APIProtocol = {
+        let client = MockAPIClient()
+        return client
+    }()
     // MARK: - Test invalid url
     // should throw error and response should be nil
-    func testInvalidMovieURL(){
+    func testInvalidURL(){
         let errorExpectation = expectation(description: "Error Expectation")
-        let urlString = "////"
-        let url = URL(string: urlString)
-        client.getMoviesList(url: url, completionHandler: {
+        client.taskForAPIRequest(url: nil, completionHandler: {
             (response, error) in
-            print("I'm HEREEEE")
             // invalid url so error is not nil
             XCTAssertNotNil(error)
+            // error should be invalid url error
+            XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidURLError.localizedDescription)
             //response is nil
             XCTAssertNil(response)
             errorExpectation.fulfill()
         })
         self.waitForExpectations(timeout: 5, handler: nil)
     }
+    
+    // MARK: - Test valid url
+    // error should be nil and response not nil
+    func testValidURL(){
+        let errorExpectation = expectation(description: "Error Expectation")
+        let url = Endpoints.getMoviesList(1).url
+        client.taskForAPIRequest(url: url, completionHandler: {
+            (response, error) in
+            // valid url so error is nil
+            XCTAssertNil(error)
+            //response is not nil
+            XCTAssertNotNil(response)
+            errorExpectation.fulfill()
+        })
+        self.waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     // MARK: - Test invalid page number
     // error shouldn't be nil and response should be nill
     func testInvalidPageNumber(){
         let errorExpectation = expectation(description: "Error Expectation")
-        let url = Endpoints.getMoviesList(9999).url
-        client.getMoviesList(url: url, completionHandler: {
+        client.getMoviesList(pageNum: 999, completionHandler: {
             (response, error) in
+            // error is not nil
             XCTAssertNotNil(error)
+            // response should be nil
             XCTAssertNil(response)
             errorExpectation.fulfill()
         })
@@ -46,41 +66,26 @@ class APIClientTests: XCTestCase{
     // error should be nil and response not nil
     func testValidMovieURL(){
         let successExpectation = expectation(description: "Success Expectation")
-        let url = Endpoints.getMoviesList(1).url
-        client.getMoviesList(url: url, completionHandler: {
+        client.getMoviesList(pageNum: 2, completionHandler: {
             (response, error) in
+            // error should be nil
             XCTAssertNil(error)
+            // response should not be nil
             XCTAssertNotNil(response)
             successExpectation.fulfill()
         })
         self.waitForExpectations(timeout: 10, handler: nil)
     }
-    // MARK: - Test invalid poster path
-    // error shouldn't be nil and response should be nill
-    func testInvalidPosterURL(){
+    // MARK: - Test getting poster data
+    // error should be nil and response should not be nill as even if poster path is invalid we will get response from api
+    func testGetdPosterData(){
         let errorExpectation = expectation(description: "Error Expectation")
         let posterString = "ffff"
-        let url = URL(string: posterString)
-        client.taskForAPIRequest(url: url, completionHandler: {
-            (response, error) in
-            XCTAssertNotNil(error)
-            XCTAssertNil(response)
-            errorExpectation.fulfill()
-        })
-        self.waitForExpectations(timeout: 10, handler: nil)
-    }
-    // MARK: - Test valid url
-    // error should be nil and response not nil
-    func testValidPosterURL(){
-        // even though this url won't contain any images but we will get a valid response for this request
-        // checking when url is not containing any images is in the interactor unit tests
-        let successExpectation = expectation(description: "Success Expectation")
-        let url = Endpoints.getMoviePoster("fff").url
-        client.taskForAPIRequest(url: url, completionHandler: {
+        client.gerPosterData(posterPath: posterString, completionHandler: {
             (response, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(response)
-            successExpectation.fulfill()
+            errorExpectation.fulfill()
         })
         self.waitForExpectations(timeout: 10, handler: nil)
     }

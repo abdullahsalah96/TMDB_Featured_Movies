@@ -12,11 +12,11 @@ import XCTest
 class MoviesPresenterTests: XCTestCase {
     //presenter to test
     private var presenter: MoviesPresenter = {
-        let client = APIClient()
-        return MoviesPresenter(delegate: nil, mockClient: nil)
+        let client = MockAPIClient()
+        return MoviesPresenter(delegate: nil, mockClient: client)
     }()
     // MARK: - Test fetching new Movies
-    // movies count should be greater thatn 0
+    // movies count should be greater than 0
     func testFetchingNewMovies(){
         presenter.fetchNewPageMovies()
         // expectation to wait for 5 seconds before checking movies count
@@ -25,6 +25,7 @@ class MoviesPresenterTests: XCTestCase {
         if result == XCTWaiter.Result.timedOut {
             let moviesCount = presenter.getMoviesCount()
             // count should not be equal to 0
+            print(moviesCount)
             XCTAssertNotEqual(moviesCount, 0)
         } else {
             XCTFail("Delay interrupted")
@@ -41,7 +42,7 @@ class MoviesPresenterTests: XCTestCase {
     // MARK: - Test My movies array count after adding movie
     func testNonEmptyMyMovies(){
         let addMoviesInteractor = AddMovieInteractor()
-        for index in 1...20{
+        for _ in 1...20{
             _ = addMoviesInteractor.addNewMovie(title: "This is movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: Date(), image: Constants.Images.placeholderImage)
             presenter.updateMyMovies() // update my movies list
             // count of my movies available in presenter

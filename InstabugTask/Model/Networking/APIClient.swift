@@ -9,7 +9,7 @@ import Foundation
 
 class APIClient: APIProtocol{
     // MARK: - API Request for url
-    func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
+    internal func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
         //make sure url is not nil
         guard url != nil else{
             completionHandler(nil, Constants.Errors.invalidURLError)
@@ -17,6 +17,46 @@ class APIClient: APIProtocol{
         }
         let task = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) in
+            // make sure error is nil
+            completionHandler(data, error)
+        })
+        task.resume()
+    }
+    // MARK: - Get Movies List
+    func getMoviesList(pageNum: Int, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
+        let url = Endpoints.getMoviesList(pageNum).url
+        taskForAPIRequest(url: url, completionHandler: {
+            (data, error) in
+            // make sure erorr is nil
+            guard error == nil else{
+                completionHandler(nil, error)
+                return
+            }
+            // make sure data is not nil before decoding
+            guard let data = data else{
+                DispatchQueue.main.async {
+                    completionHandler(nil, Constants.Errors.nilResponseError)
+                }
+                return
+            }
+            do{
+                let responseObject = try JSONDecoder().decode(MoviesListResponse.self, from: data)
+                // decoded response successfully
+                DispatchQueue.main.async {
+                    completionHandler(responseObject, nil)
+                }
+            }catch{
+                // error while decoding
+                DispatchQueue.main.async {
+                    completionHandler(nil, error)
+                }
+            }
+        })
+    }
+    func gerPosterData(posterPath: String, completionHandler: @escaping (Data?, Error?) -> Void) {
+        let url = Endpoints.getMoviePoster(posterPath).url
+        taskForAPIRequest(url: url, completionHandler: {
+            (data, error) in
             // make sure error is nil
             guard error == nil else{
                 DispatchQueue.main.async {
@@ -33,33 +73,9 @@ class APIClient: APIProtocol{
             }
             // fetched successfully
             DispatchQueue.main.async {
-                completionHandler(data, nil)
-            }
-        })
-        task.resume()
-    }
-    // MARK: - Get Movies List
-    func getMoviesList(url: URL?, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
-        taskForAPIRequest(url: url, completionHandler: {
-            (data, error) in
-            // make sure erorr is nil
-            guard error == nil else{
-                completionHandler(nil, error)
-                return
-            }
-            // make sure data is not nil before decoding
-            do{
-                let responseObject = try JSONDecoder().decode(MoviesListResponse.self, from: data!)
-                // decoded response successfully
-                DispatchQueue.main.async {
-                    completionHandler(responseObject, nil)
-                }
-            }catch{
-                // error while decoding
-                DispatchQueue.main.async {
-                    completionHandler(nil, error)
-                }
+                completionHandler(data!, nil)
             }
         })
     }
+    
 }

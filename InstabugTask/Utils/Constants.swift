@@ -54,7 +54,6 @@ struct Constants {
         static let invalidMovieOverview = NSError(domain:"", code:995, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Overview, Overview should be of at least \(MinimumNewMovieData.minimumOverviewLetters) letters"])
         // invalid movie date
         static let invalidMovieDate = NSError(domain:"", code:996, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Date, Date should be in format (yyyy-MM-dd)"])
-        
     }
     // MARK: - Images
     struct Images {

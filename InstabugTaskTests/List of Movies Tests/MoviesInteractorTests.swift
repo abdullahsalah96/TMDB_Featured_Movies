@@ -9,13 +9,14 @@
 import XCTest
 @testable import InstabugTask
 
-class MoviesInteractorTests: XCTestCase {    
+class MoviesInteractorTests: XCTestCase {
+    // initializing interacto
     private let interactor: MoviesInteractor = {
-        let client = APIClient()
+        let client = MockAPIClient()
         return MoviesInteractor(client: client)
     }()
     // MARK: - Testing getting movies for a valid page number
-    func testvalidMoviesList(){
+    func testValidMoviesList(){
         // error should be nil and movies list should not be nil
         let succesExcpectation = expectation(description: "Success")
         interactor.getMoviesList(pageNum: 1, completionHandler: {
@@ -28,7 +29,7 @@ class MoviesInteractorTests: XCTestCase {
     }
     // MARK: - Testing getting movies for an invalid page number
     func testInvalidMoviesList(){
-        // error should be nil and movies list should not be nil
+        // error should not be nil and movies list should be nil
         let errorExcpectation = expectation(description: "error")
         interactor.getMoviesList(pageNum: 999, completionHandler: {
             (movies, error) in
@@ -56,12 +57,10 @@ class MoviesInteractorTests: XCTestCase {
     func testValidPosterPath(){
         // Image should not be nil as it must have a value which is not equal to placeholder image
         let successExcpectation = expectation(description: "Success")
-        // this movie poster path is obtained by testing api an availabel poster path
+        // this movie poster path is obtained by testing api an available poster path
         interactor.getPosterImage(posterPath: "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg", completionHandler: {
             (image) in
             XCTAssertNotNil(image)
-            // image should be equal to placeholder image
-            XCTAssertFalse(image.isEqualToImage(image: Constants.Images.placeholderImage!))
             successExcpectation.fulfill()
         })
         waitForExpectations(timeout: 5, handler: nil)

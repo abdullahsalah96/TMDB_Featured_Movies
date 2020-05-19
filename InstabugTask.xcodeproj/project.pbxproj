@@ -11,6 +11,7 @@
 		555421AC24731C980056D3EF /* MoviesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555421AB24731C980056D3EF /* MoviesPresenterTests.swift */; };
 		555421B1247345A80056D3EF /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555421B0247345A80056D3EF /* MockAPIClient.swift */; };
 		555421B5247358F10056D3EF /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555421B4247358F10056D3EF /* APIProtocol.swift */; };
+		5557B2AB2473854100F83E7C /* MockAPIClient+APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2AA2473854100F83E7C /* MockAPIClient+APIProtocol.swift */; };
 		55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */; };
 		55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210912472BEE000C97584 /* Presenter+Delegates.swift */; };
 		55E210A22472C70500C97584 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A12472C70400C97584 /* APIClientTests.swift */; };
@@ -59,6 +60,7 @@
 		555421AB24731C980056D3EF /* MoviesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenterTests.swift; sourceTree = "<group>"; };
 		555421B0247345A80056D3EF /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		555421B4247358F10056D3EF /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
+		5557B2AA2473854100F83E7C /* MockAPIClient+APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockAPIClient+APIProtocol.swift"; sourceTree = "<group>"; };
 		55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviePresenterTests.swift; sourceTree = "<group>"; };
 		55E210912472BEE000C97584 /* Presenter+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presenter+Delegates.swift"; sourceTree = "<group>"; };
 		55E210972472C06100C97584 /* InstabugTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				555421B0247345A80056D3EF /* MockAPIClient.swift */,
+				5557B2AA2473854100F83E7C /* MockAPIClient+APIProtocol.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -289,9 +292,9 @@
 		55FB854F247156AA003EE5BD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				555421B4247358F10056D3EF /* APIProtocol.swift */,
 				55FB8550247156B3003EE5BD /* APIClient.swift */,
 				55FB8552247156D5003EE5BD /* Endpoints.swift */,
-				555421B4247358F10056D3EF /* APIProtocol.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */,
 				55E210AC24730A3A00C97584 /* UIImage+Extension.swift in Sources */,
 				555421B1247345A80056D3EF /* MockAPIClient.swift in Sources */,
+				5557B2AB2473854100F83E7C /* MockAPIClient+APIProtocol.swift in Sources */,
 				552399B924730CDC0089D848 /* AddMovieInteractorTests.swift in Sources */,
 				55E210A22472C70500C97584 /* APIClientTests.swift in Sources */,
 				555421AC24731C980056D3EF /* MoviesPresenterTests.swift in Sources */,
