@@ -56,7 +56,8 @@ class AddMoviePresenterTests: XCTestCase{
         // make sure date is in a valid format
         let date = dateFormatterGet.date(from: "2020-11-20")
         for index in 1...20{
-            presenter.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date!, image: Images.placeholderImage!)
+            // chenge title each time to be able to add movie as to prevent movie exists error
+            presenter.addNewMovie(title: "This is a movie title \(index)", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date!, image: Images.placeholderImage!)
             // movies count should be 0
             let movies = MyMoviesModel.shared.getMovies()
             XCTAssertEqual(movies.count, index)

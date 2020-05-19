@@ -30,7 +30,7 @@ class AddMovieInteractor{
             return nil
         }
     }
-    
+    // MARK: - Add new movie
     func addNewMovie(title: String?, overview: String?, date: Date?, image: UIImage?)->Error?{
         var posterImage = Images.placeholderImage
         // check that entries are not nil
@@ -54,11 +54,32 @@ class AddMovieInteractor{
             // return error
             return error
         }else{
-            // add movie
+            // check if movie exists
             let movie = Movie(title: title, date: dateString, overview: overview, poster: posterImage, posterPath: nil)
-            MyMoviesModel.shared.addMovie(movie: movie)
+            if checkIfMovieExists(movieToCheck: movie){
+                // movie exists
+                return Errors.movieExistsError
+            }else {
+                // movie doesn't exist
+                MyMoviesModel.shared.addMovie(movie: movie)
+            }
             // return nil as there is no error
             return nil
         }
     }
+    
+    // MARK: - Check if movie already exists
+    private func checkIfMovieExists(movieToCheck: Movie)->Bool{
+        // loop through all my movies
+        for movie in MyMoviesModel.shared.getMovies(){
+            // check title, overview and data
+            if (movieToCheck.title == movie.title) && (movieToCheck.date == movie.date) && (movieToCheck.overview == movie.overview){
+                // movie already exists
+                return true
+            }
+        }
+        // movie doesn't exist return false
+        return false
+    }
+    
 }

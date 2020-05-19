@@ -117,13 +117,36 @@ class AddMovieInteractorTests: XCTestCase {
     // MARK: - Testing setting a valid data for a movie
     func testValidMovieData(){
         // should return nil error
+        // formatting date
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        // make sure date is in a valid format
         let date = dateFormatterGet.date(from: "2020-11-20")
         let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
         // error should be nil
         XCTAssertNil(error)
+        // my movies count should be equal to 1
+        XCTAssertEqual(MyMoviesModel.shared.getMovies().count, 1)
+        MyMoviesModel.shared.clearMyMoviesList()
+    }
+    
+    // MARK: - Testing adding movie again after it has been added
+    func testAddingSameMovie(){
+        // should return movie exists error
+        // formating date
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatterGet.date(from: "2020-11-20")
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
+        // error should be nil
+        XCTAssertNil(error)
+        // my movies count should be equal to 1
+        XCTAssertEqual(MyMoviesModel.shared.getMovies().count, 1)
+        // trying to add same movie again
+        let error2 = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
+        // error should not be nil
+        XCTAssertNotNil(error2)
+        // error should be equal to movie exists error
+        XCTAssertEqual(error2?.localizedDescription, Errors.movieExistsError.localizedDescription)
         // my movies count should be equal to 1
         XCTAssertEqual(MyMoviesModel.shared.getMovies().count, 1)
         MyMoviesModel.shared.clearMyMoviesList()
