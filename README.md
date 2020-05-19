@@ -25,7 +25,7 @@ This application is developed using the MVP Design Pattern which was chosen over
     - <b>Add Movies Ineractor:</b> The interactor handles validation checking to make sure that movie data entered is valid (Movie title should be at least 3 characters and Movie overview should be at least 30 characters). It's also responsible for checking if the added movie already exists to avoid adding multiple entries of the same movie.
 
 ## <b> Unit Tests </b>
-- For the Unit tests, I have created a Mock API Client to be able to mock the behaviour of the API without needing to connect to the server. The unit Tests test the networking code for making API calls
+- For the Unit tests, I have created a Mock API Client to be able to mock the behaviour of the API without needing to connect to the server. The unit Tests test the networking code for making API calls.
 <p align="center">
   <img src="docs/MockAPIClient.png">
 </p>
@@ -34,4 +34,12 @@ This application is developed using the MVP Design Pattern which was chosen over
 <p align="center">
   <img src="docs/unitTests.png">
 </p>
-   
+
+## <b> UI Tests </b>
+- For the UI tests, I have created several UI tests to make sure that there is no strange UI behaviour or wrong messages displayed. 
+- These UI Tests test the behaviour of both views.
+- I tried to cover as much UI Tests as I could and there are a total of 22 UI Tests that cover different UI functionalities.
+<p align="center">
+  <img src="docs/UITests.png">
+</p>
+
