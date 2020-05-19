@@ -29,7 +29,9 @@ class APIClient: APIProtocol{
             (data, error) in
             // make sure erorr is nil
             guard error == nil else{
-                completionHandler(nil, error)
+                DispatchQueue.main.async {
+                    completionHandler(nil, Errors.serverError)
+                }
                 return
             }
             // make sure data is not nil before decoding
@@ -48,13 +50,14 @@ class APIClient: APIProtocol{
             }catch{
                 // error while decoding
                 DispatchQueue.main.async {
-                    completionHandler(nil, error)
+                    completionHandler(nil, Errors.decodingError)
                 }
             }
         })
     }
 
     func gerPosterData(posterPath: String?, completionHandler: @escaping (Data?, Error?) -> Void) {
+        // if poster is nil send nil response error
         guard let posterPath = posterPath else{
             DispatchQueue.main.async {
                 completionHandler(nil, Errors.nilResponseError)
@@ -67,7 +70,7 @@ class APIClient: APIProtocol{
             // make sure error is nil
             guard error == nil else{
                 DispatchQueue.main.async {
-                    completionHandler(nil, error)
+                    completionHandler(nil, Errors.serverError)
                 }
                 return
             }

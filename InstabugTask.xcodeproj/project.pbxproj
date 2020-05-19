@@ -18,8 +18,8 @@
 		5557B2B3247387FA00F83E7C /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B2247387FA00F83E7C /* Identifiers.swift */; };
 		5557B2B5247389B900F83E7C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B4247389B900F83E7C /* Fonts.swift */; };
 		5557B2B7247389F000F83E7C /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B6247389F000F83E7C /* Padding.swift */; };
-		5557B2BF2473985E00F83E7C /* InstabugTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2BE2473985E00F83E7C /* InstabugTaskUITests.swift */; };
 		5557B2C72473991500F83E7C /* MoviesListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2C62473991500F83E7C /* MoviesListViewTests.swift */; };
+		5557B2CB247417ED00F83E7C /* AddMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2CA247417ED00F83E7C /* AddMovieTests.swift */; };
 		55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */; };
 		55E210922472BEE000C97584 /* Presenter+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210912472BEE000C97584 /* Presenter+Delegates.swift */; };
 		55E210A22472C70500C97584 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E210A12472C70400C97584 /* APIClientTests.swift */; };
@@ -83,9 +83,9 @@
 		5557B2B4247389B900F83E7C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		5557B2B6247389F000F83E7C /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		5557B2BC2473985E00F83E7C /* InstabugTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5557B2BE2473985E00F83E7C /* InstabugTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstabugTaskUITests.swift; sourceTree = "<group>"; };
 		5557B2C02473985E00F83E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5557B2C62473991500F83E7C /* MoviesListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewTests.swift; sourceTree = "<group>"; };
+		5557B2CA247417ED00F83E7C /* AddMovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieTests.swift; sourceTree = "<group>"; };
 		55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviePresenterTests.swift; sourceTree = "<group>"; };
 		55E210912472BEE000C97584 /* Presenter+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presenter+Delegates.swift"; sourceTree = "<group>"; };
 		55E210972472C06100C97584 /* InstabugTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,11 +186,27 @@
 		5557B2BD2473985E00F83E7C /* InstabugTaskUITests */ = {
 			isa = PBXGroup;
 			children = (
-				5557B2C62473991500F83E7C /* MoviesListViewTests.swift */,
-				5557B2BE2473985E00F83E7C /* InstabugTaskUITests.swift */,
+				5557B2C8247417A700F83E7C /* List of Movies View Tests */,
+				5557B2C9247417C600F83E7C /* Add Movie View Tests */,
 				5557B2C02473985E00F83E7C /* Info.plist */,
 			);
 			path = InstabugTaskUITests;
+			sourceTree = "<group>";
+		};
+		5557B2C8247417A700F83E7C /* List of Movies View Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5557B2C62473991500F83E7C /* MoviesListViewTests.swift */,
+			);
+			path = "List of Movies View Tests";
+			sourceTree = "<group>";
+		};
+		5557B2C9247417C600F83E7C /* Add Movie View Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5557B2CA247417ED00F83E7C /* AddMovieTests.swift */,
+			);
+			path = "Add Movie View Tests";
 			sourceTree = "<group>";
 		};
 		55E210982472C06200C97584 /* InstabugTaskTests */ = {
@@ -551,7 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5557B2BF2473985E00F83E7C /* InstabugTaskUITests.swift in Sources */,
+				5557B2CB247417ED00F83E7C /* AddMovieTests.swift in Sources */,
 				5557B2C72473991500F83E7C /* MoviesListViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -64,6 +64,11 @@ class MoviesPresenter{
         self.moviesDelegate?.showLoadingIndicator()
         interactor.getMoviesList(pageNum: pageNum, completionHandler: {(movies, error) in
             guard error == nil else{
+                // if this is unable to decode error, return without showing error, as this is an error caused from server timeout so it is not shown to user, instead the app tries to fetch data again
+                if error?.localizedDescription == Errors.decodingError.localizedDescription{
+                    return
+                }
+                // show other errors
                 self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }

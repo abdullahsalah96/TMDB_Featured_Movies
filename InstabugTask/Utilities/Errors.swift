@@ -24,4 +24,8 @@ struct Errors {
     static let invalidMovieOverview = NSError(domain:"", code:995, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Overview. Overview should be of at least \(Constants.MinimumNewMovieData.minimumOverviewLetters) letters"])
     // invalid movie date
     static let invalidMovieDate = NSError(domain:"", code:996, userInfo:[ NSLocalizedDescriptionKey: "Please Enter a Valid Movie Date. Date should be in format (yyyy-MM-dd)"])
+    // server error
+    static let serverError = NSError(domain:"", code:997, userInfo:[ NSLocalizedDescriptionKey: "Server Error"])
+    // decoding error
+    static let decodingError = NSError(domain:"", code:998, userInfo:[ NSLocalizedDescriptionKey: "Unable to decode data"])
 }

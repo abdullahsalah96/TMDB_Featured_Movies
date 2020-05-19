@@ -19,10 +19,6 @@ class MoviesListViewTests: XCTestCase {
         let alert = app.alerts["Error"]
         XCTAssertFalse(alert.exists)
     }
-    // MARK: - Testing when app is launched activity indicator exists
-    func testActivityIndicatorExists(){
-        XCTAssertTrue(app.activityIndicators["In progress"].exists)
-    }
     // MARK: - Testing when app is launched my movies section exists
     func testMyMoviesSectionExists(){
         XCTAssertTrue(app.tables.staticTexts["My Movies"].exists)
@@ -31,7 +27,7 @@ class MoviesListViewTests: XCTestCase {
     func testAllMoviesSectionExists(){
         XCTAssertTrue(app.tables.staticTexts["All Movies"].exists)
     }
-    // MARK: - Test when app is launched table view contains some movies
+    // MARK: - Test when app is launched table is not empty
     // this is done by checking count of all static texts in table as it should be greater than 2 (2 sections with 2 texts)
     func testTableContainsMovies(){
         let numberOfStaticTexts = app.tables.staticTexts.count
@@ -44,12 +40,19 @@ class MoviesListViewTests: XCTestCase {
     }
     // MARK: - Testing when app is launched, first view is Movies View Controller
     func testMovieVCExists(){
-        let view = app.navigationBars["Movies"]
-        XCTAssertTrue(view.exists)
+        let element = app.navigationBars["Movies"]
+        XCTAssertTrue(element.exists)
     }
     // MARK: - Testing when app is launched, Add movies view doesn't exist
     func testNoAddMovieVC(){
-        let view = app.navigationBars["Add New Movie"]
-        XCTAssertFalse(view.exists)
+        let element = app.navigationBars["Add New Movie"]
+        XCTAssertFalse(element.exists)
+    }
+    // MARK: - Testing when Add button is pressed, Add moive VC is presented
+    func testAddButtonPressed(){
+        let button = app.navigationBars["Movies"].buttons["Add"]
+        button.tap()
+        let element = app.navigationBars["Add New Movie"]
+        XCTAssertTrue(element.exists)
     }
 }
