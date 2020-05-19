@@ -61,5 +61,6 @@ class AddMoviePresenterTests: XCTestCase{
             let movies = MovieModel.shared.getMovies()
             XCTAssertEqual(movies.count, index)
         }
+        MovieModel.shared.clearMyMoviesList() //empty list to prevent it affecting other tests
     }
 }

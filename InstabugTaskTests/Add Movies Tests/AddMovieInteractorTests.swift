@@ -1,0 +1,131 @@
+//
+//  AddMovieInteractorTests.swift
+//  InstabugTaskTests
+//
+//  Created by Abdalla Elshikh on 5/18/20.
+//  Copyright © 2020 Abdalla Elshikh. All rights reserved.
+
+import XCTest
+@testable import InstabugTask
+
+class AddMovieInteractorTests: XCTestCase {
+    private let interactor = AddMovieInteractor()
+    
+    // MARK: - Testing setting an invalid title for a movie
+    func testInvalidMovieTitle(){
+        // should return invalid movie title error
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        let date = dateFormatterGet.date(from: "2020-11-20")
+        let error = interactor.addNewMovie(title: "", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Constants.Images.placeholderImage)
+        // error not nil
+        XCTAssertNotNil(error)
+        // error is equal to invalid movie title error
+        XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidMovieTitle.localizedDescription)
+        // my movies count should be equal to 0
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 0)
+    }
+    
+    // MARK: - Testing setting an invalid overview for a movie
+    func testInvalidMovieOverview(){
+        // should return invalid movie overview error
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        let date = dateFormatterGet.date(from: "2020-11-20")
+        let error = interactor.addNewMovie(title: "Movie Title", overview: "", date: date, image: Constants.Images.placeholderImage)
+        // error not nil
+        XCTAssertNotNil(error)
+        // error is equal to invalid movie overview error
+        XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidMovieOverview.localizedDescription)
+        // my movies count should be equal to 0
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 0)
+    }
+    
+    // MARK: - Testing setting an invalid date for a movie
+    func testInvalidMovieDate(){
+        // should return invalid movie date error
+         let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        let date = dateFormatterGet.date(from: "")
+        let error = interactor.addNewMovie(title: "Movie Title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Constants.Images.placeholderImage)
+        // error not nil
+        XCTAssertNotNil(error)
+        // error is equal to invalid movie date error
+        XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidMovieDate.localizedDescription)
+        // my movies count should be equal to 0
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 0)
+    }
+    
+    // MARK: - Testing setting a nil title for movie
+    func testNilMovieTitle(){
+        // should return invalid movie title error
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        let date = dateFormatterGet.date(from: "2020-11-20")
+        let error = interactor.addNewMovie(title: nil, overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Constants.Images.placeholderImage)
+        // error not nil
+        XCTAssertNotNil(error)
+        // error is equal to invalid movie title error
+        XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidMovieTitle.localizedDescription)
+        // my movies count should be equal to 0
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 0)
+    }
+    
+    // MARK: - Testing setting a nil overview for movie
+    func testNilMovieOverview(){
+        // should return invalid movie overview error
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        let date = dateFormatterGet.date(from: "2020-11-20")
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: nil, date: date, image: Constants.Images.placeholderImage)
+        // error not nil
+        XCTAssertNotNil(error)
+        // error is equal to invalid movie overview error
+        XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidMovieOverview.localizedDescription)
+        // my movies count should be equal to 0
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 0)
+    }
+    
+    // MARK: - Testing setting a nil overview for movie
+    func testNilMovieDate(){
+        // should return invalid movie date error
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: nil, image: Constants.Images.placeholderImage)
+        // error not nil
+        XCTAssertNotNil(error)
+        // error is equal to invalid movie date error
+        XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidMovieDate.localizedDescription)
+        // my movies count should be equal to 0
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 0)
+    }
+    
+    // MARK: - Testing setting a nil poster for movie
+    func testNilMoviePoster(){
+        // should return nil error as image is set to be placeholder
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: Date(), image: nil)
+        // error is nil
+        XCTAssertNil(error)
+        // my movies count should be equal to 1
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 1)
+        MovieModel.shared.clearMyMoviesList()
+    }
+    
+    // MARK: - Testing setting a valid data for a movie
+    func testValidMovieData(){
+        // should return nil error
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        let date = dateFormatterGet.date(from: "2020-11-20")
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Constants.Images.placeholderImage)
+        // error should be nil
+        XCTAssertNil(error)
+        // my movies count should be equal to 1
+        XCTAssertEqual(MovieModel.shared.getMovies().count, 1)
+        MovieModel.shared.clearMyMoviesList()
+    }
+}

@@ -48,10 +48,14 @@ class AddMovieViewController:UIViewController {
     }
     private func setUpTextFields() {
         setUpTextDelegate()
-        titleTextField.backgroundColor = .systemGray
+        titleTextField.backgroundColor = Constants.Colors.primaryTextFields
+        titleTextField.text = ""
+        titleTextField.textColor = Constants.Colors.primaryLight
         titleTextField.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
         titleTextField.layer.masksToBounds = true
-        overviewTextView.backgroundColor = .systemGray
+        overviewTextView.backgroundColor = Constants.Colors.primaryTextFields
+        overviewTextView.text = ""
+        overviewTextView.textColor = Constants.Colors.primaryLight
         overviewTextView.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
         let padding = Constants.Padding.smallPadding
         overviewTextView.textContainerInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
@@ -76,7 +80,7 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Add movie button pressed
     @IBAction func addMoviePressed(_ sender: Any) {
-        presenter.addNewMovie(title: titleTextField.text!, overview: overviewTextView.text!, date: movieDate, image: moviePoster!)
+        presenter.addNewMovie(title: titleTextField.text, overview: overviewTextView.text, date: movieDate, image: moviePoster)
     }
     // MARK: - Date Picker Value Changed
     @objc func datePickerValueChanged(picker: UIDatePicker) {
@@ -92,6 +96,7 @@ class AddMovieViewController:UIViewController {
     }
 }
 
+// MARK: - Image Picker Controller Delegate
 extension AddMovieViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //show image picker controller

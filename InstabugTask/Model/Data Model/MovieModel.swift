@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
+// MARK: - Movie Model
+// singleton shared object that contains array of added movies
 class MovieModel{
     private var myMovies: [Movie]
-    static let shared = MovieModel() //singleton instance
+    static let shared = MovieModel() //shared singleton instance
     private init(){
         myMovies = []
     }
@@ -20,5 +22,8 @@ class MovieModel{
     }
     func getMovies()->[Movie]{
         return self.myMovies
+    }
+    func clearMyMoviesList(){
+        self.myMovies = []
     }
 }

@@ -17,7 +17,7 @@ class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MoviesPresenter(delegate: self)
+        presenter = MoviesPresenter(delegate: self, mockClient: nil)
         setUpView()
     }
     // MARK: - View will appear
@@ -50,12 +50,12 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Setting Up navigation bar
     private func setUpNavigationBar(){
-        self.navigationItem.title = "Movies"
-        self.navigationController?.navigationBar.backgroundColor = Constants.Colors.primaryDark
-        self.navigationController?.navigationBar.barTintColor = Constants.Colors.primaryDark
-        self.navigationController?.navigationBar.tintColor = Constants.Colors.primaryBlue
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
+        navigationItem.title = "Movies"
+        navigationController?.navigationBar.backgroundColor = Constants.Colors.primaryDark
+        navigationController?.navigationBar.barTintColor = Constants.Colors.primaryDark
+        navigationController?.navigationBar.tintColor = Constants.Colors.primaryBlue
+        navigationController?.navigationBar.isTranslucent = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }
     // MARK: - Add New Movie pressed
     @objc private func addMoviePressed(){

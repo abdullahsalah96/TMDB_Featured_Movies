@@ -9,8 +9,11 @@
 import XCTest
 @testable import InstabugTask
 
-class MoviesInteractorTests: XCTestCase {
-    private let interactor = MoviesInteractor()
+class MoviesInteractorTests: XCTestCase {    
+    private let interactor: MoviesInteractor = {
+        let client = APIClient()
+        return MoviesInteractor(client: client)
+    }()
     // MARK: - Testing getting movies for a valid page number
     func testvalidMoviesList(){
         // error should be nil and movies list should not be nil

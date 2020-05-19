@@ -5,12 +5,11 @@
 //  Created by Abdalla Elshikh on 5/17/20.
 //  Copyright © 2020 Abdalla Elshikh. All rights reserved.
 //
-
 import Foundation
 
-class APIClient{
-    // MARK: - GET Request
-    class func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
+class APIClient: APIProtocol{
+    // MARK: - API Request for url
+    func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
         //make sure url is not nil
         guard url != nil else{
             completionHandler(nil, Constants.Errors.invalidURLError)
@@ -40,7 +39,7 @@ class APIClient{
         task.resume()
     }
     // MARK: - Get Movies List
-    class func getMoviesList(url: URL?, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
+    func getMoviesList(url: URL?, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
         taskForAPIRequest(url: url, completionHandler: {
             (data, error) in
             // make sure erorr is nil

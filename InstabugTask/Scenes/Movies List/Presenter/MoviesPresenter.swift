@@ -11,8 +11,9 @@ import UIKit
 
 class MoviesPresenter{
     // MARK: - Variables
+    private var interactor: MoviesInteractor!
+    private var client: APIProtocol!
     private weak var moviesDelegate: MoviesDelegate?
-    private let interactor =  MoviesInteractor()
     private var allMovies: [Movie]{
         // whenever movies array is updated reload table view, this should be done in main queue as it is updating UIKit element
         didSet{
@@ -23,12 +24,31 @@ class MoviesPresenter{
     }
     private var myMovies: [Movie] = []          // newly added movies
     private var currentPage = 1                 // start at page 1
+    
     // MARK: - Dependency Injection
-    init(delegate: MoviesDelegate?) {
+    init(delegate: MoviesDelegate?, mockClient: APIProtocol?) {
         self.moviesDelegate = delegate
+        // if no mock client passed then set it as TMDB client, this is used as to when testing Movies presenter we would be able to swap TMDB Client by our Mock Client
         allMovies = []
+        if mockClient == nil{
+            self.setTMDBClient()
+        }else{
+            self.setMockClient(client: mockClient!)
+        }
         self.getMovies(pageNum: currentPage) // At initialization get movies in page 1
     }
+    
+    // MARK: - Set TMDB client
+    private func setTMDBClient(){
+        self.client = APIClient()
+        self.interactor = MoviesInteractor(client: client)
+    }
+    
+    // MARK: setting Mock client type, used for testing
+    private func setMockClient(client: APIProtocol) {
+        self.interactor = MoviesInteractor(client: client)
+    }
+    
     // MARK: - Get my movies list
     func updateMyMovies(){
         myMovies = MovieModel.shared.getMovies()

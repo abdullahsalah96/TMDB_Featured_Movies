@@ -16,17 +16,6 @@ class TextFieldDelegate: NSObject, UISearchTextFieldDelegate, UITextViewDelegate
         textField.resignFirstResponder()
         return true
     }
-    // MARK: - When text field pressed clear text
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        //if text edit is pressed clear text
-        textField.text = ""
-        return true
-    }
-    // MARK: - When text view pressed clear text
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        textView.text = ""
-        return true
-    }
     // MARK: - When return is pressed dismiss keyboard
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {

@@ -11,7 +11,28 @@ import UIKit
 
 class AddMovieInteractor{
     // MARK: - Validate Movie Data
-    func validateMovieData(title: String?, overview: String?, date: String?)->Error?{
+    private func validateMovieData(title: String, overview: String, date: String)->Error?{
+        // date formatter
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        // make sure date is in a valid format
+        if dateFormatterGet.date(from: date) == nil {
+            // invalid format
+            return Constants.Errors.invalidMovieDate
+        }
+        else if title.count < Constants.MinimumNewMovieData.minimumTitleLetters{
+            //make sure movie title string is larger than 3 words
+            return Constants.Errors.invalidMovieTitle
+        }else if overview.count < Constants.MinimumNewMovieData.minimumOverviewLetters{
+            return Constants.Errors.invalidMovieOverview
+        }else{
+            // no errors
+            return nil
+        }
+    }
+    
+    func addNewMovie(title: String?, overview: String?, date: Date?, image: UIImage?)->Error?{
+        var posterImage = Constants.Images.placeholderImage
         // check that entries are not nil
         guard let title = title else{
             return Constants.Errors.invalidMovieTitle
@@ -22,21 +43,21 @@ class AddMovieInteractor{
         guard let date = date else {
             return Constants.Errors.invalidMovieDate
         }
-        // date formatter
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        // make sure date is in a valid format
-        if dateFormatterGet.date(from: date) == nil {
-            // invalid format
-            return Constants.Errors.invalidMovieDate
+        if image != nil{
+            posterImage = image
         }
-        else if title.count < 3{
-            //make sure movie title string is larger than 3 words
-            return Constants.Errors.invalidMovieTitle
-        }else if overview.count < 50{
-            return Constants.Errors.invalidMovieOverview
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        // validate entries
+        if let error = validateMovieData(title: title, overview: overview, date: dateString){
+            // return error
+            return error
         }else{
-            // no errors
+            // add movie
+            let movie = Movie(title: title, date: dateString, overview: overview, poster: posterImage, posterPath: nil)
+            MovieModel.shared.addMovie(movie: movie)
+            // return nil as there is no error
             return nil
         }
     }

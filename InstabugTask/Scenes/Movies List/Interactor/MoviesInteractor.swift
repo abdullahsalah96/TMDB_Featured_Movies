@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 
 class MoviesInteractor{
+    
+    private let client: APIProtocol
+    init(client: APIProtocol) {
+        self.client = client
+    }
     // MARK: - Get list of movies
     func getMoviesList(pageNum: Int, completionHandler: @escaping ([Movie]?, Error?)->Void){
         //fetch data
         var allMovies:[Movie] = [] // movies array to be populated by fetched movies
-        APIClient.getMoviesList(url: Endpoints.getMoviesList(pageNum).url, completionHandler: {
+        client.getMoviesList(url: Endpoints.getMoviesList(pageNum).url, completionHandler: {
             (response, error) in
             guard error == nil else{
                 // error fetching data
@@ -40,7 +45,7 @@ class MoviesInteractor{
     // MARK: - Get poster images
     func getPosterImage(posterPath: String, completionHandler: @escaping (UIImage)->Void){
         let url = Endpoints.getMoviePoster(posterPath).url
-        APIClient.taskForAPIRequest(url: url, completionHandler: {
+        client.taskForAPIRequest(url: url, completionHandler: {
             (data, error) in
             // make sure error is nil, if not set image to be placeholder image
             guard error == nil else{
