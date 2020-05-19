@@ -28,4 +28,6 @@ struct Errors {
     static let serverError = NSError(domain:"", code:997, userInfo:[ NSLocalizedDescriptionKey: "Server Error"])
     // decoding error
     static let decodingError = NSError(domain:"", code:998, userInfo:[ NSLocalizedDescriptionKey: "Unable to decode data"])
+    // Movie already exists error
+    static let movieExistsError = NSError(domain:"", code:999, userInfo:[ NSLocalizedDescriptionKey: "A movie with the same details has already been added"])
 }

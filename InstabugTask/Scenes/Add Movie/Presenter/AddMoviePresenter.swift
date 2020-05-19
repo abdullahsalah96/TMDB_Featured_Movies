@@ -25,7 +25,7 @@ class AddMoviePresenter{
     func addNewMovie(title: String?, overview: String?, date: Date?, image: UIImage?){
         let error = interactor.addNewMovie(title: title, overview: overview, date: date, image: image)
         guard error == nil else{
-            // make sure error is not nil
+            // make sure error is nil
             addMoviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
             return
         }

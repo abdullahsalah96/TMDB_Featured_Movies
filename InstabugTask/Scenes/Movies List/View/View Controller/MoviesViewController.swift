@@ -39,8 +39,8 @@ class MoviesViewController: UIViewController {
         activityIndicator.color = Colors.primaryBlue
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activityIndicator.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Padding.smallPadding).isActive = true
-        activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Padding.smallPadding).isActive = true
+        activityIndicator.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Paddings.smallPadding).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Paddings.smallPadding).isActive = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }

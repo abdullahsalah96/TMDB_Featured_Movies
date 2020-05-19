@@ -51,7 +51,7 @@ class AddMovieViewController:UIViewController {
         setUpTextDelegate()
         setUpTitleTextField()
         setUpOverviewTextView()
-        let padding = Padding.smallPadding
+        let padding = Paddings.smallPadding
         overviewTextView.textContainerInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     }
     // MARK: - Setup title text field

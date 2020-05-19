@@ -17,7 +17,7 @@
 		5557B2B1247387F000F83E7C /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B0247387F000F83E7C /* Images.swift */; };
 		5557B2B3247387FA00F83E7C /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B2247387FA00F83E7C /* Identifiers.swift */; };
 		5557B2B5247389B900F83E7C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B4247389B900F83E7C /* Fonts.swift */; };
-		5557B2B7247389F000F83E7C /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B6247389F000F83E7C /* Padding.swift */; };
+		5557B2B7247389F000F83E7C /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2B6247389F000F83E7C /* Paddings.swift */; };
 		5557B2C72473991500F83E7C /* MoviesListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2C62473991500F83E7C /* MoviesListViewTests.swift */; };
 		5557B2CB247417ED00F83E7C /* AddMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B2CA247417ED00F83E7C /* AddMovieTests.swift */; };
 		55722A36247313C000B30BDD /* AddMoviePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55722A35247313C000B30BDD /* AddMoviePresenterTests.swift */; };
@@ -81,7 +81,7 @@
 		5557B2B0247387F000F83E7C /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5557B2B2247387FA00F83E7C /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		5557B2B4247389B900F83E7C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		5557B2B6247389F000F83E7C /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		5557B2B6247389F000F83E7C /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		5557B2BC2473985E00F83E7C /* InstabugTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstabugTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557B2C02473985E00F83E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5557B2C62473991500F83E7C /* MoviesListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewTests.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 				5557B2B0247387F000F83E7C /* Images.swift */,
 				5557B2B2247387FA00F83E7C /* Identifiers.swift */,
 				5557B2B4247389B900F83E7C /* Fonts.swift */,
-				5557B2B6247389F000F83E7C /* Padding.swift */,
+				5557B2B6247389F000F83E7C /* Paddings.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -602,7 +602,7 @@
 				55FB855924717580003EE5BD /* AddMovieViewController.swift in Sources */,
 				55FB8553247156D5003EE5BD /* Endpoints.swift in Sources */,
 				5557B2AF247387E300F83E7C /* Colors.swift in Sources */,
-				5557B2B7247389F000F83E7C /* Padding.swift in Sources */,
+				5557B2B7247389F000F83E7C /* Paddings.swift in Sources */,
 				55FB856C2471E5D3003EE5BD /* TableViewHeaderLabel.swift in Sources */,
 				55FB85732471F95B003EE5BD /* MoviesViewController+MoviesDelegate.swift in Sources */,
 				55FB8529247149F4003EE5BD /* SceneDelegate.swift in Sources */,

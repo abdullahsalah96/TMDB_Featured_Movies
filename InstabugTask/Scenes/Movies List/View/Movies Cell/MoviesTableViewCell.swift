@@ -20,14 +20,17 @@ class MoviesTableViewCell: UITableViewCell {
         return label
     }()
     // overview label
-    let overview: UILabel = {
-        let label = UILabel()
-        label.text = "overview"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.primaryRegular
-        label.textColor = .white
-        label.numberOfLines = 0 //multi lines
-        return label
+    let overview: UITextView = {
+        // movie overview is text view so users would be able to scroll to read the full movie overview instead of seeing a snippet of it
+        let textVeiew = UITextView()
+        textVeiew.text = "overview"
+        textVeiew.translatesAutoresizingMaskIntoConstraints = false
+        textVeiew.font = Fonts.primaryRegular
+        textVeiew.textColor = .white
+        textVeiew.isEditable = false
+        textVeiew.backgroundColor = Colors.primaryDark
+//        label.numberOfLines = 0 //multi lines
+        return textVeiew
     }()
     // date label
     let date: UILabel = {
@@ -67,28 +70,29 @@ class MoviesTableViewCell: UITableViewCell {
         // setting poster image constraints
         setPosterImageConstraints()
         // setting labels constraints
-        setLabelsConstraints()
+        setTextConstraints()
     }
     // MARK: - Image View Constraints
     private func setPosterImageConstraints(){
-        poster.topAnchor.constraint(equalTo: topAnchor, constant: Padding.defaultPadding).isActive = true
-        poster.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Padding.defaultPadding).isActive = true
+        poster.topAnchor.constraint(equalTo: topAnchor, constant: Paddings.defaultPadding).isActive = true
+        poster.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Paddings.defaultPadding).isActive = true
         poster.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        poster.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Padding.defaultPadding).isActive = true
+        poster.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Paddings.defaultPadding).isActive = true
     }
     // MARK: - Labels constraints
-    private func setLabelsConstraints() {
+    private func setTextConstraints() {
         // title
         title.topAnchor.constraint(equalTo: poster.topAnchor).isActive = true
-        title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: Padding.defaultPadding).isActive = true
-        title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Padding.defaultPadding).isActive = true
+        title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: Paddings.defaultPadding).isActive = true
+        title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Paddings.defaultPadding).isActive = true
         date.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
         date.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true
         date.trailingAnchor.constraint(equalTo: title.trailingAnchor).isActive = true
         // overview
-        overview.topAnchor.constraint(equalTo: date.bottomAnchor).isActive = true
-        overview.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true
-        overview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Padding.defaultPadding).isActive = true
-        overview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Padding.defaultPadding).isActive = true
+        // the constants in anchors to compensate for borders of text view
+        overview.topAnchor.constraint(equalTo: date.bottomAnchor, constant: -Paddings.textViewTopPadding).isActive = true
+        overview.leadingAnchor.constraint(equalTo: title.leadingAnchor, constant: -Paddings.textViewLeadingPadding).isActive = true
+        overview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Paddings.defaultPadding).isActive = true
+        overview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Paddings.defaultPadding).isActive = true
     }
 }

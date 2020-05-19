@@ -16,7 +16,7 @@ class TableViewHeaderLabel: UILabel{
     }
     // MARK: - Adding padding to label
     override var intrinsicContentSize: CGSize{
-        return CGSize(width: originalContentSize.width + Padding.doublePadding, height: originalContentSize.height + Padding.defaultPadding)
+        return CGSize(width: originalContentSize.width + Paddings.doublePadding, height: originalContentSize.height + Paddings.defaultPadding)
     }
     // MARK: - init
     override init(frame: CGRect) {
@@ -28,7 +28,7 @@ class TableViewHeaderLabel: UILabel{
     }
     // MARK: - Setting label style
     private func setUpLabel() {
-        self.layer.cornerRadius = (originalContentSize.height + Padding.defaultPadding)
+        self.layer.cornerRadius = (originalContentSize.height + Paddings.defaultPadding)
         self.layer.masksToBounds = true
         self.backgroundColor = Colors.primaryBlue
         self.textColor = .white
