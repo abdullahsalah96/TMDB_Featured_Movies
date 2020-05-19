@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Protocol for API
-// both mock APIClient and real APIClient should implement this protocol
+// both Mock APIClient (for testing) and real APIClient should implement this protocol
 protocol APIProtocol {
     func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void)
     func getMoviesList(pageNum: Int, completionHandler: @escaping (MoviesListResponse?, Error?)->Void)

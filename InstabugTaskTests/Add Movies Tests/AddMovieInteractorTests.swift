@@ -18,7 +18,7 @@ class AddMovieInteractorTests: XCTestCase {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         // make sure date is in a valid format
         let date = dateFormatterGet.date(from: "2020-11-20")
-        let error = interactor.addNewMovie(title: "", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
+        let error = interactor.addNewMovie(title: "", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
         // error not nil
         XCTAssertNotNil(error)
         // error is equal to invalid movie title error
@@ -50,7 +50,7 @@ class AddMovieInteractorTests: XCTestCase {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         // make sure date is in a valid format
         let date = dateFormatterGet.date(from: "")
-        let error = interactor.addNewMovie(title: "Movie Title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
+        let error = interactor.addNewMovie(title: "Movie Title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
         // error not nil
         XCTAssertNotNil(error)
         // error is equal to invalid movie date error
@@ -66,7 +66,7 @@ class AddMovieInteractorTests: XCTestCase {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         // make sure date is in a valid format
         let date = dateFormatterGet.date(from: "2020-11-20")
-        let error = interactor.addNewMovie(title: nil, overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
+        let error = interactor.addNewMovie(title: nil, overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
         // error not nil
         XCTAssertNotNil(error)
         // error is equal to invalid movie title error
@@ -94,7 +94,7 @@ class AddMovieInteractorTests: XCTestCase {
     // MARK: - Testing setting a nil overview for movie
     func testNilMovieDate(){
         // should return invalid movie date error
-        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: nil, image: Images.placeholderImage)
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: nil, image: Images.placeholderImage)
         // error not nil
         XCTAssertNotNil(error)
         // error is equal to invalid movie date error
@@ -106,7 +106,7 @@ class AddMovieInteractorTests: XCTestCase {
     // MARK: - Testing setting a nil poster for movie
     func testNilMoviePoster(){
         // should return nil error as image is set to be placeholder
-        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: Date(), image: nil)
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: Date(), image: nil)
         // error is nil
         XCTAssertNil(error)
         // my movies count should be equal to 1
@@ -121,7 +121,7 @@ class AddMovieInteractorTests: XCTestCase {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         // make sure date is in a valid format
         let date = dateFormatterGet.date(from: "2020-11-20")
-        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
+        let error = interactor.addNewMovie(title: "This is a movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: date, image: Images.placeholderImage)
         // error should be nil
         XCTAssertNil(error)
         // my movies count should be equal to 1

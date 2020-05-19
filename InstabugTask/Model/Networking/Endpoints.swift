@@ -16,14 +16,11 @@ enum Endpoints{
     // api key parameter
     static let apiKeyParam = "?api_key=\(Endpoints.apiKey)"
     // cases
-    case getBaseURL
     case getMoviesList(Int)
     case getMoviePoster(String)
     //get url string
     var stringValue:String{
         switch self{
-            case .getBaseURL:
-                return Endpoints.baseURL
             case .getMoviesList(let pageNum):
                 return Endpoints.baseURL + "/discover/movie" + Endpoints.apiKeyParam + "&page=\(pageNum)"
             case .getMoviePoster(let posterPath):

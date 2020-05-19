@@ -17,12 +17,15 @@ class MyMoviesModel{
     private init(){
         myMovies = []
     }
+    // MARK: - Add new movie to my movies list
     func addMovie(movie: Movie){
         self.myMovies.append(movie)
     }
+    // MARK: - Get List of my movies
     func getMovies()->[Movie]{
         return self.myMovies
     }
+    // MARK: - Clear My Movies list
     func clearMyMoviesList(){
         self.myMovies = []
     }

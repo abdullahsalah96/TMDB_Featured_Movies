@@ -15,18 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instabugLogo" translatesAutoresizingMaskIntoConstraints="NO" id="o2s-QA-QKr">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instabugLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kbf-Qn-0Op">
+                                <rect key="frame" x="122" y="86" width="170" height="71"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="o2s-QA-QKr">
+                                <rect key="frame" x="114" y="403" width="187" height="91"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="3K2-k6-lnv"/>
-                                    <constraint firstAttribute="width" constant="240" id="9bj-Jw-qVj"/>
+                                    <constraint firstAttribute="height" constant="91" id="HhT-Ay-mD6"/>
+                                    <constraint firstAttribute="width" constant="187" id="qiQ-eR-aix"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.94287778253424659" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="0.12" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="o2s-QA-QKr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RGX-uv-uVk"/>
-                            <constraint firstItem="o2s-QA-QKr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="xth-tF-8wQ"/>
+                            <constraint firstItem="o2s-QA-QKr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="114" id="2BA-9D-zQb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o2s-QA-QKr" secondAttribute="trailing" constant="113" id="DqJ-Vt-dq6"/>
+                            <constraint firstItem="kbf-Qn-0Op" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="EeX-Nb-I71"/>
+                            <constraint firstItem="o2s-QA-QKr" firstAttribute="top" secondItem="kbf-Qn-0Op" secondAttribute="bottom" constant="246" id="Lv2-0e-5fV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kbf-Qn-0Op" secondAttribute="trailing" constant="122" id="MaN-fd-fY3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="o2s-QA-QKr" secondAttribute="bottom" constant="368" id="OK3-58-3jH"/>
+                            <constraint firstItem="kbf-Qn-0Op" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="SzP-YT-rjS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,6 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="instabugLogo" width="606" height="160"/>
+        <image name="instabugLogo" width="1024" height="176"/>
+        <image name="logo" width="512" height="512"/>
     </resources>
 </document>

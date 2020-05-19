@@ -43,7 +43,7 @@ class MoviesPresenterTests: XCTestCase {
     func testNonEmptyMyMovies(){
         let addMoviesInteractor = AddMovieInteractor()
         for _ in 1...20{
-            _ = addMoviesInteractor.addNewMovie(title: "This is movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: Date(), image: Images.placeholderImage)
+            _ = addMoviesInteractor.addNewMovie(title: "This is movie title", overview: "This is a random overview for a movie, this overview should be at least 30 letters so bla bla bla bla bla bla", date: Date(), image: Images.placeholderImage)
             presenter.updateMyMovies() // update my movies list
             // count of my movies available in presenter
             let myMoviesCount = presenter.getMyMoviesCount()

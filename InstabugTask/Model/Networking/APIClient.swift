@@ -17,7 +17,7 @@ class APIClient: APIProtocol{
         }
         let task = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) in
-            // make sure error is nil
+            // call completion handler with fetched data
             completionHandler(data, error)
         })
         task.resume()
@@ -53,6 +53,7 @@ class APIClient: APIProtocol{
             }
         })
     }
+
     func gerPosterData(posterPath: String, completionHandler: @escaping (Data?, Error?) -> Void) {
         let url = Endpoints.getMoviePoster(posterPath).url
         taskForAPIRequest(url: url, completionHandler: {

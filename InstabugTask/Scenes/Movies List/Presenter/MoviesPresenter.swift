@@ -60,12 +60,10 @@ class MoviesPresenter{
     }
     // MARK: - Get movies in specified page
     private func getMovies(pageNum: Int){
-        // emptying new movies array so that it contains movies of new page only
         // start animating loading indicator
         self.moviesDelegate?.showLoadingIndicator()
         interactor.getMoviesList(pageNum: pageNum, completionHandler: {(movies, error) in
             guard error == nil else{
-                self.moviesDelegate?.hideLoadingIndicator()
                 self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
@@ -78,7 +76,7 @@ class MoviesPresenter{
             self.allMovies += movies //append newly fetched movies
             self.moviesDelegate?.hideLoadingIndicator() // hide loading indicator
             self.reloadData() // reload collection view to update number of cells with movie data
-            //after finishing get posters of each movie
+            /* after finishing get posters of each movie, Here I am loading the posters of each movie after fetching the title, date and overview of all the movies, this is better because if the connection is bad the user would be able to see the data while the posters load and get set on the background */
             self.getMoviesPosters(numberOfNewMovies: movies.count)
         })
     }

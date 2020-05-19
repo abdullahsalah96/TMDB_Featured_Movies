@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-st-2qM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoviesCell" id="MoT-ZR-Pc6" customClass="MoviesTableViewCell" customModule="InstabugTask" customModuleProvider="target">
@@ -32,10 +32,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Qez-st-2qM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="C2e-A2-ait"/>
-                            <constraint firstItem="Qez-st-2qM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OO2-fx-G4W"/>
-                            <constraint firstItem="Qez-st-2qM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="aqY-Na-F3h"/>
-                            <constraint firstItem="Qez-st-2qM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fw4-ib-Jds"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Cmz-pJ-q0l"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Nbo-sQ-c4N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qez-st-2qM" secondAttribute="bottom" constant="32" id="Sg4-7V-6va"/>
+                            <constraint firstItem="Qez-st-2qM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rfj-Xh-fLW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

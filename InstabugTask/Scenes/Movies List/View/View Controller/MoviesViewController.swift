@@ -14,7 +14,6 @@ class MoviesViewController: UIViewController {
     // MARK: - Variables
     var presenter: MoviesPresenter!
     let activityIndicator = UIActivityIndicatorView(style: .medium)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = MoviesPresenter(delegate: self, mockClient: nil)
@@ -40,7 +39,9 @@ class MoviesViewController: UIViewController {
         activityIndicator.color = Colors.primaryBlue
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Padding.smallPadding).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Padding.smallPadding).isActive = true
+//        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     // MARK: - Setting Up Collection view
     private func setUpTableView(){
