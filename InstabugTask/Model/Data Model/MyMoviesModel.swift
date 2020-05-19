@@ -11,9 +11,9 @@ import UIKit
 
 // MARK: - Movie Model
 // singleton shared object that contains array of added movies
-class MovieModel{
+class MyMoviesModel{
     private var myMovies: [Movie]
-    static let shared = MovieModel() //shared singleton instance
+    static let shared = MyMoviesModel() //shared singleton instance
     private init(){
         myMovies = []
     }

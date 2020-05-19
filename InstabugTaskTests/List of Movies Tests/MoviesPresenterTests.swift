@@ -43,14 +43,14 @@ class MoviesPresenterTests: XCTestCase {
     func testNonEmptyMyMovies(){
         let addMoviesInteractor = AddMovieInteractor()
         for _ in 1...20{
-            _ = addMoviesInteractor.addNewMovie(title: "This is movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: Date(), image: Constants.Images.placeholderImage)
+            _ = addMoviesInteractor.addNewMovie(title: "This is movie title", overview: "This is a random overview for a movie, this overview should be at least 50 words so bla bla bla bla bla bla", date: Date(), image: Images.placeholderImage)
             presenter.updateMyMovies() // update my movies list
             // count of my movies available in presenter
             let myMoviesCount = presenter.getMyMoviesCount()
             // count of my movies available in Movie Model
-            let modleMoviesCount = MovieModel.shared.getMovies().count
+            let modleMoviesCount = MyMoviesModel.shared.getMovies().count
             XCTAssertEqual(myMoviesCount, modleMoviesCount)
         }
-        MovieModel.shared.clearMyMoviesList() //clear list to prevent it affecting other tests
+        MyMoviesModel.shared.clearMyMoviesList() //clear list to prevent it affecting other tests
     }
 }

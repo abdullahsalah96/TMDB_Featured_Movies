@@ -28,7 +28,7 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Setting Up UI
     private func setUpView(){
-        view.backgroundColor = Constants.Colors.primaryDark
+        view.backgroundColor = Colors.primaryDark
         setUpActivityIndicator()
         setUpTableView()
         setUpNavigationBar()
@@ -37,23 +37,23 @@ class MoviesViewController: UIViewController {
     private func setUpActivityIndicator(){
         activityIndicator.style = .large
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.color = Constants.Colors.primaryBlue
+        activityIndicator.color = Colors.primaryBlue
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     // MARK: - Setting Up Collection view
     private func setUpTableView(){
-        tableView.backgroundColor = Constants.Colors.primaryDark
+        tableView.backgroundColor = Colors.primaryDark
         tableView.dataSource = self
         tableView.delegate = self
     }
     // MARK: - Setting Up navigation bar
     private func setUpNavigationBar(){
         navigationItem.title = "Movies"
-        navigationController?.navigationBar.backgroundColor = Constants.Colors.primaryDark
-        navigationController?.navigationBar.barTintColor = Constants.Colors.primaryDark
-        navigationController?.navigationBar.tintColor = Constants.Colors.primaryBlue
+        navigationController?.navigationBar.backgroundColor = Colors.primaryDark
+        navigationController?.navigationBar.barTintColor = Colors.primaryDark
+        navigationController?.navigationBar.tintColor = Colors.primaryBlue
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }

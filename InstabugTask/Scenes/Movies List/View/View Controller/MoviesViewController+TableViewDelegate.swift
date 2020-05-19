@@ -61,7 +61,8 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource{
     // MARK: - View for each section
     // MARK: - Setting cell data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifiers.movieCell) as! MoviesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier:
+            Identifiers.movieCell) as! MoviesTableViewCell
         presenter.setCellData(cell: cell, indexPath: indexPath) // set cell data
         return cell
     }

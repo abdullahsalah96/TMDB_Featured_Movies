@@ -15,7 +15,7 @@ class MoviesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Movie"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Constants.Fonts.primaryBold
+        label.font = Fonts.primaryBold
         label.textColor = .white
         return label
     }()
@@ -24,7 +24,7 @@ class MoviesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "overview"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Constants.Fonts.primaryRegular
+        label.font = Fonts.primaryRegular
         label.textColor = .white
         label.numberOfLines = 0 //multi lines
         return label
@@ -34,8 +34,9 @@ class MoviesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "date"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Constants.Fonts.primaryItalic
-        label.textColor = Constants.Colors.primaryBlue
+        label.font =
+            Fonts.primaryItalic
+        label.textColor = Colors.primaryBlue
         return label
     }()
     // poster image
@@ -45,7 +46,7 @@ class MoviesTableViewCell: UITableViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
-        image.image = Constants.Images.placeholderImage
+        image.image = Images.placeholderImage
         return image
     }()
     // cell setup
@@ -54,7 +55,7 @@ class MoviesTableViewCell: UITableViewCell {
     }
     // MARK: - Setting up cell view
     private func setUpCellView() {
-        backgroundColor = Constants.Colors.primaryDark
+        backgroundColor = Colors.primaryDark
         addSubview(poster)
         addSubview(title)
         addSubview(date)
@@ -70,24 +71,24 @@ class MoviesTableViewCell: UITableViewCell {
     }
     // MARK: - Image View Constraints
     private func setPosterImageConstraints(){
-        poster.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Padding.defaultPadding).isActive = true
-        poster.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Padding.defaultPadding).isActive = true
+        poster.topAnchor.constraint(equalTo: topAnchor, constant: Padding.defaultPadding).isActive = true
+        poster.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Padding.defaultPadding).isActive = true
         poster.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        poster.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Padding.defaultPadding).isActive = true
+        poster.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Padding.defaultPadding).isActive = true
     }
     // MARK: - Labels constraints
     private func setLabelsConstraints() {
         // title
         title.topAnchor.constraint(equalTo: poster.topAnchor).isActive = true
-        title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: Constants.Padding.defaultPadding).isActive = true
-        title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Padding.defaultPadding).isActive = true
+        title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: Padding.defaultPadding).isActive = true
+        title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Padding.defaultPadding).isActive = true
         date.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
         date.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true
         date.trailingAnchor.constraint(equalTo: title.trailingAnchor).isActive = true
         // overview
         overview.topAnchor.constraint(equalTo: date.bottomAnchor).isActive = true
         overview.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true
-        overview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Padding.defaultPadding).isActive = true
-        overview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Padding.defaultPadding).isActive = true
+        overview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Padding.defaultPadding).isActive = true
+        overview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Padding.defaultPadding).isActive = true
     }
 }

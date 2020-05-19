@@ -14,13 +14,13 @@ extension MockAPIClient: APIProtocol{
     func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?) -> Void) {
         // check if url is valid
         guard url != nil else{
-            completionHandler(nil, Constants.Errors.invalidURLError)
+            completionHandler(nil, Errors.invalidURLError)
             return
         }
         // check if url is not equal to mock url
         if url != self.mockURL{
             //return invalid url error
-            completionHandler(nil, Constants.Errors.invalidURLError)
+            completionHandler(nil, Errors.invalidURLError)
             return
         }
         // url is valid then return random data
@@ -34,7 +34,7 @@ extension MockAPIClient: APIProtocol{
         // check if the page number is valid
         if pageNum > self.mockPagesNumber {
             //throw error
-            completionHandler(nil, Constants.Errors.invalidPageError)
+            completionHandler(nil, Errors.invalidPageError)
             return
         }
         // if it's valid page so we set url to mock url of api
@@ -49,7 +49,7 @@ extension MockAPIClient: APIProtocol{
             }
             // if error is nil then make sure we got data from API
             guard data != nil else{
-                completionHandler(nil, Constants.Errors.nilResponseError)
+                completionHandler(nil, Errors.nilResponseError)
                 return
             }
             // if there is data then send mock api response

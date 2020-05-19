@@ -24,7 +24,7 @@ class APIClientTests: XCTestCase{
             // invalid url so error is not nil
             XCTAssertNotNil(error)
             // error should be invalid url error
-            XCTAssertEqual(error?.localizedDescription, Constants.Errors.invalidURLError.localizedDescription)
+            XCTAssertEqual(error?.localizedDescription, Errors.invalidURLError.localizedDescription)
             //response is nil
             XCTAssertNil(response)
             errorExpectation.fulfill()

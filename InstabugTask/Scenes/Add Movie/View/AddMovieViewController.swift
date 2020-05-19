@@ -17,7 +17,7 @@ class AddMovieViewController:UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var addMovieButton: UIButton!
     // MARK: - Variables
-    private var moviePoster = Constants.Images.placeholderImage
+    private var moviePoster = Images.placeholderImage
     private var imagePicker = UIImagePickerController()
     private var presenter: AddMoviePresenter!
     private var movieDate: Date!
@@ -29,15 +29,15 @@ class AddMovieViewController:UIViewController {
     }
     // MARK: - Set Up views
     func setUpView(){
-        view.backgroundColor = Constants.Colors.primaryDark
+        view.backgroundColor = Colors.primaryDark
         setUpDatePicker()
-        setUpTextFields()
+        setUpText()
         setUpAddMovieButton()
         setUpImageView()
     }
     // MARK: - Initialize date to current date picker date
     func setUpDatePicker(){
-        datePicker.setValue(Constants.Colors.primaryBlue, forKeyPath: "textColor")
+        datePicker.setValue(Colors.primaryBlue, forKeyPath: "textColor")
         // initializing time zone to Egypt
         let seconds = 2*60*60 //GMT+2
         datePicker.timeZone = TimeZone(secondsFromGMT: seconds)
@@ -46,20 +46,30 @@ class AddMovieViewController:UIViewController {
         // init movie date to current selected date picker date
         movieDate = datePicker.date
     }
-    private func setUpTextFields() {
+    // MARK: - Setup Text Views and fields
+    private func setUpText() {
         setUpTextDelegate()
-        titleTextField.backgroundColor = Constants.Colors.primaryTextFields
-        titleTextField.text = ""
-        titleTextField.textColor = Constants.Colors.primaryLight
-        titleTextField.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
-        titleTextField.layer.masksToBounds = true
-        overviewTextView.backgroundColor = Constants.Colors.primaryTextFields
-        overviewTextView.text = ""
-        overviewTextView.textColor = Constants.Colors.primaryLight
-        overviewTextView.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
-        let padding = Constants.Padding.smallPadding
+        setUpTitleTextField()
+        setUpOverviewTextView()
+        let padding = Padding.smallPadding
         overviewTextView.textContainerInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     }
+    // MARK: - Setup title text field
+    private func setUpTitleTextField() {
+        titleTextField.backgroundColor = Colors.primaryTextFields
+        titleTextField.text = ""
+        titleTextField.textColor = Colors.primaryLight
+        titleTextField.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
+        titleTextField.layer.masksToBounds = true
+    }
+    // MARK: - Setup overview text view
+    fileprivate func setUpOverviewTextView() {
+        overviewTextView.backgroundColor = Colors.primaryTextFields
+        overviewTextView.text = ""
+        overviewTextView.textColor = Colors.primaryLight
+        overviewTextView.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
+    }
+    
     // MARK: - Set up text delegates
     func setUpTextDelegate(){
         titleTextField.delegate = textDelegate
@@ -68,7 +78,7 @@ class AddMovieViewController:UIViewController {
     // MARK: - Add Movie button stylin
     func setUpAddMovieButton(){
         addMovieButton.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
-        addMovieButton.backgroundColor = Constants.Colors.primaryBlue
+        addMovieButton.backgroundColor = Colors.primaryBlue
         addMovieButton.setTitleColor(.white, for: .normal)
     }
     //MARK: - Image View styling

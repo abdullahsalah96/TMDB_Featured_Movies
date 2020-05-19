@@ -12,7 +12,7 @@ class APIClient: APIProtocol{
     internal func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
         //make sure url is not nil
         guard url != nil else{
-            completionHandler(nil, Constants.Errors.invalidURLError)
+            completionHandler(nil, Errors.invalidURLError)
             return
         }
         let task = URLSession.shared.dataTask(with: url!, completionHandler: {
@@ -35,7 +35,7 @@ class APIClient: APIProtocol{
             // make sure data is not nil before decoding
             guard let data = data else{
                 DispatchQueue.main.async {
-                    completionHandler(nil, Constants.Errors.nilResponseError)
+                    completionHandler(nil, Errors.nilResponseError)
                 }
                 return
             }
@@ -67,7 +67,7 @@ class APIClient: APIProtocol{
             // no data fetched
             guard data != nil else{
                 DispatchQueue.main.async {
-                    completionHandler(nil, Constants.Errors.nilResponseError)
+                    completionHandler(nil, Errors.nilResponseError)
                 }
                 return
             }

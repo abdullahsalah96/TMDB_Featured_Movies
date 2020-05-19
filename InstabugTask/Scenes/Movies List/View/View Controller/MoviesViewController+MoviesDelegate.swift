@@ -29,7 +29,7 @@ extension MoviesViewController: MoviesDelegate{
     }
     // MARK: - Navigate to Adding Movie controller
     func navigateToAddMovieController() {
-        let vc = storyboard?.instantiateViewController(identifier: Constants.Identifiers.addMovie) as! AddMovieViewController
+        let vc = storyboard?.instantiateViewController(identifier: Identifiers.addMovie) as! AddMovieViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

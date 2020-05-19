@@ -51,7 +51,7 @@ class MoviesPresenter{
     
     // MARK: - Get my movies list
     func updateMyMovies(){
-        myMovies = MovieModel.shared.getMovies()
+        myMovies = MyMoviesModel.shared.getMovies()
         reloadData()
     }
     // MARK: - Reload data
@@ -71,7 +71,7 @@ class MoviesPresenter{
             }
             guard let movies = movies else{
                 self.moviesDelegate?.hideLoadingIndicator()
-                self.moviesDelegate?.displayMessage(title: "Error", message:Constants.Errors.nilResponseError.localizedDescription)
+                self.moviesDelegate?.displayMessage(title: "Error", message: Errors.nilResponseError.localizedDescription)
                 return
             }
             // fetched movies successfully

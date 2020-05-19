@@ -48,7 +48,7 @@ class MoviesInteractorTests: XCTestCase {
             (image) in
             XCTAssertNotNil(image)
             // image should be equal to placeholder image
-            XCTAssertTrue(image.isEqualToImage(image: Constants.Images.placeholderImage!))
+            XCTAssertTrue(image.isEqualToImage(image: Images.placeholderImage!))
             successExcpectation.fulfill()
         })
         waitForExpectations(timeout: 5, handler: nil)

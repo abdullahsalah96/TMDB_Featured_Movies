@@ -18,13 +18,13 @@ class AddMovieInteractor{
         // make sure date is in a valid format
         if dateFormatterGet.date(from: date) == nil {
             // invalid format
-            return Constants.Errors.invalidMovieDate
+            return Errors.invalidMovieDate
         }
         else if title.count < Constants.MinimumNewMovieData.minimumTitleLetters{
             //make sure movie title string is larger than 3 words
-            return Constants.Errors.invalidMovieTitle
+            return Errors.invalidMovieTitle
         }else if overview.count < Constants.MinimumNewMovieData.minimumOverviewLetters{
-            return Constants.Errors.invalidMovieOverview
+            return Errors.invalidMovieOverview
         }else{
             // no errors
             return nil
@@ -32,16 +32,16 @@ class AddMovieInteractor{
     }
     
     func addNewMovie(title: String?, overview: String?, date: Date?, image: UIImage?)->Error?{
-        var posterImage = Constants.Images.placeholderImage
+        var posterImage = Images.placeholderImage
         // check that entries are not nil
         guard let title = title else{
-            return Constants.Errors.invalidMovieTitle
+            return Errors.invalidMovieTitle
         }
         guard let overview = overview else {
-            return Constants.Errors.invalidMovieOverview
+            return Errors.invalidMovieOverview
         }
         guard let date = date else {
-            return Constants.Errors.invalidMovieDate
+            return Errors.invalidMovieDate
         }
         if image != nil{
             posterImage = image
@@ -56,7 +56,7 @@ class AddMovieInteractor{
         }else{
             // add movie
             let movie = Movie(title: title, date: dateString, overview: overview, poster: posterImage, posterPath: nil)
-            MovieModel.shared.addMovie(movie: movie)
+            MyMoviesModel.shared.addMovie(movie: movie)
             // return nil as there is no error
             return nil
         }

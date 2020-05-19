@@ -32,7 +32,7 @@ class MoviesInteractor{
             queue.async {
                 // do in another queue
                 for result in response!.results{
-                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Constants.Images.placeholderImage, posterPath: result.posterPath)
+                    let movie = Movie(title: result.title, date: result.releaseDate, overview: result.overview, poster: Images.placeholderImage, posterPath: result.posterPath)
                     allMovies.append(movie)
                 }
                 //after finishing call completion handler in main queue
@@ -48,11 +48,11 @@ class MoviesInteractor{
             (data, error) in
             // make sure error is nil, if not set image to be placeholder image
             guard error == nil else{
-                completionHandler(Constants.Images.placeholderImage!)
+                completionHandler(Images.placeholderImage!)
                 return
             }
             // make sure data can be converted to image otherwise, image should be nil
-            let img = UIImage(data: data!) ?? Constants.Images.placeholderImage
+            let img = UIImage(data: data!) ?? Images.placeholderImage
             completionHandler(img!)
         })
     }
