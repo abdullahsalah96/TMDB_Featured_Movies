@@ -14,6 +14,7 @@ This application is developed using the MVP Design Pattern which was chosen over
   * The Data Model and the networking code are encapsulated inside the model. 
   * The users movies "My Movies" are stored in a singleton shared instance that contains all the user added movies which makes it accessible to all presenters.
   * The networking code consists of Response Codable Structs and API Client which makes calls to TMDB API to fetch movies list.
+  * Each Movie is encapsulated inside a "Movie" struct which contains the movie data as title, date, overview and poster.
 - <b>View</b>:
   * In this architecture the view conrollers are considered part of the view as they are "Dumb" and not aware of any logic happening behind the scene as this is the job of the view controller's presenter which helps in making view objects more reusable.
   * The first scene which displays the list of fetched movies consists of a table view with custom cells which are implemented in MoviesTableViewCell file. The table view has 2 sections, the first one is "My Movies" section which contains movies added by the user and the second section is "Add Movies" section which contains movies fetched from the TMDB API
