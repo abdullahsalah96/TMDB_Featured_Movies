@@ -19,19 +19,22 @@ class AddMovieTests: XCTestCase {
     func testBackButtonExists(){
         navigateToAddMovies()
         let moviesButton = app.buttons["Movies"].firstMatch
-        XCTAssertTrue(moviesButton.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: moviesButton, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     // MARK: - Testing when back button pressed movies controller is presented
     func testBackButtonPressed(){
         navigateToAddMovies()
         app.buttons["Movies"].firstMatch.tap()
-        XCTAssertTrue(app.navigationBars["Movies"].firstMatch.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.navigationBars["Movies"].firstMatch, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing title label exists
     func testTitleLabelExists(){
         navigateToAddMovies()
-        XCTAssertTrue(app.staticTexts["Title"].firstMatch.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.staticTexts["Title"].firstMatch, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing title text field exists
@@ -40,13 +43,15 @@ class AddMovieTests: XCTestCase {
         let element = getElement()
         let textField = element.children(matching: .textField).element
         textField.tap()
-        XCTAssertTrue(textField.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: textField, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing overview label exists
     func testOverviewLabelExists(){
         navigateToAddMovies()
-        XCTAssertTrue(app.staticTexts["Overview"].exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.staticTexts["Overview"], handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing overview text view exists
@@ -55,19 +60,22 @@ class AddMovieTests: XCTestCase {
         let element = getElement()
         let textView = element.children(matching: .textView).element
         textView.tap()
-        XCTAssertTrue(textView.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: textView, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing Date label exists
     func testDateLabelExists(){
         navigateToAddMovies()
-        XCTAssertTrue(app.staticTexts["Date"].firstMatch.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.staticTexts["Date"].firstMatch, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing Date picker exists
     func testDatePickerExists(){
         navigateToAddMovies()
-        XCTAssertTrue(app.datePickers.element.firstMatch.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.datePickers.element.firstMatch, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing Image view exists

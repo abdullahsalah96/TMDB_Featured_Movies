@@ -63,28 +63,28 @@ class MoviesPresenter{
     private func getMovies(pageNum: Int){
         // start animating loading indicator
         self.moviesDelegate?.showLoadingIndicator()
-        interactor.getMoviesList(pageNum: pageNum, completionHandler: {(movies, error) in
+        interactor.getMoviesList(pageNum: pageNum, completionHandler: { [weak self] (movies, error) in
             guard error == nil else{
                 // if this is unable to decode error, return without showing error, as this is an error caused from server timeout so it is not shown to user, instead the app tries to fetch data again
                 if error?.localizedDescription == Errors.decodingError.localizedDescription{
                     return
                 }
                 // show other errors
-                self.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
+                self?.moviesDelegate?.displayMessage(title: "Error", message: error!.localizedDescription)
                 return
             }
             guard let movies = movies else{
                 // make sure movies array is not nil, if it's nill hide loading indicator and show nil response error
-                self.moviesDelegate?.hideLoadingIndicator()
-                self.moviesDelegate?.displayMessage(title: "Error", message: Errors.nilResponseError.localizedDescription)
+                self?.moviesDelegate?.hideLoadingIndicator()
+                self?.moviesDelegate?.displayMessage(title: "Error", message: Errors.nilResponseError.localizedDescription)
                 return
             }
             // fetched movies successfully
-            self.allMovies += movies //append newly fetched movies
-            self.moviesDelegate?.hideLoadingIndicator() // hide loading indicator
-            self.reloadData() // reload collection view to update number of cells with movie data
+            self?.allMovies += movies //append newly fetched movies
+            self?.moviesDelegate?.hideLoadingIndicator() // hide loading indicator
+            self?.reloadData() // reload collection view to update number of cells with movie data
             // after finishing get posters of each movie, Here I am loading the posters of each movie after fetching the title, date and overview of all the movies, this is better because if the connection is bad the user would be able to see the data while the posters load and get set on the background
-            self.getMoviesPosters(numberOfNewMovies: movies.count)
+            self?.getMoviesPosters(numberOfNewMovies: movies.count)
         })
     }
     // MARK: - Get poster images for movies
@@ -95,10 +95,10 @@ class MoviesPresenter{
         queue.async {
             for index in newMoviesStartIndex...self.allMovies.count - 1{
                 // get poster for each movie
-                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath, completionHandler: {
+                self.interactor.getPosterImage(posterPath: self.allMovies[index].posterPath, completionHandler: { [weak self]
                     (image) in
                     // this image is never nil as interactor makes sure to set it either to placeholder or fetched image
-                    self.allMovies[index].poster = image //update movie poster
+                    self?.allMovies[index].poster = image //update movie poster
                 })
             }
         }

@@ -13,6 +13,8 @@ enum Endpoints{
     static let apiKey = "acea91d2bff1c53e6604e4985b6989e2"
     // base URL for API
     static let baseURL = "https://api.themoviedb.org/3"
+    // base URL for getting posters
+    static let posterURL = "https://image.tmdb.org/t/p/w500//"
     // api key parameter
     static let apiKeyParam = "?api_key=\(Endpoints.apiKey)"
     // cases
@@ -24,7 +26,7 @@ enum Endpoints{
             case .getMoviesList(let pageNum):
                 return Endpoints.baseURL + "/discover/movie" + Endpoints.apiKeyParam + "&page=\(pageNum)"
             case .getMoviePoster(let posterPath):
-                return "https://image.tmdb.org/t/p/w500//\(posterPath)"
+                return  Endpoints.posterURL + (posterPath)
         }
     }
     //get url

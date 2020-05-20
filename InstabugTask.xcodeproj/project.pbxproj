@@ -366,8 +366,8 @@
 		55FB854F247156AA003EE5BD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				555421B4247358F10056D3EF /* APIProtocol.swift */,
 				55FB8550247156B3003EE5BD /* APIClient.swift */,
+				555421B4247358F10056D3EF /* APIProtocol.swift */,
 				55FB8552247156D5003EE5BD /* Endpoints.swift */,
 			);
 			path = Networking;
