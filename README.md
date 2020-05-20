@@ -57,6 +57,8 @@ This application is developed using the MVP Design Pattern which was chosen over
   <img src="docs/unitTests.png">
 </p>
 
+- All the unit tests have been tested with both TMDB API Client and Mock API Client.
+
 ## <b> UI Tests </b>
 - For the UI tests, I have created several UI tests to make sure that there is no strange UI behaviour or wrong messages displayed. 
 - These UI Tests test the behaviour of both Movies List view and Add Movies view.
