@@ -17,31 +17,27 @@ class AddMovieTests: XCTestCase {
     }
     // MARK: - Testing back to movies button exists
     func testBackButtonExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         let moviesButton = app.buttons["Movies"].firstMatch
         XCTAssertTrue(moviesButton.exists)
     }
     // MARK: - Testing when back button pressed movies controller is presented
     func testBackButtonPressed(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         app.buttons["Movies"].firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Movies"].firstMatch.exists)
     }
     
     // MARK: - Testing title label exists
     func testTitleLabelExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         XCTAssertTrue(app.staticTexts["Title"].firstMatch.exists)
     }
     
     // MARK: - Testing title text field exists
     func testTitleTextFieldExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        navigateToAddMovies()
+        let element = getElement()
         let textField = element.children(matching: .textField).element
         textField.tap()
         XCTAssertTrue(textField.exists)
@@ -49,16 +45,14 @@ class AddMovieTests: XCTestCase {
     
     // MARK: - Testing overview label exists
     func testOverviewLabelExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         XCTAssertTrue(app.staticTexts["Overview"].exists)
     }
     
     // MARK: - Testing overview text view exists
     func testOverviewTextViewExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        navigateToAddMovies()
+        let element = getElement()
         let textView = element.children(matching: .textView).element
         textView.tap()
         XCTAssertTrue(textView.exists)
@@ -66,22 +60,19 @@ class AddMovieTests: XCTestCase {
     
     // MARK: - Testing Date label exists
     func testDateLabelExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         XCTAssertTrue(app.staticTexts["Date"].firstMatch.exists)
     }
     
     // MARK: - Testing Date picker exists
     func testDatePickerExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         XCTAssertTrue(app.datePickers.element.firstMatch.exists)
     }
     
     // MARK: - Testing Image view exists
     func testImageViewExists(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         let imageView = app.images["pressImage"].firstMatch
         expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: imageView, handler: nil)
         waitForExpectations(timeout: 60, handler: nil)
@@ -89,8 +80,7 @@ class AddMovieTests: XCTestCase {
     
     // MARK: - Testing invalid title error
     func testInvalidTitleError(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         app.buttons["Add Movie"].firstMatch.tap()
         let alert = app.alerts["Error"].firstMatch
         XCTAssertTrue(alert.firstMatch.exists)
@@ -98,10 +88,9 @@ class AddMovieTests: XCTestCase {
     
     // MARK: - Testing invalid overview error
     func testInvalidOverviewError(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         // set valid title
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let element = getElement()
         let textField = element.children(matching: .textField).element
         textField.tap()
         // set text of text field
@@ -154,17 +143,16 @@ class AddMovieTests: XCTestCase {
     // MARK: - Helper function to add new movie
     // returns both movie title and overview
     func addValidMovie()->[String]{
-        let button = app.buttons["Add"].firstMatch
-        let returnButton = app.buttons["Return"].firstMatch
-        button.tap()
+        navigateToAddMovies()
         // set valid title
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let element = getElement()
         let textField = element.children(matching: .textField).element
         textField.tap()
         // set text of text field
         let title = "Valid movie title"
         textField.typeText(title)
         // press return
+        let returnButton = app.buttons["Return"].firstMatch
         returnButton.tap()
         // set movie overview
         let textView = element.children(matching: .textView).element
@@ -176,5 +164,16 @@ class AddMovieTests: XCTestCase {
         // add movie
         app.buttons["Add Movie"].firstMatch.tap()
         return [title, overview]
+    }
+    
+    // MARK: - Helper function to get app elements
+    func getElement()->XCUIElement{
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        return element
+    }
+    // MARK: - Helper function to navigate to Add Movies VC
+    func navigateToAddMovies(){
+        let button = app.buttons["Add"].firstMatch
+        button.tap()
     }
 }

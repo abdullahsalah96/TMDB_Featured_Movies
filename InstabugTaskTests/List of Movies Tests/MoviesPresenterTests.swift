@@ -25,7 +25,6 @@ class MoviesPresenterTests: XCTestCase {
         if result == XCTWaiter.Result.timedOut {
             let moviesCount = presenter.getMoviesCount()
             // count should not be equal to 0
-            print(moviesCount)
             XCTAssertNotEqual(moviesCount, 0)
         } else {
             XCTFail("Delay interrupted")
