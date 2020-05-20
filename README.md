@@ -15,10 +15,11 @@ This application is developed using the MVP Design Pattern which was chosen over
   * The users movies "My Movies" are stored in a singleton shared instance that contains all the user added movies which makes it accessible to all presenters.
   * The networking code consists of Response Codable Structs and API Client which makes calls to TMDB API to fetch movies list.
   * Each Movie is encapsulated inside a "Movie" struct which contains the movie data as title, date, overview and poster.
+  
 - <b>View</b>:
   * In this architecture the view conrollers are considered part of the view as they are "Dumb" and not aware of any logic happening behind the scene as this is the job of the view controller's presenter which helps in making view objects more reusable.
   * The first scene which displays the list of fetched movies consists of a table view with custom cells which are implemented in MoviesTableViewCell file. The table view has 2 sections, the first one is "My Movies" section which contains movies added by the user and the second section is "Add Movies" section which contains movies fetched from the TMDB API
-    - Each cell of the table view contains a Label for the Movie Title, a Label for the Movie Release Date, a Text View for the movie overview and an Image View for the Movie Poster. I used a Text View for the movie overview instead of a Label to give users the ability to scroll through the overview and read the whole movie overview instead of only reading a snippet of it.
+    - Each cell of the table view contains a Label for the Movie Title, a Label for the Movie Release Date, a Text View for the Movie Overview and an Image View for the Movie Poster. I used a Text View for the movie overview instead of a Label to give users the ability to scroll through the overview and read the whole movie overview instead of only reading a snippet of it.
     <p align="center">
     <img src="docs/MovieView.png" width="220" height="385">
     </p>
@@ -48,7 +49,7 @@ This application is developed using the MVP Design Pattern which was chosen over
 
 ## <b> UI Tests </b>
 - For the UI tests, I have created several UI tests to make sure that there is no strange UI behaviour or wrong messages displayed. 
-- These UI Tests test the behaviour of both views.
+- These UI Tests test the behaviour of both Movies List view and Add Movies view.
 - I tried to cover the whole app with UI Tests and there are a total of 22 UI Tests that test different UI elements.
 <p align="center">
   <img src="docs/UITests.png">
