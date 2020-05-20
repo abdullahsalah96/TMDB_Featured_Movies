@@ -37,9 +37,8 @@ extension MockAPIClient: APIProtocol{
             completionHandler(nil, Errors.invalidPageError)
             return
         }
-        // if it's valid page so we set url to mock url of api
+        // if it's valid page so set url to mock url of api
         let url = self.mockURL
-        // change getMoviesListWasCalled to true
         taskForAPIRequest(url: url, completionHandler: {
             (data, error) in
             // make sure error is nil
@@ -47,7 +46,7 @@ extension MockAPIClient: APIProtocol{
                 completionHandler(nil, error!)
                 return
             }
-            // if error is nil then make sure we got data from API
+            // if data is not nil send nil response error
             guard data != nil else{
                 completionHandler(nil, Errors.nilResponseError)
                 return
@@ -68,6 +67,7 @@ extension MockAPIClient: APIProtocol{
             }
             return
         }
+        // if poster path is invalid still send any random data as API will send invalid url response and not throw error
         guard posterPath == self.mockPosterPath else{
             completionHandler(data, nil)
             return

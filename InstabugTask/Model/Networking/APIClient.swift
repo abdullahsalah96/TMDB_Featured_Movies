@@ -9,27 +9,33 @@ import Foundation
 
 class APIClient: APIProtocol{
     // MARK: - API Request for url
-    internal func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
+    func taskForAPIRequest(url: URL?, completionHandler: @escaping (Data?, Error?)->Void){
         //make sure url is not nil
         guard url != nil else{
+            // url is nil call completion handler with invalid url error
             completionHandler(nil, Errors.invalidURLError)
             return
         }
+        //URL session data task
         let task = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) in
             // call completion handler with fetched data
+            // if data is nil it's checked in getMoviesList function and getPosterData function
             completionHandler(data, error)
         })
         task.resume()
     }
     // MARK: - Get Movies List
     func getMoviesList(pageNum: Int, completionHandler: @escaping (MoviesListResponse?, Error?)->Void){
+        // get movies list api with for a certain page
         let url = Endpoints.getMoviesList(pageNum).url
+        // call a request from server with this url
         taskForAPIRequest(url: url, completionHandler: {
             (data, error) in
-            // make sure erorr is nil
+            // make sure erorr is not nil
             guard error == nil else{
                 DispatchQueue.main.async {
+                    // error is not nill, call completion handler with server error
                     completionHandler(nil, Errors.serverError)
                 }
                 return
@@ -37,6 +43,7 @@ class APIClient: APIProtocol{
             // make sure data is not nil before decoding
             guard let data = data else{
                 DispatchQueue.main.async {
+                    // data is nil call completion handler with nil response error
                     completionHandler(nil, Errors.nilResponseError)
                 }
                 return
@@ -70,6 +77,7 @@ class APIClient: APIProtocol{
             // make sure error is nil
             guard error == nil else{
                 DispatchQueue.main.async {
+                    // call completion with server error
                     completionHandler(nil, Errors.serverError)
                 }
                 return
@@ -77,12 +85,14 @@ class APIClient: APIProtocol{
             // no data fetched
             guard data != nil else{
                 DispatchQueue.main.async {
+                    // call completion handler with nil response error
                     completionHandler(nil, Errors.nilResponseError)
                 }
                 return
             }
             // fetched successfully
             DispatchQueue.main.async {
+                // call completion handler with data
                 completionHandler(data!, nil)
             }
         })

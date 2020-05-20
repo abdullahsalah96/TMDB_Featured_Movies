@@ -20,10 +20,11 @@ class AddMovieInteractor{
             // invalid format
             return Errors.invalidMovieDate
         }
-        else if title.count < Constants.MinimumNewMovieData.minimumTitleLetters{
-            //make sure movie title string is larger than 3 words
+        else if title.count < Constants.MinimumNewMovieData.minimumTitleCharacters{
+            //make sure movie title string contains more than minimum title characters
             return Errors.invalidMovieTitle
-        }else if overview.count < Constants.MinimumNewMovieData.minimumOverviewLetters{
+        }else if overview.count < Constants.MinimumNewMovieData.minimumOverviewCharacters{
+            //make sure movie overview string contains more than minimum overview characters
             return Errors.invalidMovieOverview
         }else{
             // no errors
@@ -32,20 +33,26 @@ class AddMovieInteractor{
     }
     // MARK: - Add new movie
     func addNewMovie(title: String?, overview: String?, date: Date?, image: UIImage?)->Error?{
+        // init image to be placeholder image
         var posterImage = Images.placeholderImage
         // check that entries are not nil
         guard let title = title else{
+            // make sure title is not nil
             return Errors.invalidMovieTitle
         }
         guard let overview = overview else {
+            // make sure overview is not nil
             return Errors.invalidMovieOverview
         }
         guard let date = date else {
+            // make sure date is not nil
             return Errors.invalidMovieDate
         }
         if image != nil{
+            // if image is not nil set it
             posterImage = image
         }
+        // date formatter
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let dateString = formatter.string(from: date)
@@ -54,13 +61,16 @@ class AddMovieInteractor{
             // return error
             return error
         }else{
+            // no error
             // check if movie exists
             let movie = Movie(title: title, date: dateString, overview: overview, poster: posterImage, posterPath: nil)
             if checkIfMovieExists(movieToCheck: movie){
                 // movie exists
+                // return error
                 return Errors.movieExistsError
             }else {
                 // movie doesn't exist
+                // add it
                 MyMoviesModel.shared.addMovie(movie: movie)
             }
             // return nil as there is no error

@@ -14,13 +14,15 @@ class MoviesViewController: UIViewController {
     // MARK: - Variables
     var presenter: MoviesPresenter!
     let activityIndicator = UIActivityIndicatorView(style: .medium)
+    // MARK: - View did load
+    // initialize data
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        presenter = MoviesPresenter(delegate: self, mockClient: nil)
+        presenter = MoviesPresenter(delegate: self, mockClient: nil) // initialize presenter
     }
     // MARK: - View will appear
-    // we need to instantiate presenter here to update my movies list after adding new movie
+    // when view is about to appear, update my movies list to contain newly added movies
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.updateMyMovies()
@@ -34,9 +36,11 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Setting up activity indicator
     private func setUpActivityIndicator(){
+        //styling
         activityIndicator.style = .large
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.color = Colors.primaryBlue
+        // setting constraints using auto layout
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Paddings.smallPadding).isActive = true
@@ -44,7 +48,7 @@ class MoviesViewController: UIViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
-    // MARK: - Setting Up Collection view
+    // MARK: - Setting Up Table view
     private func setUpTableView(){
         tableView.backgroundColor = Colors.primaryDark
         tableView.dataSource = self
@@ -52,11 +56,13 @@ class MoviesViewController: UIViewController {
     }
     // MARK: - Setting Up navigation bar
     private func setUpNavigationBar(){
+        // styling
         navigationItem.title = "Movies"
         navigationController?.navigationBar.backgroundColor = Colors.primaryDark
         navigationController?.navigationBar.barTintColor = Colors.primaryDark
         navigationController?.navigationBar.tintColor = Colors.primaryBlue
         navigationController?.navigationBar.isTranslucent = false
+        // adding Add movies button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMoviePressed))
     }
     // MARK: - Add New Movie pressed

@@ -10,6 +10,8 @@ import Foundation
 
 // MARK: - Storyboard identifiers
 struct Identifiers {
+    // id of movie cell
     static let movieCell = "MoviesCell"
+    // id of add movie vc in storyboard
     static let addMovie = "AddMovieViewController"
 }

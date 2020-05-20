@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Movies Delegate
+// This is the delegate protocol that the Movies View Controller should conform to
 protocol MoviesDelegate: class {
     func showLoadingIndicator()
     func hideLoadingIndicator()
@@ -16,7 +18,8 @@ protocol MoviesDelegate: class {
     func updateData()
     func navigateToAddMovieController()
 }
-
+// MARK: - Movies Cell Delegate
+// This is the delegate protocol that the Movies Cell should conform to
 protocol MoviesCellDelegate: class {
     func displayTitle(title: String)
     func displayImage(image: UIImage)

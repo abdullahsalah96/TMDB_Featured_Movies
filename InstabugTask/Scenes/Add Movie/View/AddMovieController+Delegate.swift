@@ -8,8 +8,10 @@
 
 import Foundation
 
+// MARK: - Add movie delegate
 extension AddMovieViewController: AddMovieDelegate{
     func displayMessage(title: String, message: String) {
+        // display alert
         self.showAlert(title: title, message: message)
     }
 }

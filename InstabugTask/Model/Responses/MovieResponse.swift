@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Codable MovieResponse
+// this struct is used to decode response of API, it contains each movies data. API Response will have an array of these movie responses
 struct MovieResponse: Codable{
     let posterPath: String?
     let adult: Bool?
@@ -28,7 +30,7 @@ struct MovieResponse: Codable{
     var releaseYear: String {
         return String(releaseDate.prefix(4))
     }
-    
+    //coding keys to match keys with ones returned from API
     enum CodingKeys: String, CodingKey {
         case posterPath = "poster_path"
         case adult

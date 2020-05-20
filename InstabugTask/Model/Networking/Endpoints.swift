@@ -18,7 +18,7 @@ enum Endpoints{
     // cases
     case getMoviesList(Int)
     case getMoviePoster(String)
-    //get url string
+    //get url string value
     var stringValue:String{
         switch self{
             case .getMoviesList(let pageNum):

@@ -12,10 +12,10 @@ import UIKit
 // MARK: - Movie Model
 // singleton shared object that contains array of added movies
 class MyMoviesModel{
-    private var myMovies: [Movie]
+    private var myMovies: [Movie] // array of added movies
     static let shared = MyMoviesModel() //shared singleton instance
     private init(){
-        myMovies = []
+        myMovies = [] //instantiating array
     }
     // MARK: - Add new movie to my movies list
     func addMovie(movie: Movie){
@@ -27,6 +27,6 @@ class MyMoviesModel{
     }
     // MARK: - Clear My Movies list
     func clearMyMoviesList(){
-        self.myMovies = []
+        self.myMovies = [] //clear list of movies
     }
 }

@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-protocol AddMovieDelegate: class{
-    func displayMessage(title: String, message: String)
-}
-
 class AddMoviePresenter{
     // MARK: - Variables
     private weak var addMoviesDelegate: AddMovieDelegate?

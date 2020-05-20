@@ -29,7 +29,6 @@ class MoviesTableViewCell: UITableViewCell {
         textVeiew.textColor = .white
         textVeiew.isEditable = false
         textVeiew.backgroundColor = Colors.primaryDark
-//        label.numberOfLines = 0 //multi lines
         return textVeiew
     }()
     // date label

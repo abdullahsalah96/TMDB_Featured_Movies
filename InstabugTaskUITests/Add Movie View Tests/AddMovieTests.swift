@@ -83,7 +83,8 @@ class AddMovieTests: XCTestCase {
         let button = app.buttons["Add"].firstMatch
         button.tap()
         let imageView = app.images["pressImage"].firstMatch
-        XCTAssertTrue(imageView.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: imageView, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing invalid title error
@@ -114,6 +115,7 @@ class AddMovieTests: XCTestCase {
     }
     
     // MARK: - Testing valid movie data
+    // Make sure keyboard is active
     func testValidMovieData(){
         _ = addValidMovie()
         let alert = app.alerts["Success"].firstMatch
@@ -121,6 +123,7 @@ class AddMovieTests: XCTestCase {
     }
     
     // MARK: - Testing correct movie title is added to table view
+    // Make sure keyboard is active
     func testCorrectMovieTitleAddedToTableView(){
         let movieData = addValidMovie()
         let alert = app.alerts["Success"].firstMatch
@@ -129,10 +132,13 @@ class AddMovieTests: XCTestCase {
         // press movies button to go back to movies list
         app.buttons["Movies"].firstMatch.tap()
         // make sure movie title exists
-        XCTAssertTrue(app.staticTexts[movieData[0]].firstMatch.exists)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.staticTexts[movieData[0]].firstMatch, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
     
     // MARK: - Testing correct movie overview is added to table view
+    // Make sure keyboard is active
+    /// When all tests are run at once and test movie overview is large, this test sometimes fails with "Failed to get matching snapshots: Timed out while evaluating UI query." error, I solved this with adding an expectaion and using a smaller movie overview, however, sometimes it still fails. Restarting the device then running this test also solves the problem
     func testCorrectMovieOverviewAddedToTableView(){
         let movieData = addValidMovie()
         let alert = app.alerts["Success"].firstMatch
@@ -140,9 +146,11 @@ class AddMovieTests: XCTestCase {
         alert.scrollViews.otherElements.buttons["Ok"].firstMatch.tap()
         // press movies button to go back to movies list
         app.buttons["Movies"].firstMatch.tap()
-        // make sure movie overview exists
-        XCTAssertTrue(app.staticTexts[movieData[1]].firstMatch.exists)
+        // make sure movie overview exists, wait for expectation
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.staticTexts[movieData[1]].firstMatch, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
     }
+    
     // MARK: - Helper function to add new movie
     // returns both movie title and overview
     func addValidMovie()->[String]{
@@ -161,7 +169,7 @@ class AddMovieTests: XCTestCase {
         // set movie overview
         let textView = element.children(matching: .textView).element
         textView.tap()
-        let overview = "This is a valid movie overview as it has more than 30 letters"
+        let overview = "Movie overview > 30 characters"
         textView.typeText(overview)
         //press return
         returnButton.tap()

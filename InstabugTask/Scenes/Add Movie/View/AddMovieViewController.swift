@@ -22,6 +22,7 @@ class AddMovieViewController:UIViewController {
     private var presenter: AddMoviePresenter!
     private var movieDate: Date!
     private let textDelegate = TextFieldDelegate()
+    // MARK: - View Did load
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = AddMoviePresenter(delegate: self)
@@ -69,7 +70,6 @@ class AddMovieViewController:UIViewController {
         overviewTextView.textColor = Colors.primaryLight
         overviewTextView.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
     }
-    
     // MARK: - Set up text delegates
     func setUpTextDelegate(){
         titleTextField.delegate = textDelegate
@@ -88,6 +88,11 @@ class AddMovieViewController:UIViewController {
         posterImageView.addGestureRecognizer(tapGestureRecognizer)
         posterImageView.layer.cornerRadius = Constants.BorderRadii.defaultBorderRadius
     }
+    // MARK: - Update movie Poster
+    func updateMoviePoster(image: UIImage){
+        self.moviePoster = image
+    }
+    // MARK: - Actions
     // MARK: - Add movie button pressed
     @IBAction func addMoviePressed(_ sender: Any) {
         presenter.addNewMovie(title: titleTextField.text, overview: overviewTextView.text, date: movieDate, image: moviePoster)
@@ -103,18 +108,5 @@ class AddMovieViewController:UIViewController {
             imagePicker.sourceType = .savedPhotosAlbum
             present(imagePicker, animated: true, completion: nil)
         }
-    }
-}
-
-// MARK: - Image Picker Controller Delegate
-extension AddMovieViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //show image picker controller
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            posterImageView.image = image
-            posterImageView.contentMode = .scaleAspectFill
-            self.moviePoster = image
-        }
-        self.dismiss(animated: true, completion: nil)
     }
 }
