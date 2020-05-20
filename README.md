@@ -35,6 +35,16 @@ This application is developed using the MVP Design Pattern which was chosen over
   * The Add Movies Presenter handles all presentation logic and provides view controller with instructions for when an alert should be displayed. This presenter also has its own Interactor.
     - <b>Add Movies Ineractor:</b> The interactor handles validation checking to make sure that movie data entered is valid (Movie title should be at least 3 characters and Movie overview should be at least 30 characters). It's also responsible for checking if the added movie already exists to avoid adding multiple entries of the same movie.
 
+- <b>Utilities</b>: Contains constants, errors and default values that are used in the application
+   * Constants: Contains constants that are used throughout the application.
+   * Errors: Contains custom errors that are used throughout the application.
+   * Colors: Contains colors that are used throughout the application.
+   * Images: Contains Images that are used throughout the application. (placeholders)
+   * Identifiers: Contains cell and storyboard identifiers that are used throughout the application.
+   * Fonts: Contains fonts that are used throughout the application.
+   * Paddings: Contains table and text views paddings that are used throughout the application.
+ 
+ 
 ## <b> Unit Tests </b>
 - For the Unit tests, I have created a Mock API Client to be able to mock the behaviour of the API without needing to connect to the server. The unit Tests test the networking code for making API calls.
 <p align="center">
