@@ -165,15 +165,4 @@ class AddMovieTests: XCTestCase {
         app.buttons["Add Movie"].firstMatch.tap()
         return [title, overview]
     }
-    
-    // MARK: - Helper function to get app elements
-    func getElement()->XCUIElement{
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
-        return element
-    }
-    // MARK: - Helper function to navigate to Add Movies VC
-    func navigateToAddMovies(){
-        let button = app.buttons["Add"].firstMatch
-        button.tap()
-    }
 }

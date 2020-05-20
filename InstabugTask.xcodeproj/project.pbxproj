@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		552399B924730CDC0089D848 /* AddMovieInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552399B824730CDC0089D848 /* AddMovieInteractorTests.swift */; };
+		5527EB402474EC91000EBE7D /* AddMovieTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5527EB3F2474EC91000EBE7D /* AddMovieTests+Helpers.swift */; };
 		555421AC24731C980056D3EF /* MoviesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555421AB24731C980056D3EF /* MoviesPresenterTests.swift */; };
 		555421B1247345A80056D3EF /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555421B0247345A80056D3EF /* MockAPIClient.swift */; };
 		555421B5247358F10056D3EF /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555421B4247358F10056D3EF /* APIProtocol.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		552399B824730CDC0089D848 /* AddMovieInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieInteractorTests.swift; sourceTree = "<group>"; };
+		5527EB3F2474EC91000EBE7D /* AddMovieTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddMovieTests+Helpers.swift"; sourceTree = "<group>"; };
 		555421AB24731C980056D3EF /* MoviesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenterTests.swift; sourceTree = "<group>"; };
 		555421B0247345A80056D3EF /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		555421B4247358F10056D3EF /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
@@ -152,6 +154,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5527EB3E2474EBE0000EBE7D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				55FB8526247149F4003EE5BD /* AppDelegate.swift */,
+				55FB8528247149F4003EE5BD /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		555421A824731AE20056D3EF /* Add Movies Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				5557B2CA247417ED00F83E7C /* AddMovieTests.swift */,
+				5527EB3F2474EC91000EBE7D /* AddMovieTests+Helpers.swift */,
 			);
 			path = "Add Movie View Tests";
 			sourceTree = "<group>";
@@ -257,15 +269,13 @@
 		55FB8525247149F4003EE5BD /* InstabugTask */ = {
 			isa = PBXGroup;
 			children = (
-				55FB8526247149F4003EE5BD /* AppDelegate.swift */,
-				55FB8528247149F4003EE5BD /* SceneDelegate.swift */,
+				55FB8534247149F6003EE5BD /* Info.plist */,
+				5527EB3E2474EBE0000EBE7D /* Core */,
 				55FB856D2471F0D0003EE5BD /* Utilities */,
 				55FB854024714AC2003EE5BD /* Model */,
 				55FB853A24714A30003EE5BD /* Scenes */,
 				55FB85632471B257003EE5BD /* Extensions */,
-				55FB856A2471DB22003EE5BD /* Storyboards */,
-				55FB852F247149F6003EE5BD /* Assets.xcassets */,
-				55FB8534247149F6003EE5BD /* Info.plist */,
+				55FB856A2471DB22003EE5BD /* Storyboards and Assets */,
 			);
 			path = InstabugTask;
 			sourceTree = "<group>";
@@ -399,13 +409,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		55FB856A2471DB22003EE5BD /* Storyboards */ = {
+		55FB856A2471DB22003EE5BD /* Storyboards and Assets */ = {
 			isa = PBXGroup;
 			children = (
 				55FB852C247149F4003EE5BD /* Main.storyboard */,
 				55FB8531247149F6003EE5BD /* LaunchScreen.storyboard */,
+				55FB852F247149F6003EE5BD /* Assets.xcassets */,
 			);
-			path = Storyboards;
+			path = "Storyboards and Assets";
 			sourceTree = "<group>";
 		};
 		55FB856D2471F0D0003EE5BD /* Utilities */ = {
@@ -574,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5557B2CB247417ED00F83E7C /* AddMovieTests.swift in Sources */,
+				5527EB402474EC91000EBE7D /* AddMovieTests+Helpers.swift in Sources */,
 				5557B2C72473991500F83E7C /* MoviesListViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
