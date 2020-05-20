@@ -39,6 +39,7 @@ This application is developed using the MVP Design Pattern which was chosen over
 <p align="center">
   <img src="docs/MockAPIClient.png">
 </p>
+
 - These Unit Tests also test the behaviour of both presenters and interactors of the 2 scenes.
 - I tried to cover the whole app with Unit Tests and there are a total of 25 Unit Tests that cover different application units functionalities.
 <p align="center">
