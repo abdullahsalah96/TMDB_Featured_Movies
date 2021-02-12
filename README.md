@@ -1,4 +1,4 @@
-# <b> Instabug iOS Internship Task </b>
+# <b> TMDB Featured Movies App </b>
 An application that displays to users TMDB Discover List's Movies and gives users the ability to Add new movies to their application.
 <p align="center">
   <img src="docs/screens.png">
